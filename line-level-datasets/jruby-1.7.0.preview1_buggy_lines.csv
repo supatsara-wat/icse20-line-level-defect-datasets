@@ -1,0 +1,695 @@
+File,LineNumber,src
+src/org/jruby/RubyStruct.java,84,"        // TODO: NOT_ALLOCATABLE_ALLOCATOR may be ok here, but it's unclear how Structs"
+src/org/jruby/RubyStruct.java,85,        // work with marshalling. Confirm behavior and ensure we're doing this correctly. JRUBY-415
+src/org/jruby/RubyStruct.java,492,"    public IRubyObject op_equal(ThreadContext context, IRubyObject other) {"
+src/org/jruby/RubyStruct.java,497,        Ruby runtime = getRuntime();
+src/org/jruby/RubyStruct.java,498,        RubyStruct otherStruct = (RubyStruct)other;
+src/org/jruby/RubyStruct.java,499,        for (int i = 0; i < values.length; i++) {
+src/org/jruby/RubyStruct.java,500,"            if (!equalInternal(context, values[i], otherStruct.values[i])) return runtime.getFalse();"
+src/org/jruby/RubyStruct.java,501,        }
+src/org/jruby/RubyStruct.java,502,        return runtime.getTrue();
+src/org/jruby/RubyStruct.java,506,"    public IRubyObject eql_p(ThreadContext context, IRubyObject other) {"
+src/org/jruby/RubyStruct.java,511,        Ruby runtime = getRuntime();
+src/org/jruby/RubyStruct.java,512,        RubyStruct otherStruct = (RubyStruct)other;
+src/org/jruby/RubyStruct.java,513,        for (int i = 0; i < values.length; i++) {
+src/org/jruby/RubyStruct.java,514,"            if (!eqlInternal(context, values[i], otherStruct.values[i])) return runtime.getFalse();"
+src/org/jruby/RubyStruct.java,515,        }
+src/org/jruby/RubyStruct.java,516,        return runtime.getTrue();
+src/org/jruby/RubyInstanceConfig.java,1405,    /**
+src/org/jruby/RubyInstanceConfig.java,1406,     * Inline dynamic calls.
+src/org/jruby/RubyInstanceConfig.java,1407,     *
+src/org/jruby/RubyInstanceConfig.java,1408,     * Set with the <tt>jruby.compile.inlineDyncalls</tt> system property.
+src/org/jruby/RubyInstanceConfig.java,1409,     */
+src/org/jruby/RubyInstanceConfig.java,1410,    public static boolean INLINE_DYNCALL_ENABLED
+src/org/jruby/RubyInstanceConfig.java,1411,            = FASTEST_COMPILE_ENABLED || Options.COMPILE_INLINEDYNCALLS.load();
+src/org/jruby/RubyInstanceConfig.java,1412,
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,656,        if (RubyInstanceConfig.INLINE_DYNCALL_ENABLED && closureArg == null) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,657,            if (callType == CallType.FUNCTIONAL || callType == CallType.VARIABLE) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,658,                if (argsCallback == null) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,659,                    invokeDynamicSelfNoBlockZero(name);
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,660,                    return;
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,661,                } else if (argsCallback.getArity() >= 1 && argsCallback.getArity() <= 3) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,662,"                    invokeDynamicSelfNoBlockSpecificArity(name, argsCallback);"
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,663,                    return;
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,664,                }
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,665,//            } else if (callType == CallType.NORMAL) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,666,//                if (argsCallback == null) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,667,"//                    invokeDynamicNoBlockZero(name, receiverCallback);"
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,668,//                    return;
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,669,//                } else if (argsCallback.getArity() >= 1 && argsCallback.getArity() <= 3) {
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,670,"//                    invokeDynamicNoBlockSpecificArity(name, receiverCallback, argsCallback);"
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,671,//                    return;
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,672,//                }
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,673,            }
+src/org/jruby/compiler/impl/StandardInvocationCompiler.java,674,        }
+src/org/jruby/util/cli/ArgumentProcessor.java,397,                        RubyInstanceConfig.FASTOPS_COMPILE_ENABLED = true;
+src/org/jruby/util/cli/ArgumentProcessor.java,398,                        RubyInstanceConfig.FASTSEND_COMPILE_ENABLED = true;
+src/org/jruby/util/cli/ArgumentProcessor.java,399,                        RubyInstanceConfig.INLINE_DYNCALL_ENABLED = true;
+src/org/jruby/util/cli/Options.java,76,"    public static final Option<Boolean> COMPILE_INLINEDYNCALLS = bool(COMPILER, ""compile.inlineDyncalls"", false, ""Emit method lookup + invoke inline in bytecode."");"
+src/org/jruby/RubyArray.java,1486,            // safe for both 1.9 and 1.8
+src/org/jruby/RubyArray.java,1487,            str.cat19(str2);
+src/org/jruby/RubyEnumerable.java,1735,
+src/org/jruby/RubyEnumerable.java,1736,"    @JRubyMethod(name = ""join"", compat = CompatVersion.RUBY1_9)"
+src/org/jruby/RubyEnumerable.java,1737,"    public static IRubyObject join(ThreadContext context, IRubyObject self) {"
+src/org/jruby/RubyEnumerable.java,1738,"        return join(context, self, context.getRuntime().getGlobalVariables().get(""$,""));"
+src/org/jruby/RubyEnumerable.java,1739,    }
+src/org/jruby/RubyEnumerable.java,1740,
+src/org/jruby/RubyEnumerable.java,1741,"    @JRubyMethod(name = ""join"", compat = CompatVersion.RUBY1_9)"
+src/org/jruby/RubyEnumerable.java,1742,"    public static IRubyObject join(ThreadContext context, IRubyObject self, final IRubyObject sep) {"
+src/org/jruby/RubyEnumerable.java,1743,"        return ((RubyArray)to_a19(context, self)).join19(context, sep);"
+src/org/jruby/RubyEnumerable.java,1744,    }
+src/org/jruby/ast/DefinedNode.java,86,        try {
+src/org/jruby/ast/DefinedNode.java,87,            context.setWithinDefined(true);
+src/org/jruby/ast/DefinedNode.java,88,"            ByteList definition = expressionNode.definition(runtime, context, self, aBlock);"
+src/org/jruby/ast/DefinedNode.java,89,"            return definition != null ? RubyString.newStringShared(runtime, definition) : runtime.getNil();"
+src/org/jruby/ast/DefinedNode.java,90,        } finally {
+src/org/jruby/ast/DefinedNode.java,91,            context.setWithinDefined(false);
+src/org/jruby/ast/DefinedNode.java,92,        }
+src/org/jruby/ast/OpAsgnOrNode.java,107,        try {
+src/org/jruby/ast/OpAsgnOrNode.java,108,            context.setWithinDefined(true);
+src/org/jruby/ast/OpAsgnOrNode.java,109,"            return node.definition(runtime, context, self, aBlock) != null;"
+src/org/jruby/ast/OpAsgnOrNode.java,110,        } finally {
+src/org/jruby/ast/OpAsgnOrNode.java,111,            context.setWithinDefined(false);
+src/org/jruby/ast/OpAsgnOrNode.java,112,        }
+src/org/jruby/compiler/ASTCompiler.java,1492,            BranchCallback reg = new BranchCallback() {
+src/org/jruby/compiler/ASTCompiler.java,1493,
+src/org/jruby/compiler/ASTCompiler.java,1494,                        public void branch(BodyCompiler context) {
+src/org/jruby/compiler/ASTCompiler.java,1495,                            context.inDefined();
+src/org/jruby/compiler/ASTCompiler.java,1496,"                            compileGetDefinition(node, context);"
+src/org/jruby/compiler/ASTCompiler.java,1497,                        }
+src/org/jruby/compiler/ASTCompiler.java,1498,                    };
+src/org/jruby/compiler/ASTCompiler.java,1499,            BranchCallback out = new BranchCallback() {
+src/org/jruby/compiler/ASTCompiler.java,1500,
+src/org/jruby/compiler/ASTCompiler.java,1501,                        public void branch(BodyCompiler context) {
+src/org/jruby/compiler/ASTCompiler.java,1502,                            context.outDefined();
+src/org/jruby/compiler/ASTCompiler.java,1503,                        }
+src/org/jruby/compiler/ASTCompiler.java,1504,                    };
+src/org/jruby/compiler/ASTCompiler.java,1505,"            context.protect(reg, out, ByteList.class);"
+src/org/jruby/compiler/BodyCompiler.java,538,    public void inDefined();
+src/org/jruby/compiler/BodyCompiler.java,539,    public void outDefined();
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1855,    public void inDefined() {
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1856,        method.aload(StandardASMCompiler.THREADCONTEXT_INDEX);
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1857,        method.iconst_1();
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1858,"        invokeThreadContext(""setWithinDefined"", sig(void.class, params(boolean.class)));"
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1859,    }
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1860,
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1861,    public void outDefined() {
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1862,        method.aload(StandardASMCompiler.THREADCONTEXT_INDEX);
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1863,        method.iconst_0();
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1864,"        invokeThreadContext(""setWithinDefined"", sig(void.class, params(boolean.class)));"
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1865,    }
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1866,
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,2883,}
+src/org/jruby/exceptions/RaiseException.java,239,        if (!context.isWithinDefined()) {
+src/org/jruby/exceptions/RaiseException.java,240,"            context.runtime.getGlobalVariables().set(""$!"", exception);"
+src/org/jruby/exceptions/RaiseException.java,241,        }
+src/org/jruby/ir/IRBuilder.java,18,import org.jruby.ir.instructions.defined.SetWithinDefinedInstr;
+src/org/jruby/ir/IRBuilder.java,1126,"    private Variable protectCodeWithEnsure(IRScope s, CodeBlock protectedCode, Object[] protectedCodeArgs, CodeBlock ensureCode, Object[] ensureCodeArgs) {"
+src/org/jruby/ir/IRBuilder.java,1127,        // This effectively mimics a begin-ensure-end code block
+src/org/jruby/ir/IRBuilder.java,1128,        // Except this silently swallows all exceptions raised by the protected code
+src/org/jruby/ir/IRBuilder.java,1129,
+src/org/jruby/ir/IRBuilder.java,1130,        Variable ret = s.getNewTemporaryVariable();
+src/org/jruby/ir/IRBuilder.java,1131,
+src/org/jruby/ir/IRBuilder.java,1132,        // Push a new ensure block info node onto the stack of ensure block
+src/org/jruby/ir/IRBuilder.java,1133,"        EnsureBlockInfo ebi = new EnsureBlockInfo(s, null, getCurrentLoop());"
+src/org/jruby/ir/IRBuilder.java,1134,        _ensureBlockStack.push(ebi);
+src/org/jruby/ir/IRBuilder.java,1135,        Label rBeginLabel = ebi.regionStart;
+src/org/jruby/ir/IRBuilder.java,1136,        Label rEndLabel   = ebi.end;
+src/org/jruby/ir/IRBuilder.java,1137,
+src/org/jruby/ir/IRBuilder.java,1138,        // Protected region code
+src/org/jruby/ir/IRBuilder.java,1139,        s.addInstr(new LabelInstr(rBeginLabel));
+src/org/jruby/ir/IRBuilder.java,1140,"        s.addInstr(new ExceptionRegionStartMarkerInstr(rBeginLabel, rEndLabel, ebi.dummyRescueBlockLabel, ebi.dummyRescueBlockLabel));"
+src/org/jruby/ir/IRBuilder.java,1141,        Operand v1 = protectedCode.run(protectedCodeArgs); // YIELD: Run the protected code block
+src/org/jruby/ir/IRBuilder.java,1142,"        s.addInstr(new CopyInstr(ret, v1));"
+src/org/jruby/ir/IRBuilder.java,1143,        s.addInstr(new JumpInstr(ebi.start));
+src/org/jruby/ir/IRBuilder.java,1144,        s.addInstr(new ExceptionRegionEndMarkerInstr());
+src/org/jruby/ir/IRBuilder.java,1145,
+src/org/jruby/ir/IRBuilder.java,1146,        // Rescue block code
+src/org/jruby/ir/IRBuilder.java,1147,"        // SSS FIXME: How do we get this to catch all exceptions, not just Ruby exceptions?"
+src/org/jruby/ir/IRBuilder.java,1148,        s.addInstr(new LabelInstr(ebi.dummyRescueBlockLabel));
+src/org/jruby/ir/IRBuilder.java,1149,"        s.addInstr(new CopyInstr(ret, manager.getNil()));"
+src/org/jruby/ir/IRBuilder.java,1150,
+src/org/jruby/ir/IRBuilder.java,1151,        _ensureBlockStack.pop();
+src/org/jruby/ir/IRBuilder.java,1152,
+src/org/jruby/ir/IRBuilder.java,1153,        // Ensure block code -- this should not throw exceptions
+src/org/jruby/ir/IRBuilder.java,1154,        s.addInstr(new LabelInstr(ebi.start));
+src/org/jruby/ir/IRBuilder.java,1155,        ensureCode.run(ensureCodeArgs); // YIELD: Run the ensure code block
+src/org/jruby/ir/IRBuilder.java,1156,
+src/org/jruby/ir/IRBuilder.java,1157,        // End
+src/org/jruby/ir/IRBuilder.java,1158,        s.addInstr(new LabelInstr(rEndLabel));
+src/org/jruby/ir/IRBuilder.java,1159,
+src/org/jruby/ir/IRBuilder.java,1160,        return ret;
+src/org/jruby/ir/IRBuilder.java,1161,    }
+src/org/jruby/ir/IRBuilder.java,1162,
+src/org/jruby/ir/IRBuilder.java,1205,        s.addInstr(new SetWithinDefinedInstr(manager.getTrue()));
+src/org/jruby/ir/IRBuilder.java,1206,
+src/org/jruby/ir/IRBuilder.java,1207,        // Protected code
+src/org/jruby/ir/IRBuilder.java,1208,        CodeBlock protectedCode = new CodeBlock() {
+src/org/jruby/ir/IRBuilder.java,1209,            public Operand run(Object[] args) {
+src/org/jruby/ir/IRBuilder.java,1210,"               return buildGetDefinition((Node)args[0], (IRScope)args[1]);"
+src/org/jruby/ir/IRBuilder.java,1211,            }
+src/org/jruby/ir/IRBuilder.java,1212,        };
+src/org/jruby/ir/IRBuilder.java,1213,
+src/org/jruby/ir/IRBuilder.java,1214,        // Ensure code
+src/org/jruby/ir/IRBuilder.java,1215,        CodeBlock ensureCode = new CodeBlock() {
+src/org/jruby/ir/IRBuilder.java,1216,            public Operand run(Object[] args) {
+src/org/jruby/ir/IRBuilder.java,1217,                IRScope m = (IRScope)args[0];
+src/org/jruby/ir/IRBuilder.java,1218,                m.addInstr(new SetWithinDefinedInstr(manager.getFalse()));
+src/org/jruby/ir/IRBuilder.java,1219,                return manager.getNil();
+src/org/jruby/ir/IRBuilder.java,1220,            }
+src/org/jruby/ir/IRBuilder.java,1221,        };
+src/org/jruby/ir/IRBuilder.java,1222,
+src/org/jruby/ir/IRBuilder.java,1223,"        return protectCodeWithEnsure(s, protectedCode, new Object[] {node, s}, ensureCode, new Object[] {s});"
+src/org/jruby/ir/IRVisitor.java,15,import org.jruby.ir.instructions.defined.SetWithinDefinedInstr;
+src/org/jruby/ir/IRVisitor.java,171,    public void SetWithinDefinedInstr(SetWithinDefinedInstr setwithindefinedinstr) { error(setwithindefinedinstr); }
+src/org/jruby/ir/targets/JVMVisitor.java,28,import org.jruby.ir.instructions.defined.SetWithinDefinedInstr;
+src/org/jruby/ir/targets/JVMVisitor.java,1028,    @Override
+src/org/jruby/ir/targets/JVMVisitor.java,1029,    public void SetWithinDefinedInstr(SetWithinDefinedInstr setwithindefinedinstr) {
+src/org/jruby/ir/targets/JVMVisitor.java,1030,        super.SetWithinDefinedInstr(setwithindefinedinstr);    //To change body of overridden methods use File | Settings | File Templates.
+src/org/jruby/ir/targets/JVMVisitor.java,1031,    }
+src/org/jruby/ir/targets/JVMVisitor.java,1032,
+src/org/jruby/runtime/ThreadContext.java,92,    // Is this thread currently doing an defined? defined should set things like $!
+src/org/jruby/runtime/ThreadContext.java,93,    private boolean isWithinDefined;
+src/org/jruby/runtime/ThreadContext.java,94,
+src/org/jruby/runtime/ThreadContext.java,1185,    /**
+src/org/jruby/runtime/ThreadContext.java,1186,     * Is this thread actively in defined? at the moment.
+src/org/jruby/runtime/ThreadContext.java,1187,     *
+src/org/jruby/runtime/ThreadContext.java,1188,     * @return true if within defined?
+src/org/jruby/runtime/ThreadContext.java,1189,     */
+src/org/jruby/runtime/ThreadContext.java,1190,    public boolean isWithinDefined() {
+src/org/jruby/runtime/ThreadContext.java,1191,        return isWithinDefined;
+src/org/jruby/runtime/ThreadContext.java,1192,    }
+src/org/jruby/runtime/ThreadContext.java,1193,
+src/org/jruby/runtime/ThreadContext.java,1194,    /**
+src/org/jruby/runtime/ThreadContext.java,1195,     * Set whether we are actively within defined? or not.
+src/org/jruby/runtime/ThreadContext.java,1196,     *
+src/org/jruby/runtime/ThreadContext.java,1197,     * @param isWithinDefined true if so
+src/org/jruby/runtime/ThreadContext.java,1198,     */
+src/org/jruby/runtime/ThreadContext.java,1199,    public void setWithinDefined(boolean isWithinDefined) {
+src/org/jruby/runtime/ThreadContext.java,1200,        this.isWithinDefined = isWithinDefined;
+src/org/jruby/runtime/ThreadContext.java,1201,    }
+src/org/jruby/runtime/ThreadContext.java,1202,
+src/org/jruby/java/dispatch/CallableSelector.java,92,            if (newFinds.size() > 1 && args[0].getRuntime().isDebug()) {
+src/org/jruby/java/dispatch/CallableSelector.java,93,                // warn about multiple potentials during debug (should only happen once per ambiguity)
+src/org/jruby/java/dispatch/CallableSelector.java,94,"                warnMultipleMatches(args, newFinds);"
+src/org/jruby/java/dispatch/CallableSelector.java,96,            method = newFinds.get(0);
+src/org/jruby/runtime/callsite/RespondToCallSite.java,47,"        IRubyObject respond = super.call(context, caller, self, name);"
+src/org/jruby/runtime/callsite/RespondToCallSite.java,48,
+src/org/jruby/runtime/callsite/RespondToCallSite.java,49,        if (!respond.isTrue() && context.getRuntime().is1_9()) {
+src/org/jruby/runtime/callsite/RespondToCallSite.java,50,"            respond = self.callMethod(context, ""respond_to_missing?"", new IRubyObject[]{name, context.getRuntime().getFalse()});"
+src/org/jruby/runtime/callsite/RespondToCallSite.java,51,            respond = context.getRuntime().newBoolean(respond.isTrue());
+src/org/jruby/runtime/callsite/RespondToCallSite.java,52,        }
+src/org/jruby/runtime/callsite/RespondToCallSite.java,53,        return respond;
+src/org/jruby/runtime/callsite/RespondToCallSite.java,65,"        IRubyObject respond = super.call(context, caller, self, name, bool);"
+src/org/jruby/runtime/callsite/RespondToCallSite.java,66,
+src/org/jruby/runtime/callsite/RespondToCallSite.java,67,        if (!respond.isTrue() && context.getRuntime().is1_9()) {
+src/org/jruby/runtime/callsite/RespondToCallSite.java,68,"            respond = self.callMethod(context, ""respond_to_missing?"", new IRubyObject[]{name, bool});"
+src/org/jruby/runtime/callsite/RespondToCallSite.java,69,            respond = context.getRuntime().newBoolean(respond.isTrue());
+src/org/jruby/runtime/callsite/RespondToCallSite.java,70,        }
+src/org/jruby/runtime/callsite/RespondToCallSite.java,71,        return respond;
+src/org/jruby/runtime/callsite/RespondToCallSite.java,83,        if (entry.method == context.getRuntime().getRespondToMethod()) {
+src/org/jruby/runtime/callsite/RespondToCallSite.java,104,        if (entry.method == context.getRuntime().getRespondToMethod()) {
+src/org/jruby/RubyThread.java,368,                threadImpl.start();
+src/org/jruby/RubyThread.java,369,
+src/org/jruby/RubyFile.java,793,"    @JRubyMethod(required = 2, rest = true, meta = true)"
+src/org/jruby/Profile.java,50,"            public boolean allowClass(String name) { return !name.equals(""File""); }"
+src/org/jruby/RubyStruct.java,238,"                    Arity.checkArgumentCount(self.getRuntime(), args, 0, 0);"
+src/org/jruby/RubyStruct.java,255,"                    Arity.checkArgumentCount(self.getRuntime(), args, 1, 1);"
+src/org/jruby/ast/ArgsNode.java,400,
+src/org/jruby/ast/ArgsNode.java,402,"//        arity.checkArity(runtime, argsLength);"
+src/org/jruby/ext/ffi/jffi/NativeInvoker.java,81,"            Arity.checkArgumentCount(context.getRuntime(), args,"
+src/org/jruby/ext/socket/RubyUNIXSocket.java,173,"        Arity.checkArgumentCount(runtime, args, 0, 2);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,109,"            argsNode.checkArgCount(runtime, args.length);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,136,"            argsNode.checkArgCount(runtime, 0);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,158,"            argsNode.checkArgCount(runtime, 0);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,179,"            argsNode.checkArgCount(runtime, 1);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,201,"            argsNode.checkArgCount(runtime, 1);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,222,"            argsNode.checkArgCount(runtime, 2);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,244,"            argsNode.checkArgCount(runtime, 2);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,265,"            argsNode.checkArgCount(runtime, 3);"
+src/org/jruby/internal/runtime/methods/InterpretedMethod.java,287,"            argsNode.checkArgCount(runtime, 3);"
+src/org/jruby/internal/runtime/methods/JavaMethod.java,219,"            Arity.raiseArgumentError(context.getRuntime(), given, min, max);"
+src/org/jruby/internal/runtime/methods/ReflectedJavaMethod.java,89,        Ruby runtime = context.getRuntime();
+src/org/jruby/internal/runtime/methods/ReflectedJavaMethod.java,90,"        Arity.checkArgumentCount(runtime, args, required, max);"
+src/org/jruby/java/proxies/JavaInterfaceTemplate.java,358,"                        Arity.checkArgumentCount(context.getRuntime(), args.length, 1, -1);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,270,"        RubyObject rubyReceiver = getReceiverObject(runtime, receiver);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,306,"    private RubyObject getReceiverObject(Ruby runtime, Object receiver) {"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,307,        if (receiver == null || !(receiver instanceof IRubyObject) || receiver instanceof RubyNil) {
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,308,            return (RubyObject)runtime.getTopSelf();
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,309,        }
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,310,        else if (receiver instanceof RubyObject) return (RubyObject)receiver;
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,311,        else return (RubyObject)((IRubyObject)receiver).getRuntime().getTopSelf();
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,312,    }
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,313,
+src/org/jruby/RubyFile.java,1087,
+src/org/jruby/RubyFile.java,1088,                if (args[1] instanceof RubyFixnum) {
+src/org/jruby/RubyFile.java,1089,                    perm = RubyNumeric.num2int(args[1]);
+src/org/jruby/RubyFile.java,1090,                } else {
+src/org/jruby/RubyFile.java,1091,                    modeString = args[1].convertToString().toString();
+src/org/jruby/RubyFile.java,1092,                }
+src/org/jruby/RubyFile.java,1109,"            openInternal19(context, path, options, modeString, modes);"
+src/org/jruby/RubyFile.java,1169,"    protected void openInternal19(ThreadContext context, String path, RubyHash options, String modeString, IOOptions ioOptions) {"
+src/org/jruby/RubyFile.java,1172,"        openInternal(path, modeString, ioOptions.getModeFlags());"
+src/org/jruby/RubyFile.java,1177,"    protected void openInternal(String path, String modeString, ModeFlags modes) {"
+src/org/jruby/RubyFile.java,1186,"        openFile.setMainStream(fopen(path, modeString));"
+src/org/jruby/RubyFile.java,1199,"        openFile.setMainStream(fopen(path, modeString));"
+src/org/jruby/RubyFile.java,1235,"    private Stream fopen(String path, String modeString) {"
+src/org/jruby/RubyFile.java,1237,            Stream stream = ChannelStream.fopen(
+src/org/jruby/RubyFile.java,1240,"                    newModeFlags(getRuntime(), modeString));"
+src/org/jruby/RubyFile.java,1241,
+src/org/jruby/RubyFile.java,1242,            if (stream == null) {
+src/org/jruby/RubyFile.java,1243,                // TODO
+src/org/jruby/RubyFile.java,1244,                //            if (errno == EMFILE || errno == ENFILE) {
+src/org/jruby/RubyFile.java,1245,                //                rb_gc();
+src/org/jruby/RubyFile.java,1246,"                //                file = fopen(fname, mode);"
+src/org/jruby/RubyFile.java,1247,                //            }
+src/org/jruby/RubyFile.java,1248,                //            if (!file) {
+src/org/jruby/RubyFile.java,1249,                //                rb_sys_fail(fname);
+src/org/jruby/RubyFile.java,1250,                //            }
+src/org/jruby/RubyFile.java,1251,            }
+src/org/jruby/RubyFile.java,1252,
+src/org/jruby/RubyFile.java,1253,            // Do we need to be in SETVBUF mode for buffering to make sense? This comes up elsewhere.
+src/org/jruby/RubyFile.java,1254,            //    #ifdef USE_SETVBUF
+src/org/jruby/RubyFile.java,1255,"            //        if (setvbuf(file, NULL, _IOFBF, 0) != 0)"
+src/org/jruby/RubyFile.java,1256,"            //            rb_warn(""setvbuf() can't be honoured for %s"", fname);"
+src/org/jruby/RubyFile.java,1257,            //    #endif
+src/org/jruby/RubyFile.java,1258,            //    #ifdef __human68k__
+src/org/jruby/RubyFile.java,1259,"            //        fmode(file, _IOTEXT);"
+src/org/jruby/RubyFile.java,1260,            //    #endif
+src/org/jruby/RubyFile.java,1261,            return stream;
+src/org/jruby/util/io/ChannelDescriptor.java,883,                // and only if the file was created in this call.
+src/org/jruby/util/io/ChannelDescriptor.java,884,                if (posix != null && perm != -1) {
+src/org/jruby/util/io/ChannelStream.java,1454,        try {
+src/org/jruby/util/io/ChannelStream.java,1455,"            if (modes.isAppendable()) stream.lseek(0, Stream.SEEK_END);"
+src/org/jruby/util/io/ChannelStream.java,1456,        } catch (PipeException pe) {
+src/org/jruby/util/io/ChannelStream.java,1457,            // ignore; it's a pipe or fifo
+src/org/jruby/util/io/ChannelStream.java,1458,        }
+src/org/jruby/util/io/ChannelStream.java,1459,
+src/org/jruby/RubyInteger.java,246,"            return RubyFixnum.newFixnum(context.getRuntime(), getLongValue() + 1L);"
+src/org/jruby/RubyKernel.java,1610,"        return execCommon(runtime, null, null, null, args);"
+src/org/jruby/RubyKernel.java,1641,        if (prog != null && prog.isNil()) prog = null;
+src/org/jruby/RubyKernel.java,1642,
+src/org/jruby/RubyKernel.java,1643,        int resultCode;
+src/org/jruby/RubyKernel.java,1645,        try {
+src/org/jruby/RubyKernel.java,1647,                // args to strings
+src/org/jruby/RubyKernel.java,1648,                String[] argv = new String[args.length];
+src/org/jruby/RubyKernel.java,1649,                for (int i = 0; i < args.length; i++) {
+src/org/jruby/RubyKernel.java,1650,                    argv[i] = args[i].asJavaString();
+src/org/jruby/RubyKernel.java,1652,
+src/org/jruby/RubyKernel.java,1653,"                resultCode = runtime.getPosix().exec(prog == null ? null : prog.asJavaString(), argv);"
+src/org/jruby/RubyKernel.java,1654,
+src/org/jruby/RubyKernel.java,1657,            } catch (RaiseException e) {  // Not implemented error
+src/org/jruby/RubyKernel.java,1658,                // Fall back onto our existing code if native not available
+src/org/jruby/RubyKernel.java,1659,                // FIXME: Make jnr-posix Pure-Java backend do this as well
+src/org/jruby/RubyKernel.java,1660,"                resultCode = ShellLauncher.execAndWait(runtime, args);"
+src/org/jruby/RubyKernel.java,1662,        } catch (RaiseException e) {
+src/org/jruby/RubyKernel.java,1663,            throw e; // no need to wrap this exception
+src/org/jruby/RubyKernel.java,1664,        } catch (Exception e) {
+src/org/jruby/RubyKernel.java,1665,"            throw runtime.newErrnoENOENTError(""cannot execute"");"
+src/org/jruby/util/Random.java,142,        if (--left <= 0)
+src/org/jruby/util/Random.java,143,            nextState();
+src/org/jruby/util/Random.java,145,        int y = state[N - left];
+src/org/jruby/RubyArray.java,1853,"    public IRubyObject join19(final ThreadContext context, final IRubyObject sep) {"
+src/org/jruby/RubyArray.java,1858,        int len = 1;
+src/org/jruby/RubyArray.java,1859,        RubyString sepString = null;
+src/org/jruby/RubyArray.java,1860,        if (!sep.isNil()) {
+src/org/jruby/RubyArray.java,1861,            sepString = sep.convertToString();
+src/org/jruby/RubyArray.java,1862,            len += sepString.size() * (realLength - 1);
+src/org/jruby/RubyArray.java,1863,        }
+src/org/jruby/embed/jsr223/JRubyEngine.java,235,"                return container.callMethod(null, method, Object.class);"
+src/org/jruby/embed/jsr223/JRubyEngine.java,237,"            return container.callMethod(null, method, args, Object.class);"
+test/org/jruby/embed/ScriptingContainerTest.java,934,"        double volume = instance.callMethod(receiver, ""volume"", Double.class);"
+test/org/jruby/embed/ScriptingContainerTest.java,936,"        double surface_area = instance.callMethod(receiver, ""surface_area"", Double.class);"
+test/org/jruby/embed/ScriptingContainerTest.java,1045,        Object receiver = null;
+test/org/jruby/embed/ScriptingContainerTest.java,1046,"        String methodName = """";"
+test/org/jruby/embed/ScriptingContainerTest.java,1056,        Object expResult = null;
+test/org/jruby/embed/ScriptingContainerTest.java,1057,"        Object result = instance.callMethod(receiver, methodName, returnType, unit);"
+test/org/jruby/embed/ScriptingContainerTest.java,1058,"        assertEquals(expResult, result);"
+test/org/jruby/embed/ScriptingContainerTest.java,1068,"        String filename = ""org/jruby/embed/ruby/yaml_dump.rb"";"
+test/org/jruby/embed/ScriptingContainerTest.java,1073,"        unit = instance.parse(PathType.CLASSPATH, filename);"
+test/org/jruby/embed/ScriptingContainerTest.java,1074,        receiver = unit.run();
+test/org/jruby/embed/ScriptingContainerTest.java,1075,"        methodName = ""dump"";"
+test/org/jruby/embed/ScriptingContainerTest.java,1076,"        result = instance.callMethod(receiver, methodName, null, unit);"
+test/org/jruby/embed/ScriptingContainerTest.java,1077,        expResult =
+test/org/jruby/embed/ScriptingContainerTest.java,1078,"            ""songs: Hey Soul Sister, Who Says, Apologize\npodcasts: Java Posse, Stack Overflow\n"";"
+test/org/jruby/embed/ScriptingContainerTest.java,2737,}
+src/org/jruby/embed/EmbedRubyObjectAdapter.java,15, * Copyright (C) 2009 Yoko Harada <yokolet@gmail.com>
+src/org/jruby/embed/ScriptingContainer.java,15, * Copyright (C) 2009-2011 Yoko Harada <yokolet@gmail.com>
+src/org/jruby/embed/ScriptingContainer.java,1093,"        return provider.getVarMap().get(provider.getRuntime().getTopSelf(), key);"
+src/org/jruby/embed/ScriptingContainer.java,1124,"        return provider.getVarMap().put(provider.getRuntime().getTopSelf(), key, value);"
+src/org/jruby/embed/ScriptingContainer.java,1156,"        return remove(provider.getRuntime().getTopSelf(), key);"
+src/org/jruby/embed/ScriptingContainer.java,1361,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1388,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1401,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1415,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1429,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1445,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1460,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1476,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1490,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/ScriptingContainer.java,1501,     * @param receiver is an instance that will receive this method call
+src/org/jruby/embed/internal/BiVariableMap.java,15, * Copyright (C) 2009-2011 Yoko Harada <yokolet@gmail.com>
+src/org/jruby/embed/internal/BiVariableMap.java,195,"        return get(provider.getRuntime().getTopSelf(), key);"
+src/org/jruby/embed/internal/BiVariableMap.java,295,"        return put(provider.getRuntime().getTopSelf(), key, value);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,15, * Copyright (C) 2009-2010 Yoko Harada <yokolet@gmail.com>
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,32,import java.io.IOException;
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,33,import java.io.PrintWriter;
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,34,import java.io.Writer;
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,56,import org.jruby.runtime.DynamicScope;
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,150,"            return call(MethodType.CALLMETHOD_NOARG, returnType, receiver, methodName, null, null);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,160,"            return call(MethodType.CALLMETHOD, returnType, receiver, methodName, null, null, singleArg);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,170,"            return call(MethodType.CALLMETHOD, returnType, receiver, methodName, null, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,180,"            return call(MethodType.CALLMETHOD_WITHBLOCK, returnType, receiver, methodName, block, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,190,"            return call(MethodType.CALLMETHOD_NOARG, returnType, receiver, methodName, null, unit);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,200,"            return call(MethodType.CALLMETHOD, returnType, receiver, methodName, null, unit, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,210,"            return call(MethodType.CALLMETHOD_WITHBLOCK, returnType, receiver, methodName, block, unit, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,220,"            return call(MethodType.CALLSUPER, returnType, receiver, null, null, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,230,"            return call(MethodType.CALLSUPER_WITHBLOCK, returnType, receiver, null, block, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,241,"                return call(MethodType.CALLMETHOD_NOARG, Object.class, receiver, methodName, null, null);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,243,"                return call(MethodType.CALLMETHOD, Object.class, receiver, methodName, null, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,257,"            return call(MethodType.CALLMETHOD_WITHBLOCK, Object.class, receiver, methodName, block, null, args);"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,265,"    private <T> T call(MethodType type, Class<T> returnType, Object receiver, String methodName, Block block, EmbedEvalUnit unit, Object... args) {"
+src/org/jruby/embed/internal/EmbedRubyObjectAdapterImpl.java,270,"        IRubyObject rubyReceiver = JavaEmbedUtils.javaToRuby(runtime, receiver);"
+test/org/jruby/embed/ScriptingContainerTest.java,1072,        IRubyObject nil = instance.getProvider().getRuntime().getNil();
+test/org/jruby/embed/ScriptingContainerTest.java,1073,"        assertSame(nil, receiver);"
+test/org/jruby/embed/ScriptingContainerTest.java,1074,        IRubyObject topSelf = instance.getProvider().getRuntime().getTopSelf();
+test/org/jruby/embed/ScriptingContainerTest.java,1075,"        result = instance.callMethod(topSelf, ""dump"", null, unit);"
+test/org/jruby/embed/ScriptingContainerTest.java,1139,"        assertEquals(true, instance.callMethod(null, ""nil?""));"
+test/org/jruby/embed/ScriptingContainerTest.java,1140,"        assertEquals(true, instance.callMethod(instance.getProvider().getRuntime().getNil(), ""nil?""));"
+test/org/jruby/embed/ScriptingContainerTest.java,1141,"        assertEquals(false, instance.callMethod(""A Java String"", ""nil?""));"
+test/org/jruby/embed/ScriptingContainerTest.java,1150,"        String something = (String)instance.callMethod(instance, ""say_something"");"
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1195,            MethodHandle handler = exBinder.invoke(HANDLE_JAVA_EXCEPTION);
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1196,
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1201,"                    .catchException(Throwable.class, handler)"
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1216,
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1217,"    public static void handleJavaException(Ruby runtime, Throwable exception) {"
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1218,        if (exception instanceof RaiseException) {
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1219,            // allow RaiseExceptions to propagate
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1220,            throw (RaiseException) exception;
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1221,        } else if (exception instanceof Unrescuable) {
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1222,"            // allow ""unrescuable"" flow-control exceptions to propagate"
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1223,            if (exception instanceof Error) {
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1224,                throw (Error)exception;
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1225,            } else if (exception instanceof RuntimeException) {
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1226,                throw (RuntimeException)exception;
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1227,            }
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1228,        }
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1229,"        throw RaiseException.createNativeRaiseException(runtime, exception);"
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1230,    }
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1231,
+src/org/jruby/runtime/invokedynamic/InvocationLinker.java,1232,"    private static final MethodHandle HANDLE_JAVA_EXCEPTION = findStatic(InvocationLinker.class, ""handleJavaException"", methodType(void.class, Ruby.class, Throwable.class));"
+src/org/jruby/ext/openssl/SSLSocket.java,53,import org.jruby.RubyException;
+src/org/jruby/ext/openssl/SSLSocket.java,169,            doHandshake();
+src/org/jruby/ext/openssl/SSLSocket.java,193,    public IRubyObject connect_nonblock(ThreadContext context) {
+src/org/jruby/ext/openssl/SSLSocket.java,194,        throw new UnsupportedOperationException();
+src/org/jruby/ext/openssl/SSLSocket.java,198,    public IRubyObject accept(ThreadContext context) {
+src/org/jruby/ext/openssl/SSLSocket.java,223,            doHandshake();
+src/org/jruby/ext/openssl/SSLSocket.java,236,    @JRubyMethod
+src/org/jruby/ext/openssl/SSLSocket.java,237,    public IRubyObject accept_nonblock(ThreadContext context) {
+src/org/jruby/ext/openssl/SSLSocket.java,238,        throw new UnsupportedOperationException();
+src/org/jruby/ext/openssl/SSLSocket.java,239,    }
+src/org/jruby/ext/openssl/SSLSocket.java,240,
+src/org/jruby/ext/openssl/SSLSocket.java,255,    private void waitSelect(int operations) throws IOException {
+src/org/jruby/ext/openssl/SSLSocket.java,257,            return;
+src/org/jruby/ext/openssl/SSLSocket.java,273,            int result = selector.select();
+src/org/jruby/ext/openssl/SSLSocket.java,282,                    return;
+src/org/jruby/ext/openssl/SSLSocket.java,319,    private void doHandshake() throws IOException {
+src/org/jruby/ext/openssl/SSLSocket.java,320,        while (true) {
+src/org/jruby/ext/openssl/SSLSocket.java,322,            waitSelect(SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+src/org/jruby/ext/openssl/SSLSocket.java,333,                if (readAndUnwrap() == -1 && hsStatus != SSLEngineResult.HandshakeStatus.FINISHED) {
+src/org/jruby/ext/openssl/SSLSocket.java,340,                    waitSelect(SelectionKey.OP_READ);
+src/org/jruby/ext/openssl/SSLSocket.java,417,    public int read(ByteBuffer dst) throws IOException {
+src/org/jruby/ext/openssl/SSLSocket.java,425,            int appBytesProduced = readAndUnwrap();
+src/org/jruby/ext/openssl/SSLSocket.java,428,            }
+src/org/jruby/ext/openssl/SSLSocket.java,436,    private int readAndUnwrap() throws IOException {
+src/org/jruby/ext/openssl/SSLSocket.java,478,            doHandshake();
+src/org/jruby/ext/openssl/SSLSocket.java,533,                    waitSelect(SelectionKey.OP_READ);
+src/org/jruby/ext/openssl/SSLSocket.java,544,                    rr = read(dst);
+src/org/jruby/ext/openssl/SSLSocket.java,580,                waitSelect(SelectionKey.OP_WRITE);
+src/org/jruby/RubyString.java,7367,"        value = CharsetTranscoder.transcode(context, value, null, defaultInternal, runtime.getNil());"
+src/org/jruby/RubyString.java,7377,"        value = CharsetTranscoder.transcode(context, value, null, getEncoding(runtime, enc), runtime.getNil());"
+src/org/jruby/RubyString.java,7397,"        value = CharsetTranscoder.transcode(context, value, forceEncoding, getEncoding(runtime, toEncoding), options);"
+src/org/jruby/RubyString.java,7407,"        value = CharsetTranscoder.transcode(context, value, getEncoding(runtime, forceEncoding),"
+src/org/jruby/RubyString.java,7420,"        return runtime.newString(CharsetTranscoder.transcode(context, value, null, defaultInternal, runtime.getNil()));"
+src/org/jruby/RubyString.java,7439,"        return runtime.newString(CharsetTranscoder.transcode(context, value, null, forceEncoding, options));"
+src/org/jruby/RubyString.java,7456,"        return runtime.newString(CharsetTranscoder.transcode(context, value, forceEncoding,"
+src/org/jruby/RubyString.java,7465,"        return runtime.newString(CharsetTranscoder.transcode(context, value, getEncoding(runtime, forcedEncoding),"
+src/org/jruby/RubyString.java,7469,    @Deprecated
+src/org/jruby/RubyString.java,7472,"        return CharsetTranscoder.transcode(context, value, forceEncoding, toEncoding, opts);"
+src/org/jruby/util/CharsetTranscoder.java,71,
+src/org/jruby/util/CharsetTranscoder.java,72,        // MRI does not allow ASCII-8BIT chars > 127 to transcode to multibyte encodings
+src/org/jruby/util/CharsetTranscoder.java,73,"        if (fromName.equals(""ASCII-8BIT"") && encoder.maxBytesPerChar() > 1.0) {"
+src/org/jruby/util/CharsetTranscoder.java,74,            for (int byteidx = value.begin(); byteidx < value.begin() + value.length(); byteidx++) {
+src/org/jruby/util/CharsetTranscoder.java,75,                byte b = fromBytes.get(byteidx);
+src/org/jruby/util/CharsetTranscoder.java,76,                if ((b & 0xFF) > 0x7F) {
+src/org/jruby/util/CharsetTranscoder.java,77,                    throw runtime.newUndefinedConversionError(
+src/org/jruby/util/CharsetTranscoder.java,78,"                            ""\""\\x"" + Integer.toHexString(b & 0xFF).toUpperCase() +"
+src/org/jruby/util/CharsetTranscoder.java,79,"                                    ""\"" from "" + fromName +"
+src/org/jruby/util/CharsetTranscoder.java,80,"                                    "" to "" + toName);"
+src/org/jruby/util/CharsetTranscoder.java,81,                }
+src/org/jruby/util/CharsetTranscoder.java,82,            }
+src/org/jruby/util/CharsetTranscoder.java,83,        }
+src/org/jruby/ext/psych/PsychEmitter.java,32,import java.util.Collections;
+src/org/jruby/ext/psych/PsychEmitter.java,47,import org.jruby.util.TypeConverter;
+src/org/jruby/ext/psych/PsychParser.java,105,        Ruby runtime = context.runtime;
+src/org/jruby/ext/psych/PsychParser.java,107,"        return parse(context, yaml, RubyString.newString(runtime, ""<unknown>""));"
+src/org/jruby/ext/psych/PsychParser.java,113,        boolean tainted = yaml.isTaint();
+src/org/jruby/ext/psych/PsychParser.java,117,            StreamReader reader;
+src/org/jruby/ext/psych/PsychParser.java,118,"            if (yaml.respondsTo(""read"")) {"
+src/org/jruby/ext/psych/PsychParser.java,119,"                reader = new StreamReader(new InputStreamReader(new IOInputStream(yaml), RubyEncoding.UTF8));"
+src/org/jruby/ext/psych/PsychParser.java,120,                if (yaml instanceof RubyIO) {
+src/org/jruby/ext/psych/PsychParser.java,121,                    tainted = true;
+src/org/jruby/ext/psych/PsychParser.java,122,                }
+src/org/jruby/ext/psych/PsychParser.java,123,            } else {
+src/org/jruby/ext/psych/PsychParser.java,124,                reader = new StreamReader(new StringReader(yaml.convertToString().asJavaString()));
+src/org/jruby/ext/psych/PsychParser.java,125,            }
+src/org/jruby/ext/psych/PsychParser.java,126,            parser = new ParserImpl(reader);
+src/org/jruby/ext/psych/PsychParser.java,134,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,135,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,136,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,137,"                            ""start_stream"","
+src/org/jruby/ext/psych/PsychParser.java,138,                            runtime.newFixnum(YAML_ANY_ENCODING));
+src/org/jruby/ext/psych/PsychParser.java,140,                    DocumentStartEvent dse = (DocumentStartEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,141,
+src/org/jruby/ext/psych/PsychParser.java,142,                    Integer[] versionInts = dse.getVersion();
+src/org/jruby/ext/psych/PsychParser.java,143,                    IRubyObject version = versionInts == null ?
+src/org/jruby/ext/psych/PsychParser.java,144,                        RubyArray.newArray(runtime) :
+src/org/jruby/ext/psych/PsychParser.java,145,"                        RubyArray.newArray(runtime, runtime.newFixnum(versionInts[0]), runtime.newFixnum(versionInts[1]));"
+src/org/jruby/ext/psych/PsychParser.java,146,
+src/org/jruby/ext/psych/PsychParser.java,147,"                    Map<String, String> tagsMap = dse.getTags();"
+src/org/jruby/ext/psych/PsychParser.java,148,                    RubyArray tags = RubyArray.newArray(runtime);
+src/org/jruby/ext/psych/PsychParser.java,149,                    if (tagsMap != null && tagsMap.size() > 0) {
+src/org/jruby/ext/psych/PsychParser.java,150,"                        for (Map.Entry<String, String> tag : tagsMap.entrySet()) {"
+src/org/jruby/ext/psych/PsychParser.java,151,"                            RubyString key   = RubyString.newString(runtime, tag.getKey());"
+src/org/jruby/ext/psych/PsychParser.java,152,"                            RubyString value = RubyString.newString(runtime, tag.getValue());"
+src/org/jruby/ext/psych/PsychParser.java,153,                            key.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,154,                            value.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,155,
+src/org/jruby/ext/psych/PsychParser.java,156,                            tags.append(RubyArray.newArray(
+src/org/jruby/ext/psych/PsychParser.java,157,"                                    runtime,"
+src/org/jruby/ext/psych/PsychParser.java,158,"                                    key,"
+src/org/jruby/ext/psych/PsychParser.java,159,                                    value));
+src/org/jruby/ext/psych/PsychParser.java,160,                        }
+src/org/jruby/ext/psych/PsychParser.java,161,                    }
+src/org/jruby/ext/psych/PsychParser.java,162,
+src/org/jruby/ext/psych/PsychParser.java,163,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,164,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,165,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,166,"                            ""start_document"","
+src/org/jruby/ext/psych/PsychParser.java,167,"                            version,"
+src/org/jruby/ext/psych/PsychParser.java,168,"                            tags,"
+src/org/jruby/ext/psych/PsychParser.java,169,                            runtime.newBoolean(!dse.getExplicit()));
+src/org/jruby/ext/psych/PsychParser.java,171,                    DocumentEndEvent dee = (DocumentEndEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,172,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,173,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,174,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,175,"                            ""end_document"","
+src/org/jruby/ext/psych/PsychParser.java,176,                            runtime.newBoolean(!dee.getExplicit()));
+src/org/jruby/ext/psych/PsychParser.java,178,                    AliasEvent ae = (AliasEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,179,                    IRubyObject alias = runtime.getNil();
+src/org/jruby/ext/psych/PsychParser.java,180,                    if (ae.getAnchor() != null) {
+src/org/jruby/ext/psych/PsychParser.java,181,"                        alias = RubyString.newString(runtime, ae.getAnchor());"
+src/org/jruby/ext/psych/PsychParser.java,182,                        alias.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,183,                    }
+src/org/jruby/ext/psych/PsychParser.java,184,
+src/org/jruby/ext/psych/PsychParser.java,185,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,186,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,187,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,188,"                            ""alias"","
+src/org/jruby/ext/psych/PsychParser.java,189,                            alias);
+src/org/jruby/ext/psych/PsychParser.java,191,                    ScalarEvent se = (ScalarEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,192,                    IRubyObject anchor = se.getAnchor() == null ?
+src/org/jruby/ext/psych/PsychParser.java,193,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,194,"                        RubyString.newString(runtime, se.getAnchor());"
+src/org/jruby/ext/psych/PsychParser.java,195,                    IRubyObject tag = se.getTag() == null ?
+src/org/jruby/ext/psych/PsychParser.java,196,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,197,"                        RubyString.newString(runtime, se.getTag());"
+src/org/jruby/ext/psych/PsychParser.java,198,                    IRubyObject plain_implicit = runtime.newBoolean(se.getImplicit().canOmitTagInPlainScalar());
+src/org/jruby/ext/psych/PsychParser.java,199,                    IRubyObject quoted_implicit = runtime.newBoolean(se.getImplicit().canOmitTagInNonPlainScalar());
+src/org/jruby/ext/psych/PsychParser.java,200,                    IRubyObject style = runtime.newFixnum(translateStyle(se.getStyle()));
+src/org/jruby/ext/psych/PsychParser.java,201,"                    IRubyObject val = RubyString.newString(runtime, se.getValue());"
+src/org/jruby/ext/psych/PsychParser.java,202,
+src/org/jruby/ext/psych/PsychParser.java,203,                    val.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,204,                    anchor.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,205,                    tag.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,206,
+src/org/jruby/ext/psych/PsychParser.java,207,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,208,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,209,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,210,"                            ""scalar"","
+src/org/jruby/ext/psych/PsychParser.java,211,"                            val,"
+src/org/jruby/ext/psych/PsychParser.java,212,"                            anchor,"
+src/org/jruby/ext/psych/PsychParser.java,213,"                            tag,"
+src/org/jruby/ext/psych/PsychParser.java,214,"                            plain_implicit,"
+src/org/jruby/ext/psych/PsychParser.java,215,"                            quoted_implicit,"
+src/org/jruby/ext/psych/PsychParser.java,216,                            style);
+src/org/jruby/ext/psych/PsychParser.java,218,                    SequenceStartEvent sse = (SequenceStartEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,219,                    IRubyObject anchor = sse.getAnchor() == null ?
+src/org/jruby/ext/psych/PsychParser.java,220,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,221,"                        RubyString.newString(runtime, sse.getAnchor());"
+src/org/jruby/ext/psych/PsychParser.java,222,                    IRubyObject tag = sse.getTag() == null ?
+src/org/jruby/ext/psych/PsychParser.java,223,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,224,"                        RubyString.newString(runtime, sse.getTag());"
+src/org/jruby/ext/psych/PsychParser.java,225,                    IRubyObject implicit = runtime.newBoolean(sse.getImplicit());
+src/org/jruby/ext/psych/PsychParser.java,226,                    IRubyObject style = runtime.newFixnum(translateFlowStyle(sse.getFlowStyle()));
+src/org/jruby/ext/psych/PsychParser.java,227,
+src/org/jruby/ext/psych/PsychParser.java,228,                    anchor.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,229,                    tag.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,230,
+src/org/jruby/ext/psych/PsychParser.java,231,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,232,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,233,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,234,"                            ""start_sequence"","
+src/org/jruby/ext/psych/PsychParser.java,235,"                            anchor,"
+src/org/jruby/ext/psych/PsychParser.java,236,"                            tag,"
+src/org/jruby/ext/psych/PsychParser.java,237,"                            implicit,"
+src/org/jruby/ext/psych/PsychParser.java,238,                            style);
+src/org/jruby/ext/psych/PsychParser.java,240,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,241,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,242,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,243,"                            ""end_sequence"");"
+src/org/jruby/ext/psych/PsychParser.java,245,                    MappingStartEvent mse = (MappingStartEvent)event;
+src/org/jruby/ext/psych/PsychParser.java,246,                    IRubyObject anchor = mse.getAnchor() == null ?
+src/org/jruby/ext/psych/PsychParser.java,247,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,248,"                        RubyString.newString(runtime, mse.getAnchor());"
+src/org/jruby/ext/psych/PsychParser.java,249,                    IRubyObject tag = mse.getTag() == null ?
+src/org/jruby/ext/psych/PsychParser.java,250,                        runtime.getNil() :
+src/org/jruby/ext/psych/PsychParser.java,251,"                        RubyString.newString(runtime, mse.getTag());"
+src/org/jruby/ext/psych/PsychParser.java,252,                    IRubyObject implicit = runtime.newBoolean(mse.getImplicit());
+src/org/jruby/ext/psych/PsychParser.java,253,                    IRubyObject style = runtime.newFixnum(translateFlowStyle(mse.getFlowStyle()));
+src/org/jruby/ext/psych/PsychParser.java,254,
+src/org/jruby/ext/psych/PsychParser.java,255,                    anchor.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,256,                    tag.setTaint(tainted);
+src/org/jruby/ext/psych/PsychParser.java,257,
+src/org/jruby/ext/psych/PsychParser.java,258,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,259,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,260,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,261,"                            ""start_mapping"","
+src/org/jruby/ext/psych/PsychParser.java,262,"                            anchor,"
+src/org/jruby/ext/psych/PsychParser.java,263,"                            tag,"
+src/org/jruby/ext/psych/PsychParser.java,264,"                            implicit,"
+src/org/jruby/ext/psych/PsychParser.java,265,                            style);
+src/org/jruby/ext/psych/PsychParser.java,267,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,268,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,269,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,270,"                            ""end_mapping"");"
+src/org/jruby/ext/psych/PsychParser.java,272,                    invoke(
+src/org/jruby/ext/psych/PsychParser.java,273,"                            context,"
+src/org/jruby/ext/psych/PsychParser.java,274,"                            handler,"
+src/org/jruby/ext/psych/PsychParser.java,275,"                            ""end_stream"");"
+src/org/jruby/ext/psych/PsychParser.java,342,            if (event == null) {
+src/org/jruby/ext/psych/PsychParser.java,343,                event = this.event;
+src/org/jruby/ext/psych/PsychParser.java,344,            }
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,469,                decimal = new BigDecimal(strValue);
+src/org/jruby/evaluator/ASTInterpreter.java,150,        DynamicScope evalScope = binding.getDynamicScope().getEvalScope(runtime);
+src/org/jruby/runtime/Binding.java,83,"        return new Binding(self, frame, visibility, klass, dynamicScope, backtrace);"
+src/org/jruby/runtime/Binding.java,87,"        return new Binding(self, frame, visibility, klass, dynamicScope, backtrace);"
+src/org/jruby/ext/etc/RubyEtc.java,327,            if(block.isGiven()) {
+src/org/jruby/ext/etc/RubyEtc.java,336,
+src/org/jruby/ext/etc/RubyEtc.java,343,        } catch (Exception e) {
+src/org/jruby/ext/etc/RubyEtc.java,344,            if (runtime.getDebug().isTrue()) {
+src/org/jruby/ext/etc/RubyEtc.java,345,"                runtime.getWarnings().warn(ID.NOT_IMPLEMENTED, ""Etc.group is not supported by JRuby on this platform"");"
+src/org/jruby/ext/etc/RubyEtc.java,346,            }
+src/org/jruby/ext/etc/RubyEtc.java,347,            return runtime.getNil();
+src/org/jruby/RubyTime.java,1223,                time.dt = dt.withMillis(dt.getMillis() + Math.round(micros / 1000));
+src/org/jruby/ast/RescueNode.java,204,"                    exceptionObj = Java.getInstance(runtime, throwable);"
+src/org/jruby/embed/internal/EmbedEvalUnitImpl.java,110,                runtime.getCurrentContext().pushScope(scope);
+src/org/jruby/embed/internal/EmbedEvalUnitImpl.java,136,                runtime.getCurrentContext().popScope();
+src/org/jruby/RubyString.java,7088,                    if (c == newLine && (rslen <= 1 ||
+src/org/jruby/RubyKernel.java,301,"        if (arg.startsWith(""|"")) {"
+src/org/jruby/RubyKernel.java,302,            IRubyObject command = runtime.newString(arg.substring(1));
+src/org/jruby/RubyKernel.java,303,
+src/org/jruby/RubyKernel.java,304,            final IRubyObject[] popenArgs;
+src/org/jruby/RubyKernel.java,305,            if (args.length >= 2) {
+src/org/jruby/RubyKernel.java,306,"                popenArgs = new IRubyObject[] { command, args[1] };"
+src/org/jruby/RubyKernel.java,307,            } else {
+src/org/jruby/RubyKernel.java,308,                popenArgs = new IRubyObject[] { command };
+src/org/jruby/RubyKernel.java,309,            }
+src/org/jruby/RubyKernel.java,310,
+src/org/jruby/RubyKernel.java,311,"            // exec process, create IO with process"
+src/org/jruby/RubyKernel.java,312,"            return RubyIO.popen(context, runtime.getIO(), popenArgs, block);"
+src/org/jruby/RubyKernel.java,313,        }
+src/org/jruby/RubyKernel.java,324,        } else {
+src/org/jruby/RubyKernel.java,325,"            return open(context, recv, args, block);"
+src/org/jruby/RubyKernel.java,326,        }
+src/org/jruby/util/ShellLauncher.java,669,"        return new POpenProcess(popenShared(runtime, new IRubyObject[] {string}), runtime, modes);"
+src/org/jruby/util/ShellLauncher.java,689,"        return popenShared(runtime, strings, env, true);"
+src/org/jruby/RubyString.java,5379,    @JRubyMethod
+src/org/jruby/RubyString.java,5384,    @JRubyMethod
+src/org/jruby/RubyString.java,5413,"    @JRubyMethod(name = ""rpartition"")"
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,128,"        RubyClass result = runtime.defineClass(""BigDecimal"",runtime.getNumeric(), BIGDECIMAL_ALLOCATOR);"
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,132,"        result.setInternalModuleVariable(""vpPrecLimit"", RubyFixnum.zero(runtime));"
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,133,"        result.setInternalModuleVariable(""vpExceptionMode"", RubyFixnum.zero(runtime));"
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,134,"        result.setInternalModuleVariable(""vpRoundingMode"", runtime.newFixnum(ROUND_HALF_UP));"
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,136,        result.defineAnnotatedMethods(RubyBigDecimal.class);
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,137,        result.defineAnnotatedConstants(RubyBigDecimal.class);
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,139,        return result;
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,446,                context = new MathContext((int)args[1].convertToInteger().getLongValue());
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,449,            if (args[0] instanceof RubyFloat && runtime.is1_9()) {
+src/org/jruby/ext/bigdecimal/RubyBigDecimal.java,450,"                return new RubyBigDecimal(runtime, new BigDecimal(((RubyFloat)args[0]).getDoubleValue(), context));"
+src/org/jruby/ast/Yield19Node.java,32,                argsResult = RuntimeHelpers.unsplatValue19(argsResult);
+src/org/jruby/ast/Yield19Node.java,41,"        return context.getCurrentFrame().getBlock().yieldArray(context, argsResult, null, null);"
+src/org/jruby/javasupport/util/RuntimeHelpers.java,1823,                // JRUBY-6729. It seems RubyArray should be returned as it is from here.
+src/org/jruby/javasupport/util/RuntimeHelpers.java,1824,                if (!(newResult instanceof RubyArray)) {
+src/org/jruby/util/ShellLauncher.java,339,            if (validFile != null && isExec &&
+src/org/jruby/util/ShellLauncher.java,340,                (validFile.isDirectory() || !runtime.getPosix().stat(validFile.getAbsolutePath()).isExecutable())) {
+src/org/jruby/util/ShellLauncher.java,341,                throw runtime.newErrnoEACCESError(validFile.getAbsolutePath());
+src/org/jruby/RubyInteger.java,153,            for (long i = from; i <= to; i++) {
+src/org/jruby/RubyInteger.java,157,            for (long i = from; i <= to; i++) {
+src/org/jruby/RubyInteger.java,197,            final IRubyObject nil = runtime.getNil();
+src/org/jruby/RubyInteger.java,198,            for (long i = from; i >= to; i--) {
+src/org/jruby/RubyInteger.java,202,            for (long i = from; i >= to; i--) {
+src/org/jruby/RubyInteger.java,246,"         //- return RubyFixnum.newFixnum(context.runtime, getLongValue() + 1L);  //-code"
+src/org/jruby/RubyInteger.java,247,            // suggested patch for http://jira.codehaus.org/browse/JRUBY-6778
+src/org/jruby/RubyInteger.java,248,            return ((RubyFixnum) this).op_plus_one(context);  //+code: suggested patch
+src/org/jruby/RubyNumeric.java,62,import static org.jruby.runtime.invokedynamic.MethodNames.OP_EQUAL;
+src/org/jruby/RubyNumeric.java,806,"    private static void fixnumStep(ThreadContext context, Ruby runtime, long value, long end, long diff, Block block) {"
+src/org/jruby/RubyNumeric.java,807,"        if (diff == 0) throw runtime.newArgumentError(""step cannot be 0"");"
+src/org/jruby/RubyNumeric.java,808,        if (diff > 0) {
+src/org/jruby/RubyNumeric.java,809,            for (long i = value; i <= end; i += diff) {
+src/org/jruby/RubyNumeric.java,813,            for (long i = value; i >= end; i += diff) {
+src/org/jruby/RubyRange.java,71,import static org.jruby.runtime.invokedynamic.MethodNames.HASH;
+src/org/jruby/RubyRange.java,72,import static org.jruby.runtime.invokedynamic.MethodNames.OP_CMP;
+src/org/jruby/RubyRange.java,424,        long lim = ((RubyFixnum) end).getLongValue();
+src/org/jruby/RubyRange.java,425,        if (!isExclusive) lim++;
+src/org/jruby/RubyRange.java,426,
+src/org/jruby/RubyRange.java,428,            final IRubyObject nil = runtime.getNil();
+src/org/jruby/RubyRange.java,429,            for (long i = ((RubyFixnum) begin).getLongValue(); i < lim; i++) {
+src/org/jruby/RubyRange.java,433,            for (long i = ((RubyFixnum) begin).getLongValue(); i < lim; i++) {
+src/org/jruby/RubyRange.java,502,"    private void fixnumStep(ThreadContext context, Ruby runtime, long unit, Block block) {"
+src/org/jruby/RubyRange.java,503,        long e = ((RubyFixnum)end).getLongValue();
+src/org/jruby/RubyRange.java,504,        if (!isExclusive) e++;
+src/org/jruby/RubyRange.java,505,        for (long i = ((RubyFixnum)begin).getLongValue(); i < e; i += unit) {
+src/org/jruby/ext/JRubyPOSIXHandler.java,38,"        error(error, extraData);"
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,52,        RubyNode.notDesignedForCompilation();
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,53,
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,54,        // TODO(cs): see the other expandPath
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,55,
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,56,        try {
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,57,            return new File(fileName).getCanonicalPath();
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,58,        } catch (IOException e) {
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,59,            throw new RuntimeException(e);
+core/src/main/java/org/jruby/truffle/runtime/core/RubyFile.java,60,        }
+core/src/main/java/org/jruby/truffle/runtime/subsystems/FeatureManager.java,143,        final String canonicalFileName = file.getCanonicalPath();
+core/src/main/java/org/jruby/truffle/runtime/subsystems/FeatureManager.java,146,            if (loaded.toString().equals(canonicalFileName)) {
+core/src/main/java/org/jruby/truffle/runtime/subsystems/FeatureManager.java,153,        context.getCoreLibrary().getLoadedFeatures().slowPush(context.makeString(canonicalFileName));

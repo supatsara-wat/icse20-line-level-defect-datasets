@@ -1,0 +1,1527 @@
+File,LineNumber,src
+src/org/jruby/evaluator/ASTInterpreter.java,823,            if (result instanceof RubyModule) {
+src/org/jruby/evaluator/ASTInterpreter.java,824,                return ((RubyModule) result).fastGetConstantFrom(iVisited.getName());
+src/org/jruby/evaluator/ASTInterpreter.java,825,            } else {
+src/org/jruby/evaluator/ASTInterpreter.java,826,"                return result.callMethod(context, iVisited.getName(), IRubyObject.NULL_ARRAY, aBlock);"
+src/org/jruby/util/ZlibDeflate.java,115,        byte[] outp = new byte[1024];
+src/org/jruby/util/ZlibInflate.java,89,        byte[] outp = new byte[1024];
+src/org/jruby/RubySymbol.java,261,            return length > 1 && isSpecialGlobalName(s.substring(1));
+src/org/jruby/Ruby.java,826,
+src/org/jruby/Ruby.java,827,        // Initialize all the core classes
+src/org/jruby/Ruby.java,828,        bootstrap();
+src/org/jruby/Ruby.java,851,        initRoot();
+src/org/jruby/runtime/Constants.java,59,"            properties.load(Constants.class.getResourceAsStream(""/jruby.properties""));"
+src/org/jruby/RubyFileStat.java,367,        return getRuntime().newBoolean(getRuntime().getPosix().lstat(file.getAbsolutePath()).isSymlink());
+src/org/jruby/RubyFile.java,539,        int owner = (int) arg1.convertToInteger().getLongValue();
+src/org/jruby/RubyFile.java,540,        int group = (int) arg2.convertToInteger().getLongValue();
+src/org/jruby/RubyFile.java,541,
+src/org/jruby/RubyFile.java,572,        int owner = (int) arg1.convertToInteger().getLongValue();
+src/org/jruby/RubyFile.java,573,        int group = (int) arg2.convertToInteger().getLongValue();
+src/org/jruby/RubyFile.java,574,
+src/org/jruby/RubyFile.java,747,
+src/org/jruby/RubyFile.java,749,        RubyInteger owner = args[0].convertToInteger();
+src/org/jruby/RubyFile.java,750,        RubyInteger group = args[1].convertToInteger();
+src/org/jruby/RubyFile.java,758,"            boolean result = 0 == runtime.getPosix().chown(filename.toString(), (int)owner.getLongValue(), (int)group.getLongValue());"
+src/org/jruby/RubyFile.java,1266,        RubyInteger owner = args[0].convertToInteger();
+src/org/jruby/RubyFile.java,1267,        RubyInteger group = args[1].convertToInteger();
+src/org/jruby/RubyFile.java,1275,"            boolean result = 0 == runtime.getPosix().lchown(filename.toString(), (int)owner.getLongValue(), (int)group.getLongValue());"
+src/org/jruby/RubyKernel.java,682,        recv.getRuntime().secure(4);
+src/org/jruby/RubyKernel.java,694,        throw recv.getRuntime().newSystemExit(status);
+src/org/jruby/RubyKernel.java,695,    }
+src/org/jruby/RubyKernel.java,696,
+src/org/jruby/RubyKernel.java,697,"    @JRubyMethod(name = ""exit!"", optional = 1, module = true, visibility = Visibility.PRIVATE)"
+src/org/jruby/RubyKernel.java,698,"    public static IRubyObject exit_bang(IRubyObject recv, IRubyObject[] args) {"
+src/org/jruby/RubyKernel.java,699,        // This calls normal exit() on purpose because we should probably not expose System.exit(0)
+src/org/jruby/RubyKernel.java,700,"        return exit(recv, args);"
+src/org/jruby/RubyIO.java,815,"                    modes = getIOModes(getRuntime(), (args[1].convertToString().toString()));"
+src/org/jruby/RubyStringIO.java,86,    // FIXME: Replace these with common IOModes instance and make IOModes work for this and IO.
+src/org/jruby/RubyStringIO.java,89,    private boolean append = false;
+src/org/jruby/RubyStringIO.java,92,"    public IRubyObject initialize(IRubyObject[] args, Block block) {"
+src/org/jruby/RubyStringIO.java,93,        if (args.length > 0) {
+src/org/jruby/RubyStringIO.java,94,            // Share bytelist since stringio is acting on this passed-in string.
+src/org/jruby/RubyStringIO.java,95,            internal = args[0].convertToString();
+src/org/jruby/RubyStringIO.java,96,            if (args.length > 1) {
+src/org/jruby/RubyStringIO.java,98,                    // FIXME: We should use this somehow. yes?
+src/org/jruby/RubyStringIO.java,99,                    //int numericModes = RubyNumeric.fix2int(args[1]);
+src/org/jruby/RubyStringIO.java,100,
+src/org/jruby/RubyStringIO.java,102,                String modes = args[1].convertToString().toString();
+src/org/jruby/RubyStringIO.java,103,
+src/org/jruby/RubyStringIO.java,104,                setupModes(modes);
+src/org/jruby/RubyStringIO.java,106,        } else {
+src/org/jruby/RubyStringIO.java,107,"            internal = getRuntime().newString("""");"
+src/org/jruby/RubyStringIO.java,108,        }
+src/org/jruby/RubyStringIO.java,120,        if (append) {
+src/org/jruby/RubyStringIO.java,362,        if (append) {
+src/org/jruby/RubyStringIO.java,561,
+src/org/jruby/RubyStringIO.java,563,            setupModes(args[1].convertToString().toString());
+src/org/jruby/RubyStringIO.java,564,        } else {
+src/org/jruby/RubyStringIO.java,565,            // reset modes to default if none specified
+src/org/jruby/RubyStringIO.java,566,"            setupModes("""");"
+src/org/jruby/RubyStringIO.java,569,        if (internal.isFrozen() && (closedRead || append)) {
+src/org/jruby/RubyStringIO.java,573,        if (closedRead) {
+src/org/jruby/RubyStringIO.java,692,"        if (closedRead) throw getRuntime().newIOError(""not opened for reading"");"
+src/org/jruby/RubyStringIO.java,697,"        if (closedWrite) throw getRuntime().newIOError(""not opened for writing"");"
+src/org/jruby/RubyStringIO.java,702,    private void setupModes(String modes) {
+src/org/jruby/RubyStringIO.java,705,        append = false;
+src/org/jruby/RubyStringIO.java,707,"        if (modes.contains(""r"")) closedWrite = true;"
+src/org/jruby/RubyStringIO.java,708,"        if (modes.contains(""w"")) closedRead = true;"
+src/org/jruby/RubyStringIO.java,709,"        if (modes.contains(""a"")) append = true;"
+src/org/jruby/RubyZlib.java,590,"        @JRubyMethod(name = ""wrap"", required = 2, frame = true, meta = true)"
+src/org/jruby/RubyZlib.java,591,"        public static IRubyObject wrap(ThreadContext context, IRubyObject recv, IRubyObject io, IRubyObject proc, Block unusedBlock) throws IOException {"
+src/org/jruby/RubyZlib.java,592,"            if (!(io instanceof RubyGzipFile)) throw recv.getRuntime().newTypeError(io, (RubyClass)recv);"
+src/org/jruby/RubyZlib.java,593,            if (!proc.isNil()) {
+src/org/jruby/RubyZlib.java,595,"                    ((RubyProc)proc).call(context, new IRubyObject[]{io});"
+src/org/jruby/RubyZlib.java,597,                    RubyGzipFile zipIO = (RubyGzipFile)io;
+src/org/jruby/RubyZlib.java,598,                    if (!zipIO.isClosed()) {
+src/org/jruby/RubyZlib.java,599,                        zipIO.close();
+src/org/jruby/RubyZlib.java,600,                    }
+src/org/jruby/RubyZlib.java,602,                return recv.getRuntime().getNil();
+src/org/jruby/RubyZlib.java,604,
+src/org/jruby/RubyZlib.java,729,"            IRubyObject proc = block.isGiven() ? runtime.newProc(Block.Type.PROC, block) : runtime.getNil();"
+src/org/jruby/RubyZlib.java,730,"            RubyGzipReader io = newInstance(recv,"
+src/org/jruby/RubyZlib.java,731,"                    new IRubyObject[]{ runtime.getFile().callMethod(context, ""open"","
+src/org/jruby/RubyZlib.java,732,"                            new IRubyObject[]{filename, runtime.newString(""rb"")})}, block);"
+src/org/jruby/RubyZlib.java,733,
+src/org/jruby/RubyZlib.java,734,"            return RubyGzipFile.wrap(context, recv, io, proc, null);"
+src/org/jruby/RubyZlib.java,983,"            IRubyObject proc = block.isGiven() ? runtime.newProc(Block.Type.PROC, block) : runtime.getNil();"
+src/org/jruby/RubyZlib.java,984,            RubyGzipWriter io = newGzipWriter(
+src/org/jruby/RubyZlib.java,985,"                    recv,"
+src/org/jruby/RubyZlib.java,986,                    new IRubyObject[]{ runtime.getFile().callMethod(
+src/org/jruby/RubyZlib.java,987,"                            context,"
+src/org/jruby/RubyZlib.java,988,"                            ""open"","
+src/org/jruby/RubyZlib.java,989,"                            new IRubyObject[]{args[0],runtime.newString(""wb"")}),level,strategy},block);"
+src/org/jruby/RubyZlib.java,991,"            return RubyGzipFile.wrap(context, recv, io, proc, null);"
+src/org/jruby/util/IOOutputStream.java,83,"        closeAdapter.call(io.getRuntime().getCurrentContext(), io);"
+src/org/jruby/util/io/ModeFlags.java,127,        return ((flags & RDWR) != 0) || isReadOnly() || ((flags & BINARY) != 0);
+src/org/jruby/util/io/NullChannel.java,49,        buffer.position(buffer.position());
+src/org/jruby/ext/socket/RubyUDPSocket.java,64,        try {
+src/org/jruby/ext/socket/RubyUDPSocket.java,65,"            rb_cUDPSocket.includeModule(runtime.fastGetClass(""Socket"").fastGetConstant(""Constants""));"
+src/org/jruby/ext/socket/RubyUDPSocket.java,67,            rb_cUDPSocket.defineAnnotatedMethods(RubyUDPSocket.class);
+src/org/jruby/ext/socket/RubyUDPSocket.java,69,"            runtime.getObject().fastSetConstant(""UDPsocket"", rb_cUDPSocket);"
+src/org/jruby/ext/socket/RubyUDPSocket.java,70,        } catch (Throwable e) {
+src/org/jruby/ext/socket/RubyUDPSocket.java,71,            e.printStackTrace();
+src/org/jruby/ext/socket/RubyUDPSocket.java,72,        }
+src/org/jruby/javasupport/JavaUtil.java,231,            ex.printStackTrace();
+src/org/jruby/javasupport/proxy/JavaProxyClass.java,392,                ite.getTargetException().printStackTrace();
+src/org/jruby/runtime/load/LoadService.java,214,            e.printStackTrace();
+src/org/jruby/runtime/load/LoadService.java,335,e.printStackTrace();
+src/org/jruby/RubyGC.java,57,    @JRubyMethod(meta = true)
+src/org/jruby/RubyGC.java,69,    @JRubyMethod(meta = true)
+src/org/jruby/RubyGC.java,75,    @JRubyMethod(meta = true)
+src/org/jruby/RubyYAML.java,479,"                mep.put(self.getRuntime().newString(m.substring(1)), self.callMethod(context,""instance_variable_get"", self.getRuntime().newString(m)));"
+src/org/jruby/yaml/JRubyConstructor.java,107,        ByteList sc = (ByteList)super.constructScalar(node);
+src/org/jruby/yaml/JRubyConstructor.java,108,        if(sc.length() > 0 && sc.charAt(0) == ':' && ((org.jvyamlb.nodes.ScalarNode)node).getStyle() == 0) {
+src/org/jruby/yaml/JRubyConstructor.java,109,            String ss = sc.toString();
+src/org/jruby/yaml/JRubyConstructor.java,110,"            if(sc.charAt(1) != '""') {"
+src/org/jruby/yaml/JRubyConstructor.java,111,"                ss = "":\"""" + ss.substring(1).replaceAll(""([^\\\\])\"""", ""\\1\\\\\"""") + ""\"""";"
+src/org/jruby/yaml/JRubyConstructor.java,113,            return runtime.evalScriptlet(ss);
+src/org/jruby/yaml/JRubyConstructor.java,114,        }
+src/org/jruby/yaml/JRubyConstructor.java,116,"        return RubyString.newString(runtime,(ByteList)super.constructScalar(node));"
+src/org/jruby/RubyDir.java,325,        return recv.getRuntime().newString(recv.getRuntime().getCurrentDirectory());
+src/org/jruby/RubyGlobal.java,126,
+src/org/jruby/RubyIO.java,2180,                if (length > 0) {
+src/org/jruby/RubyIO.java,2181,                    // I think this is only partly correct; sys fail based on errno in Ruby
+src/org/jruby/RubyIO.java,2182,                    throw getRuntime().newEOFError();
+src/org/jruby/RubyIO.java,2183,                }
+src/org/jruby/util/io/ChannelStream.java,685,            if (n <= 0) {
+src/org/jruby/util/io/ChannelStream.java,696,            if (read <= 0) {
+src/org/jruby/util/io/ChannelStream.java,697,"                // if we reach EOF or didn't read anything, bail out"
+src/org/jruby/util/io/ChannelStream.java,707,        if (result.length() == 0 && number != 0) throw new EOFException();
+src/org/jruby/util/io/ChannelStream.java,715,            if (refillBuffer() <= 0) {
+src/org/jruby/RubyIO.java,193,"    public RubyIO(Ruby runtime, Process process, ModeFlags modes) {"
+src/org/jruby/RubyIO.java,203,                InputStream pipeIn = process.getInputStream();
+src/org/jruby/RubyIO.java,204,                if (pipeIn instanceof FilterInputStream) {
+src/org/jruby/RubyIO.java,205,                    try {
+src/org/jruby/RubyIO.java,206,                        pipeIn = (InputStream)
+src/org/jruby/RubyIO.java,207,"                            FieldAccess.getProtectedFieldValue(FilterInputStream.class,"
+src/org/jruby/RubyIO.java,208,"                                ""in"", pipeIn);"
+src/org/jruby/RubyIO.java,209,                    } catch (Exception e) {
+src/org/jruby/RubyIO.java,210,                    }
+src/org/jruby/RubyIO.java,213,"                        Channels.newChannel(pipeIn),"
+src/org/jruby/RubyIO.java,223,                OutputStream pipeOut = process.getOutputStream();
+src/org/jruby/RubyIO.java,224,                if (pipeOut instanceof FilterOutputStream) {
+src/org/jruby/RubyIO.java,225,                    try {
+src/org/jruby/RubyIO.java,226,                        pipeOut = (OutputStream)
+src/org/jruby/RubyIO.java,227,"                            FieldAccess.getProtectedFieldValue(FilterOutputStream.class,"
+src/org/jruby/RubyIO.java,228,"                                ""out"", pipeOut);"
+src/org/jruby/RubyIO.java,229,                    } catch (Exception e) {
+src/org/jruby/RubyIO.java,230,                    }
+src/org/jruby/RubyIO.java,233,"                        Channels.newChannel(pipeOut),"
+src/org/jruby/RubyIO.java,2838,"            Process process = ShellLauncher.popen(runtime, cmdObj, modes);"
+src/org/jruby/util/ShellLauncher.java,228,"    public static Process popen(Ruby runtime, IRubyObject string, ModeFlags modes) throws IOException {"
+src/org/jruby/util/ShellLauncher.java,230,        Process aProcess = null;
+src/org/jruby/util/ShellLauncher.java,243,"            aProcess = Runtime.getRuntime().exec(argArray, getCurrentEnv(runtime), pwd);"
+src/org/jruby/util/ShellLauncher.java,245,"            aProcess = Runtime.getRuntime().exec(args, getCurrentEnv(runtime), pwd);"
+src/org/jruby/util/ShellLauncher.java,248,"        aProcess = new POpenProcess(aProcess, runtime, modes);"
+src/org/jruby/util/ShellLauncher.java,260,        private StreamPumper pumper;
+src/org/jruby/util/ShellLauncher.java,269,                out = child.getOutputStream();
+src/org/jruby/util/ShellLauncher.java,271,"                // popen caller will not be writing, provide a bogus stream"
+src/org/jruby/util/ShellLauncher.java,272,                try {
+src/org/jruby/util/ShellLauncher.java,273,                    child.getOutputStream().close();
+src/org/jruby/util/ShellLauncher.java,274,                } catch (IOException ioe) {
+src/org/jruby/util/ShellLauncher.java,275,                    throw runtime.newIOErrorFromException(ioe);
+src/org/jruby/util/ShellLauncher.java,277,
+src/org/jruby/util/ShellLauncher.java,278,                out = new OutputStream() {
+src/org/jruby/util/ShellLauncher.java,279,                    @Override
+src/org/jruby/util/ShellLauncher.java,280,                    public void write(int b) throws IOException {
+src/org/jruby/util/ShellLauncher.java,281,                    }
+src/org/jruby/util/ShellLauncher.java,282,                };
+src/org/jruby/util/ShellLauncher.java,287,                in = child.getInputStream();
+src/org/jruby/util/ShellLauncher.java,289,                // TODO: Should this call runtime.getOutputStream() instead?
+src/org/jruby/util/ShellLauncher.java,290,"                pumper = new StreamPumper(child.getInputStream(), runtime.getOut(), false);"
+src/org/jruby/util/ShellLauncher.java,291,                pumper.setDaemon(true);
+src/org/jruby/util/ShellLauncher.java,292,                pumper.start();
+src/org/jruby/util/ShellLauncher.java,293,
+src/org/jruby/util/ShellLauncher.java,294,                in = new InputStream() {
+src/org/jruby/util/ShellLauncher.java,295,                    @Override
+src/org/jruby/util/ShellLauncher.java,296,                    public int read() throws IOException {
+src/org/jruby/util/ShellLauncher.java,297,                        return -1;
+src/org/jruby/util/ShellLauncher.java,298,                    }
+src/org/jruby/util/ShellLauncher.java,299,                };
+src/org/jruby/util/ShellLauncher.java,320,            try {
+src/org/jruby/util/ShellLauncher.java,321,                out.close();
+src/org/jruby/util/ShellLauncher.java,322,            } catch (IOException ioe) {
+src/org/jruby/util/ShellLauncher.java,323,"                // ignore, we're on the way out"
+src/org/jruby/util/ShellLauncher.java,327,            if (pumper != null) pumper.quit();
+src/org/jruby/util/ShellLauncher.java,339,            if (pumper != null) pumper.quit();
+src/org/jruby/util/ShellLauncher.java,385,    private static class StreamPumper extends Thread {
+src/org/jruby/util/ShellLauncher.java,391,"        StreamPumper(InputStream in, OutputStream out, boolean avail) {"
+src/org/jruby/util/ShellLauncher.java,423,
+src/org/jruby/util/ShellLauncher.java,436,                    try { out.close(); } catch (IOException ioe) {}
+src/org/jruby/util/ShellLauncher.java,437,                }
+src/org/jruby/util/ShellLauncher.java,453,"        StreamPumper t1 = new StreamPumper(pOut, out, false);"
+src/org/jruby/util/ShellLauncher.java,454,"        StreamPumper t2 = new StreamPumper(pErr, err, false);"
+src/org/jruby/util/ShellLauncher.java,459,"        StreamPumper t3 = new StreamPumper(in, pIn, true);"
+src/org/jruby/ast/Colon2Node.java,122,        if (result instanceof RubyModule) return ((RubyModule) result).fastGetConstantFrom(name);
+src/org/jruby/ast/Colon2Node.java,123,
+src/org/jruby/ast/Colon2Node.java,124,"        throw runtime.newTypeError(result + "" is not a class/module"");"
+src/org/jruby/compiler/ASTCompiler.java,1170,"            context.branchIfModule(receiverCallback, moduleCallback, notModuleCallback);"
+src/org/jruby/compiler/BodyCompiler.java,461,"    public void branchIfModule(CompilerCallback receiverCallback, BranchCallback moduleCallback, BranchCallback notModuleCallback);"
+src/org/jruby/compiler/impl/BaseBodyCompiler.java,1249,"    public void branchIfModule(CompilerCallback receiverCallback, BranchCallback moduleCallback, BranchCallback notModuleCallback) {"
+src/org/jruby/RubyString.java,3490,"            return new String(value.bytes,value.begin,value.realSize, ""UTF8"");"
+src/org/jruby/ext/Readline.java,147,            line = recv.getRuntime().newString(v);
+src/org/jruby/RubyThread.java,199,        // set to default thread group
+src/org/jruby/RubyThread.java,200,        runtime.getDefaultThreadGroup().addDirectly(this);
+src/org/jruby/RubyThread.java,201,
+src/org/jruby/RubyThread.java,202,        threadImpl.start();
+src/org/jruby/RubyThread.java,203,
+src/org/jruby/internal/runtime/ThreadService.java,164,"        rubyThreadMap.put(Thread.currentThread(), thread);"
+src/org/jruby/RubyFileTest.java,40,"@JRubyModule(name=""FileTest"")"
+src/org/jruby/RubyFileTest.java,45,
+src/org/jruby/RubyFileTest.java,47,
+src/org/jruby/RubyFileTest.java,55,
+src/org/jruby/RubyFileTest.java,58,
+src/org/jruby/RubyFileTest.java,63,
+src/org/jruby/RubyFileTest.java,71,
+src/org/jruby/RubyFileTest.java,74,
+src/org/jruby/RubyFileTest.java,79,
+src/org/jruby/RubyFileTest.java,82,
+src/org/jruby/RubyFileTest.java,87,
+src/org/jruby/RubyFileTest.java,90,
+src/org/jruby/RubyFileTest.java,97,"        if(filename.convertToString().toString().startsWith(""file:"")) {"
+src/org/jruby/RubyFileTest.java,98,            String file = filename.convertToString().toString().substring(5);
+src/org/jruby/RubyFileTest.java,99,            int bang = file.indexOf('!');
+src/org/jruby/RubyFileTest.java,100,            if (bang == -1 || bang == file.length() - 1) {
+src/org/jruby/RubyFileTest.java,101,                return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,102,            }
+src/org/jruby/RubyFileTest.java,103,"            String jar = file.substring(0, bang);"
+src/org/jruby/RubyFileTest.java,104,            String after = file.substring(bang + 2);
+src/org/jruby/RubyFileTest.java,105,            try {
+src/org/jruby/RubyFileTest.java,106,                java.util.jar.JarFile jf = new java.util.jar.JarFile(jar);
+src/org/jruby/RubyFileTest.java,107,                if(jf.getJarEntry(after) != null) {
+src/org/jruby/RubyFileTest.java,108,                    return recv.getRuntime().getTrue();
+src/org/jruby/RubyFileTest.java,109,                } else {
+src/org/jruby/RubyFileTest.java,110,                    return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,111,                }
+src/org/jruby/RubyFileTest.java,112,            } catch(Exception e) {
+src/org/jruby/RubyFileTest.java,113,                return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,114,            }
+src/org/jruby/RubyFileTest.java,122,"        if(filename.convertToString().toString().startsWith(""file:"")) {"
+src/org/jruby/RubyFileTest.java,123,            String file = filename.convertToString().toString().substring(5);
+src/org/jruby/RubyFileTest.java,124,            int bang = file.indexOf('!');
+src/org/jruby/RubyFileTest.java,125,            if (bang == -1 || bang == file.length() - 1) {
+src/org/jruby/RubyFileTest.java,126,                return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,127,            }
+src/org/jruby/RubyFileTest.java,128,"            String jar = file.substring(0, bang);"
+src/org/jruby/RubyFileTest.java,129,            String after = file.substring(bang + 2);
+src/org/jruby/RubyFileTest.java,130,            try {
+src/org/jruby/RubyFileTest.java,131,                java.util.jar.JarFile jf = new java.util.jar.JarFile(jar);
+src/org/jruby/RubyFileTest.java,132,                java.util.zip.ZipEntry e = jf.getEntry(after);
+src/org/jruby/RubyFileTest.java,133,                if (e == null || e.isDirectory()) {
+src/org/jruby/RubyFileTest.java,134,                    return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,135,                } else {
+src/org/jruby/RubyFileTest.java,136,                    return recv.getRuntime().getTrue();
+src/org/jruby/RubyFileTest.java,137,                }
+src/org/jruby/RubyFileTest.java,138,            } catch(Exception e) {
+src/org/jruby/RubyFileTest.java,139,                return recv.getRuntime().getFalse();
+src/org/jruby/RubyFileTest.java,140,            }
+src/org/jruby/RubyFileTest.java,151,
+src/org/jruby/RubyFileTest.java,154,
+src/org/jruby/RubyFileTest.java,160,
+src/org/jruby/RubyFileTest.java,169,
+src/org/jruby/RubyFileTest.java,172,
+src/org/jruby/RubyFileTest.java,177,
+src/org/jruby/RubyFileTest.java,193,
+src/org/jruby/RubyFileTest.java,196,
+src/org/jruby/RubyFileTest.java,201,
+src/org/jruby/RubyFileTest.java,204,
+src/org/jruby/RubyFileTest.java,209,
+src/org/jruby/RubyFileTest.java,212,
+src/org/jruby/RubyFileTest.java,217,        if (!file.exists()) noFileError(filename);
+src/org/jruby/RubyFileTest.java,218,
+src/org/jruby/RubyFileTest.java,221,
+src/org/jruby/RubyFileTest.java,230,        long length =  file.length();
+src/org/jruby/RubyFileTest.java,237,
+src/org/jruby/RubyFileTest.java,242,
+src/org/jruby/RubyFileTest.java,245,
+src/org/jruby/RubyFileTest.java,250,
+src/org/jruby/RubyFileTest.java,253,
+src/org/jruby/RubyFileTest.java,279,
+src/org/jruby/RubyFileTest.java,283,
+src/org/jruby/RubyFileTest.java,291,"            return JRubyFile.create(runtime.getCurrentDirectory(), ((RubyFile)pathOrFile).getPath());"
+src/org/jruby/RubyFileTest.java,296,
+src/org/jruby/RubyFileTest.java,298,"        throw filename.getRuntime().newErrnoENOENTError(""No such file or directory - "" +"
+src/org/jruby/RubyBigDecimal.java,80,    public final static int EXCEPTION_OVERFLOW=1;
+src/org/jruby/RubyBigDecimal.java,322,                return newNaN(recv.getRuntime());
+src/org/jruby/RubyBigDecimal.java,332,"                return newInfinity(recv.getRuntime(), sign);"
+src/org/jruby/RubyBigDecimal.java,352,"                    return newZero(recv.getRuntime(), -1);"
+src/org/jruby/RubyBigDecimal.java,354,"                    return newZero(recv.getRuntime(), 1);"
+src/org/jruby/RubyBigDecimal.java,358,"        return new RubyBigDecimal(recv.getRuntime(), decimal);"
+src/org/jruby/compiler/ASTCompiler.java,86,import org.jruby.ast.OpAsgnOrNode;
+src/org/jruby/compiler/ASTCompiler.java,99,import org.jruby.ast.VCallNode;
+src/org/jruby/compiler/ASTCompiler.java,100,import org.jruby.ast.WhileNode;
+src/org/jruby/compiler/ASTCompiler.java,101,import org.jruby.ast.YieldNode;
+src/org/jruby/compiler/ASTCompiler.java,102,import org.jruby.runtime.Arity;
+src/org/jruby/compiler/ASTCompiler.java,103,import org.jruby.runtime.CallType;
+src/org/jruby/compiler/ASTCompiler.java,104,import org.jruby.exceptions.JumpException;
+src/org/jruby/compiler/ASTCompiler.java,105,import org.jruby.RubyMatchData;
+src/org/jruby/compiler/ASTCompiler.java,106,import org.jruby.ast.ArgsCatNode;
+src/org/jruby/compiler/ASTCompiler.java,107,import org.jruby.ast.ArgsPushNode;
+src/org/jruby/compiler/ASTCompiler.java,108,import org.jruby.ast.BlockPassNode;
+src/org/jruby/compiler/ASTCompiler.java,109,import org.jruby.ast.CaseNode;
+src/org/jruby/compiler/ASTCompiler.java,110,import org.jruby.ast.ClassNode;
+src/org/jruby/compiler/ASTCompiler.java,111,import org.jruby.ast.ClassVarDeclNode;
+src/org/jruby/compiler/ASTCompiler.java,112,import org.jruby.ast.Colon2ConstNode;
+src/org/jruby/compiler/ASTCompiler.java,113,import org.jruby.ast.Colon2MethodNode;
+src/org/jruby/compiler/ASTCompiler.java,114,import org.jruby.ast.DRegexpNode;
+src/org/jruby/compiler/ASTCompiler.java,115,import org.jruby.ast.DSymbolNode;
+src/org/jruby/compiler/ASTCompiler.java,116,import org.jruby.ast.DXStrNode;
+src/org/jruby/compiler/ASTCompiler.java,117,import org.jruby.ast.DefsNode;
+src/org/jruby/compiler/ASTCompiler.java,118,import org.jruby.ast.FileNode;
+src/org/jruby/compiler/ASTCompiler.java,119,import org.jruby.ast.FlipNode;
+src/org/jruby/compiler/ASTCompiler.java,120,import org.jruby.ast.ForNode;
+src/org/jruby/compiler/ASTCompiler.java,121,import org.jruby.ast.ModuleNode;
+src/org/jruby/compiler/ASTCompiler.java,122,import org.jruby.ast.MultipleAsgnNode;
+src/org/jruby/compiler/ASTCompiler.java,123,import org.jruby.ast.OpElementAsgnNode;
+src/org/jruby/compiler/ASTCompiler.java,124,import org.jruby.ast.PostExeNode;
+src/org/jruby/compiler/ASTCompiler.java,125,import org.jruby.ast.PreExeNode;
+src/org/jruby/compiler/ASTCompiler.java,126,import org.jruby.ast.SClassNode;
+src/org/jruby/compiler/ASTCompiler.java,127,import org.jruby.ast.StarNode;
+src/org/jruby/compiler/ASTCompiler.java,1006,"                                compile(leftNode, context, true);"
+src/org/jruby/javasupport/util/RuntimeHelpers.java,580,        if (rubyModule == null || rubyModule.isNil()) { // the isNil check should go away since class nil::Foo;end is not supposed be correct
+src/org/jruby/RubyFixnum.java,52,import org.jruby.util.Convert2;
+src/org/jruby/RubyFixnum.java,286,"        return getRuntime().newString(Convert2.longToByteList(value, base));"
+src/org/jruby/RubyFixnum.java,295,"        return getRuntime().newString(Convert2.longToByteList(value, base));"
+src/org/jruby/RubyFloat.java,783,"        RubyFloat result = RubyFloat.newFloat(input.getRuntime(), org.jruby.util.Convert.byteListToDouble(input.unmarshalString(),false));"
+src/org/jruby/RubyNumeric.java,57,import org.jruby.util.Convert;
+src/org/jruby/RubyNumeric.java,58,import org.jruby.util.Convert2;
+src/org/jruby/RubyNumeric.java,330,"        return Convert2.byteListToInum(runtime, s, base, strict);"
+src/org/jruby/RubyNumeric.java,359,"            return new RubyFloat(runtime,Convert.byteListToDouble(arg.getByteList(),strict));"
+src/org/jruby/RubyString.java,99,import org.jruby.util.Convert2;
+src/org/jruby/RubyString.java,3992,"        return Convert2.byteListToInum(getRuntime(), s, base, badcheck);"
+src/org/jruby/RubyString.java,3993,    }
+src/org/jruby/RubyString.java,3994,
+src/org/jruby/RubyString.java,3995,    /** rb_str_to_dbl
+src/org/jruby/RubyString.java,3996,     *
+src/org/jruby/RubyString.java,3997,     */
+src/org/jruby/RubyString.java,3998,    public double stringToDouble(boolean badcheck) {
+src/org/jruby/RubyString.java,3999,        ByteList s = this.value;
+src/org/jruby/RubyString.java,4000,"        return Convert2.byteListToDouble(getRuntime(), s, badcheck);"
+src/org/jruby/lexer/yacc/RubyYaccLexer.java,56,import org.jruby.util.Convert2;
+src/org/jruby/util/Convert2.java,8,import org.jruby.RubyNumeric;
+src/org/jruby/util/Convert2.java,13,public class Convert2 {
+src/org/jruby/util/Convert2.java,22,"    public Convert2(Ruby runtime, ByteList _str, int base, boolean badcheck) {"
+src/org/jruby/util/Convert2.java,178,"        return new Convert2(runtime, str, base, badcheck).byteListToInum();"
+src/org/jruby/util/Convert2.java,179,    }
+src/org/jruby/util/Convert2.java,180,
+src/org/jruby/util/Convert2.java,181,    /** rb_cstr_to_dbl
+src/org/jruby/util/Convert2.java,182,     *
+src/org/jruby/util/Convert2.java,183,     */
+src/org/jruby/util/Convert2.java,184,"    public static double byteListToDouble(Ruby runtime, ByteList str, boolean badcheck) {"
+src/org/jruby/util/Convert2.java,185,"        //System.err.println(""byteListToInum("" + str + "")"");"
+src/org/jruby/util/Convert2.java,186,"        return new Convert2(runtime, str, -1, badcheck).byteListToDouble();"
+src/org/jruby/util/Convert2.java,628,"    public static double stringToDouble(Ruby runtime, String number) {"
+src/org/jruby/util/Convert2.java,629,"        ByteList s = new ByteList(ByteList.plain(number), false);"
+src/org/jruby/util/Convert2.java,630,"        return new Convert2(runtime, s, -1, false).stringToDouble(0, null);"
+src/org/jruby/util/Convert2.java,631,    }
+src/org/jruby/util/Convert2.java,632,
+src/org/jruby/util/Convert2.java,633,"    private double fallbackParsing(int s, int sign, int[] endptr) {"
+src/org/jruby/util/Convert2.java,634,        int start = s;
+src/org/jruby/util/Convert2.java,635,        int add = 0;
+src/org/jruby/util/Convert2.java,636,        if(sign == -1) {
+src/org/jruby/util/Convert2.java,637,            add = 1;
+src/org/jruby/util/Convert2.java,638,        }
+src/org/jruby/util/Convert2.java,639,        char[] buf = new char[(end-s) + add];
+src/org/jruby/util/Convert2.java,640,        int index = 0;
+src/org/jruby/util/Convert2.java,641,        if(sign == -1) {
+src/org/jruby/util/Convert2.java,642,            buf[index++] = '-';
+src/org/jruby/util/Convert2.java,643,        }
+src/org/jruby/util/Convert2.java,644,        boolean hasDot = false;
+src/org/jruby/util/Convert2.java,645,        while(s < end) {
+src/org/jruby/util/Convert2.java,646,            if('0' <= data[s] && data[s] <= '9') {
+src/org/jruby/util/Convert2.java,647,                buf[index++] = (char)data[s];
+src/org/jruby/util/Convert2.java,648,            } else if(!hasDot && data[s] == '.') {
+src/org/jruby/util/Convert2.java,649,                buf[index++] = '.';
+src/org/jruby/util/Convert2.java,650,                hasDot = true;
+src/org/jruby/util/Convert2.java,651,            } else {
+src/org/jruby/util/Convert2.java,652,                break;
+src/org/jruby/util/Convert2.java,653,            }
+src/org/jruby/util/Convert2.java,654,            s++;
+src/org/jruby/util/Convert2.java,655,        }
+src/org/jruby/util/Convert2.java,656,
+src/org/jruby/util/Convert2.java,657,        if(s < end && (data[s] == 'e' || data[s] == 'E')) {
+src/org/jruby/util/Convert2.java,658,            ++s;
+src/org/jruby/util/Convert2.java,659,            buf[index++] = 'e';
+src/org/jruby/util/Convert2.java,660,            if(s < end && (data[s] == '+' || data[s] == '-')) {
+src/org/jruby/util/Convert2.java,661,                buf[index++] = (char)data[s];
+src/org/jruby/util/Convert2.java,662,                ++s;
+src/org/jruby/util/Convert2.java,663,            }
+src/org/jruby/util/Convert2.java,664,            while(s < end) {
+src/org/jruby/util/Convert2.java,665,                if('0' <= data[s] && data[s] <= '9') {
+src/org/jruby/util/Convert2.java,666,                    buf[index++] = (char)data[s];
+src/org/jruby/util/Convert2.java,667,                    s++;
+src/org/jruby/util/Convert2.java,668,                } else {
+src/org/jruby/util/Convert2.java,669,                    break;
+src/org/jruby/util/Convert2.java,670,                }
+src/org/jruby/util/Convert2.java,671,            }
+src/org/jruby/util/Convert2.java,672,        }
+src/org/jruby/util/Convert2.java,673,
+src/org/jruby/util/Convert2.java,674,        if(endptr != null) {
+src/org/jruby/util/Convert2.java,675,            endptr[0] = s;
+src/org/jruby/util/Convert2.java,676,        }
+src/org/jruby/util/Convert2.java,677,
+src/org/jruby/util/Convert2.java,678,"        return Double.parseDouble(new String(buf, 0, index));"
+src/org/jruby/util/Convert2.java,679,    }
+src/org/jruby/util/Convert2.java,680,
+src/org/jruby/util/Convert2.java,681,"    private double stringToDouble(int nptr, int[] endptr) {"
+src/org/jruby/util/Convert2.java,682,        double num;
+src/org/jruby/util/Convert2.java,683,"        boolean got_dot, got_digit;"
+src/org/jruby/util/Convert2.java,684,        long exponent;
+src/org/jruby/util/Convert2.java,685,
+src/org/jruby/util/Convert2.java,686,        int s = nptr;
+src/org/jruby/util/Convert2.java,687,        while(isSpace(s)) {
+src/org/jruby/util/Convert2.java,688,            s++;
+src/org/jruby/util/Convert2.java,689,        }
+src/org/jruby/util/Convert2.java,690,
+src/org/jruby/util/Convert2.java,691,        int sign = (s < end && data[s] == '-') ? -1 : 1;
+src/org/jruby/util/Convert2.java,692,        if(s < end && (data[s] == '-' || data[s] == '+')) {
+src/org/jruby/util/Convert2.java,693,            ++s;
+src/org/jruby/util/Convert2.java,694,        }
+src/org/jruby/util/Convert2.java,695,        int saveFallback = s;
+src/org/jruby/util/Convert2.java,696,        num = 0.0;
+src/org/jruby/util/Convert2.java,697,        got_dot = false;
+src/org/jruby/util/Convert2.java,698,        got_digit = false;
+src/org/jruby/util/Convert2.java,699,        exponent = 0;
+src/org/jruby/util/Convert2.java,700,        int digits = 0;
+src/org/jruby/util/Convert2.java,701,
+src/org/jruby/util/Convert2.java,702,        while(s < end) {
+src/org/jruby/util/Convert2.java,703,            if('0' <= data[s] && data[s] <= '9') {
+src/org/jruby/util/Convert2.java,704,                got_digit = true;
+src/org/jruby/util/Convert2.java,705,                digits++;
+src/org/jruby/util/Convert2.java,706,                if(digits > 15) {
+src/org/jruby/util/Convert2.java,707,"                    return fallbackParsing(saveFallback, sign, endptr);"
+src/org/jruby/util/Convert2.java,708,                }
+src/org/jruby/util/Convert2.java,709,
+src/org/jruby/util/Convert2.java,710,                if(num > Double.MAX_VALUE * 0.1) {
+src/org/jruby/util/Convert2.java,711,                    ++exponent;
+src/org/jruby/util/Convert2.java,712,                } else {
+src/org/jruby/util/Convert2.java,713,                    int n = data[s] - '0';
+src/org/jruby/util/Convert2.java,714,                    num = (10.0*num) + n;
+src/org/jruby/util/Convert2.java,715,                }
+src/org/jruby/util/Convert2.java,716,
+src/org/jruby/util/Convert2.java,717,                if(got_dot) {
+src/org/jruby/util/Convert2.java,718,                    --exponent;
+src/org/jruby/util/Convert2.java,719,                }
+src/org/jruby/util/Convert2.java,720,            } else if(!got_dot && data[s] == '.') {
+src/org/jruby/util/Convert2.java,721,                got_dot = true;
+src/org/jruby/util/Convert2.java,722,            } else {
+src/org/jruby/util/Convert2.java,723,                break;
+src/org/jruby/util/Convert2.java,724,            }
+src/org/jruby/util/Convert2.java,725,            ++s;
+src/org/jruby/util/Convert2.java,726,        }
+src/org/jruby/util/Convert2.java,727,
+src/org/jruby/util/Convert2.java,728,        if(!got_digit) {
+src/org/jruby/util/Convert2.java,729,            if(s+2 < end &&
+src/org/jruby/util/Convert2.java,730,               (data[s] == 'n' || data[s] == 'N') &&
+src/org/jruby/util/Convert2.java,731,               (data[s+1] == 'a' || data[s+1] == 'A') &&
+src/org/jruby/util/Convert2.java,732,               (data[s+2] == 'n' || data[s+2] == 'N')) {
+src/org/jruby/util/Convert2.java,733,
+src/org/jruby/util/Convert2.java,734,                if(endptr != null) {
+src/org/jruby/util/Convert2.java,735,                    endptr[0] = s+3;
+src/org/jruby/util/Convert2.java,736,                }
+src/org/jruby/util/Convert2.java,737,                return Double.NaN;
+src/org/jruby/util/Convert2.java,738,            } else if(s+7 < end &&
+src/org/jruby/util/Convert2.java,739,               (data[s] == 'i' || data[s] == 'I') &&
+src/org/jruby/util/Convert2.java,740,               (data[s+1] == 'n' || data[s+1] == 'N') &&
+src/org/jruby/util/Convert2.java,741,               (data[s+2] == 'f' || data[s+2] == 'F') &&
+src/org/jruby/util/Convert2.java,742,               (data[s+3] == 'i' || data[s+3] == 'I') &&
+src/org/jruby/util/Convert2.java,743,               (data[s+4] == 'n' || data[s+4] == 'N') &&
+src/org/jruby/util/Convert2.java,744,               (data[s+5] == 'i' || data[s+5] == 'I') &&
+src/org/jruby/util/Convert2.java,745,               (data[s+6] == 't' || data[s+6] == 'T') &&
+src/org/jruby/util/Convert2.java,746,               (data[s+7] == 'y' || data[s+7] == 'Y')) {
+src/org/jruby/util/Convert2.java,747,
+src/org/jruby/util/Convert2.java,748,                if(endptr != null) {
+src/org/jruby/util/Convert2.java,749,                    endptr[0] = s+8;
+src/org/jruby/util/Convert2.java,750,                }
+src/org/jruby/util/Convert2.java,751,                return sign == -1 ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
+src/org/jruby/util/Convert2.java,752,            }
+src/org/jruby/util/Convert2.java,753,
+src/org/jruby/util/Convert2.java,754,            if(endptr != null) {
+src/org/jruby/util/Convert2.java,755,                endptr[0] = nptr;
+src/org/jruby/util/Convert2.java,756,            }
+src/org/jruby/util/Convert2.java,757,            return 0.0;
+src/org/jruby/util/Convert2.java,758,        }
+src/org/jruby/util/Convert2.java,759,
+src/org/jruby/util/Convert2.java,760,        if(s < end && (data[s] == 'e' || data[s] == 'E')) {
+src/org/jruby/util/Convert2.java,761,            ++s;
+src/org/jruby/util/Convert2.java,762,            long exp = 0;
+src/org/jruby/util/Convert2.java,763,            int[] endx = new int[]{0};
+src/org/jruby/util/Convert2.java,764,            try {
+src/org/jruby/util/Convert2.java,765,"                exp = stringToLong(s, endx, 10);"
+src/org/jruby/util/Convert2.java,766,            } catch(ERange e) {
+src/org/jruby/util/Convert2.java,767,                if(endptr != null) {
+src/org/jruby/util/Convert2.java,768,                    endptr[0] = endx[0];
+src/org/jruby/util/Convert2.java,769,                }
+src/org/jruby/util/Convert2.java,770,                throw e;
+src/org/jruby/util/Convert2.java,771,            }
+src/org/jruby/util/Convert2.java,772,            if(endx[0] == s) {
+src/org/jruby/util/Convert2.java,773,                endx[0] = s-1;
+src/org/jruby/util/Convert2.java,774,            }
+src/org/jruby/util/Convert2.java,775,
+src/org/jruby/util/Convert2.java,776,            s = endx[0];
+src/org/jruby/util/Convert2.java,777,            exponent += exp;
+src/org/jruby/util/Convert2.java,778,        }
+src/org/jruby/util/Convert2.java,779,
+src/org/jruby/util/Convert2.java,780,        if(endptr != null) {
+src/org/jruby/util/Convert2.java,781,            endptr[0] = s;
+src/org/jruby/util/Convert2.java,782,        }
+src/org/jruby/util/Convert2.java,783,
+src/org/jruby/util/Convert2.java,784,        if(num == 0.0) {
+src/org/jruby/util/Convert2.java,785,            return 0.0 * sign;
+src/org/jruby/util/Convert2.java,786,        }
+src/org/jruby/util/Convert2.java,787,
+src/org/jruby/util/Convert2.java,788,        if(exponent < 0) {
+src/org/jruby/util/Convert2.java,789,"            if(num < Double.MIN_VALUE * Math.pow(10.0, (double) -exponent)) {"
+src/org/jruby/util/Convert2.java,790,                throw new ERange(ERange.Kind.Underflow);
+src/org/jruby/util/Convert2.java,791,            }
+src/org/jruby/util/Convert2.java,792,        } else if(exponent > 0) {
+src/org/jruby/util/Convert2.java,793,"            if(num > Double.MAX_VALUE * Math.pow(10.0, (double) -exponent)) {"
+src/org/jruby/util/Convert2.java,794,                throw new ERange(ERange.Kind.Overflow);
+src/org/jruby/util/Convert2.java,795,            }
+src/org/jruby/util/Convert2.java,796,        }
+src/org/jruby/util/Convert2.java,797,
+src/org/jruby/util/Convert2.java,798,"        num *= Math.pow(10.0, (double)exponent);"
+src/org/jruby/util/Convert2.java,799,        return num * sign;
+src/org/jruby/util/Convert2.java,800,    }
+src/org/jruby/util/Convert2.java,801,
+src/org/jruby/util/Convert2.java,802,    public double byteListToDouble() {
+src/org/jruby/util/Convert2.java,803,        if(_str == null) {
+src/org/jruby/util/Convert2.java,804,            return 0.0;
+src/org/jruby/util/Convert2.java,805,        }
+src/org/jruby/util/Convert2.java,806,
+src/org/jruby/util/Convert2.java,807,        int q = str;
+src/org/jruby/util/Convert2.java,808,        ignoreLeadingWhitespace();
+src/org/jruby/util/Convert2.java,809,
+src/org/jruby/util/Convert2.java,810,        int[] endPlace = new int[]{str};
+src/org/jruby/util/Convert2.java,811,        double d = 0.0;
+src/org/jruby/util/Convert2.java,812,
+src/org/jruby/util/Convert2.java,813,        try {
+src/org/jruby/util/Convert2.java,814,"            d = stringToDouble(str, endPlace);"
+src/org/jruby/util/Convert2.java,815,        } catch(ERange e) {
+src/org/jruby/util/Convert2.java,816,            d = e.getKind() == ERange.Kind.Overflow ? Double.MAX_VALUE : Double.MIN_VALUE;
+src/org/jruby/util/Convert2.java,817,            int w = endPlace[0] - str;
+src/org/jruby/util/Convert2.java,818,"            String ellipsis = """";"
+src/org/jruby/util/Convert2.java,819,            if(w > 20) {
+src/org/jruby/util/Convert2.java,820,                w = 20;
+src/org/jruby/util/Convert2.java,821,"                ellipsis = ""..."";"
+src/org/jruby/util/Convert2.java,822,            } else {
+src/org/jruby/util/Convert2.java,823,"                ellipsis = """";"
+src/org/jruby/util/Convert2.java,824,            }
+src/org/jruby/util/Convert2.java,825,            try {
+src/org/jruby/util/Convert2.java,826,"                runtime.getWarnings().warn(""Float "" + new String(data, str, w, ""ISO-8859-1"") + ellipsis +"" out of range"");"
+src/org/jruby/util/Convert2.java,827,            } catch(java.io.UnsupportedEncodingException ex) {}
+src/org/jruby/util/Convert2.java,828,        }
+src/org/jruby/util/Convert2.java,829,
+src/org/jruby/util/Convert2.java,830,        if(str == endPlace[0]) {
+src/org/jruby/util/Convert2.java,831,            if(badcheck) {
+src/org/jruby/util/Convert2.java,832,"                invalidString(""Float()"");"
+src/org/jruby/util/Convert2.java,833,            }
+src/org/jruby/util/Convert2.java,834,            return d;
+src/org/jruby/util/Convert2.java,835,        }
+src/org/jruby/util/Convert2.java,836,        if(endPlace[0]<end) {
+src/org/jruby/util/Convert2.java,837,            byte[] buf = new byte[end-str];
+src/org/jruby/util/Convert2.java,838,            int n =0;
+src/org/jruby/util/Convert2.java,839,"            System.arraycopy(data, str, buf, 0, endPlace[0]-str);"
+src/org/jruby/util/Convert2.java,840,            n = endPlace[0] - str;
+src/org/jruby/util/Convert2.java,841,            str = endPlace[0];
+src/org/jruby/util/Convert2.java,842,            while(str < end) {
+src/org/jruby/util/Convert2.java,843,                if(data[str] == '_') {
+src/org/jruby/util/Convert2.java,844,                    if(badcheck) {
+src/org/jruby/util/Convert2.java,845,"                        if(n == 0 || !isDigit(buf, n-1)) {"
+src/org/jruby/util/Convert2.java,846,"                            invalidString(""Float()"");"
+src/org/jruby/util/Convert2.java,847,                        }
+src/org/jruby/util/Convert2.java,848,                        str++;
+src/org/jruby/util/Convert2.java,849,"                        if(!isDigit(data, str)) {"
+src/org/jruby/util/Convert2.java,850,"                            invalidString(""Float()"");"
+src/org/jruby/util/Convert2.java,851,                        }
+src/org/jruby/util/Convert2.java,852,                    } else {
+src/org/jruby/util/Convert2.java,853,                        str++;
+src/org/jruby/util/Convert2.java,854,                        while(str < end && data[str] == '_') {
+src/org/jruby/util/Convert2.java,855,                            str++;
+src/org/jruby/util/Convert2.java,856,                        }
+src/org/jruby/util/Convert2.java,857,                        continue;
+src/org/jruby/util/Convert2.java,858,                    }
+src/org/jruby/util/Convert2.java,859,                }
+src/org/jruby/util/Convert2.java,860,                buf[n++] = data[str++];
+src/org/jruby/util/Convert2.java,861,            }
+src/org/jruby/util/Convert2.java,862,            data = buf;
+src/org/jruby/util/Convert2.java,863,            str = 0;
+src/org/jruby/util/Convert2.java,864,            end = buf.length;
+src/org/jruby/util/Convert2.java,865,
+src/org/jruby/util/Convert2.java,866,            try {
+src/org/jruby/util/Convert2.java,867,"                d = stringToDouble(str, endPlace);"
+src/org/jruby/util/Convert2.java,868,            } catch(ERange e) {
+src/org/jruby/util/Convert2.java,869,                d = e.getKind() == ERange.Kind.Overflow ? Double.MAX_VALUE : Double.MIN_VALUE;
+src/org/jruby/util/Convert2.java,870,                int w = endPlace[0] - str;
+src/org/jruby/util/Convert2.java,871,"                String ellipsis = """";"
+src/org/jruby/util/Convert2.java,872,                if(w > 20) {
+src/org/jruby/util/Convert2.java,873,                    w = 20;
+src/org/jruby/util/Convert2.java,874,"                    ellipsis = ""..."";"
+src/org/jruby/util/Convert2.java,875,                } else {
+src/org/jruby/util/Convert2.java,876,"                    ellipsis = """";"
+src/org/jruby/util/Convert2.java,877,                }
+src/org/jruby/util/Convert2.java,878,                try {
+src/org/jruby/util/Convert2.java,879,"                    runtime.getWarnings().warn(""Float "" + new String(data, str, w, ""ISO-8859-1"") + ellipsis +"" out of range"");"
+src/org/jruby/util/Convert2.java,880,                } catch(java.io.UnsupportedEncodingException ex) {}
+src/org/jruby/util/Convert2.java,881,            }
+src/org/jruby/util/Convert2.java,882,
+src/org/jruby/util/Convert2.java,883,            if(badcheck) {
+src/org/jruby/util/Convert2.java,884,                if(str == endPlace[0]) {
+src/org/jruby/util/Convert2.java,885,"                    invalidString(""Float()"");"
+src/org/jruby/util/Convert2.java,886,                }
+src/org/jruby/util/Convert2.java,887,                while(endPlace[0] < end && isSpace(endPlace[0])) {
+src/org/jruby/util/Convert2.java,888,                    endPlace[0]++;
+src/org/jruby/util/Convert2.java,889,                }
+src/org/jruby/util/Convert2.java,890,                if(endPlace[0] < end) {
+src/org/jruby/util/Convert2.java,891,"                    invalidString(""Float()"");"
+src/org/jruby/util/Convert2.java,892,                }
+src/org/jruby/util/Convert2.java,893,            }
+src/org/jruby/util/Convert2.java,894,        }
+src/org/jruby/util/Convert2.java,895,
+src/org/jruby/util/Convert2.java,896,        return d;
+src/org/jruby/util/Convert2.java,897,    }
+src/org/jruby/util/Convert2.java,898,
+src/org/jruby/util/Convert.java,40,public class Convert {
+src/org/jruby/util/Convert.java,55,    public static final double byteListToDouble(ByteList bytes) {
+src/org/jruby/util/Convert.java,56,"        return byteArrayToDouble(bytes.getUnsafeBytes(), bytes.begin(), bytes.length(), false);"
+src/org/jruby/util/Convert.java,57,    }
+src/org/jruby/util/Convert.java,70,"    public static final double byteArrayToDouble(byte[] bytes, int begin, int buflen, boolean strict) {"
+src/org/jruby/util/Sprintf.java,1329,"                return Convert2.intToByteArray((int)val,base,upper);"
+src/org/jruby/util/Sprintf.java,1332,                case 2:  return Convert2.intToBinaryBytes((int)val);
+src/org/jruby/util/Sprintf.java,1333,                case 8:  return Convert2.intToOctalBytes((int)val);
+src/org/jruby/util/Sprintf.java,1335,                default: return Convert2.intToCharBytes((int)val);
+src/org/jruby/util/Sprintf.java,1336,"                case 16: return Convert2.intToHexBytes((int)val,upper);"
+src/org/jruby/util/Sprintf.java,1341,"                return Convert2.longToByteArray(val,base,upper);"
+src/org/jruby/util/Sprintf.java,1344,                case 2:  return Convert2.longToBinaryBytes(val);
+src/org/jruby/util/Sprintf.java,1345,                case 8:  return Convert2.longToOctalBytes(val);
+src/org/jruby/util/Sprintf.java,1347,                default: return Convert2.longToCharBytes(val);
+src/org/jruby/util/Sprintf.java,1348,"                case 16: return Convert2.longToHexBytes(val,upper);"
+src/org/jruby/util/Sprintf.java,1363,        case 2:  return Convert2.twosComplementToBinaryBytes(bytes);
+src/org/jruby/util/Sprintf.java,1364,        case 8:  return Convert2.twosComplementToOctalBytes(bytes);
+src/org/jruby/util/Sprintf.java,1365,"        case 16: return Convert2.twosComplementToHexBytes(bytes,upper);"
+src/org/jruby/util/Sprintf.java,1383,                return Convert2.longToCharBytes(((Long.MAX_VALUE + 1L) << 1) + longval);
+src/org/jruby/RubyFloat.java,814,"        RubyFloat result = RubyFloat.newFloat(input.getRuntime(), org.jruby.util.ConvertDouble.byteListToDouble(input.unmarshalString(),false));"
+src/org/jruby/util/ConvertDouble.java,14, * Copyright (C) 2007 William N. Dortch <bill.dortch@gmail.com>
+src/org/jruby/util/ConvertDouble.java,29,import java.math.BigInteger;
+src/org/jruby/util/ConvertDouble.java,31,import org.jruby.RubyNumeric.InvalidIntegerException;
+src/org/jruby/util/ConvertDouble.java,32,import org.jruby.RubyNumeric.NumberTooLargeException;
+src/org/jruby/util/ConvertDouble.java,33,
+src/org/jruby/util/ConvertDouble.java,34,/**
+src/org/jruby/util/ConvertDouble.java,35, * @author Bill Dortch
+src/org/jruby/util/ConvertDouble.java,36, *
+src/org/jruby/util/ConvertDouble.java,37," * Primitive conversions adapted from java.lang.Integer/Long/Double (C) Sun Microsystems, Inc."
+src/org/jruby/util/ConvertDouble.java,38, *
+src/org/jruby/util/ConvertDouble.java,39, */
+src/org/jruby/util/ConvertDouble.java,42,     * Converts a ByteList containing a RubyString representation of a double
+src/org/jruby/util/ConvertDouble.java,43,"     * value to a double.  Equivalent to Double.parseDouble(String s), but accounts for"
+src/org/jruby/util/ConvertDouble.java,44,"     * embedded underscore characters, as permitted in Ruby strings (single underscores"
+src/org/jruby/util/ConvertDouble.java,45,"     * allowed between digits in strict mode, multiple in non-strict mode)."
+src/org/jruby/util/ConvertDouble.java,46,     *
+src/org/jruby/util/ConvertDouble.java,47,     * @param bytes the ByteList containing the RubyString value to convert
+src/org/jruby/util/ConvertDouble.java,48,"     * @param strict if true, strict rules (as required by Float(str)) are enforced;"
+src/org/jruby/util/ConvertDouble.java,49,"     *               otherwise, the laxer rules of str.to_f are employed."
+src/org/jruby/util/ConvertDouble.java,50,     * @return the converted double value
+src/org/jruby/util/ConvertDouble.java,53,"        return byteArrayToDouble(bytes.getUnsafeBytes(), bytes.begin(), bytes.length(), strict, false);"
+src/org/jruby/util/ConvertDouble.java,57,"        return byteArrayToDouble(bytes.getUnsafeBytes(), bytes.begin(), bytes.length(), strict, true);"
+src/org/jruby/util/ConvertDouble.java,60,    /**
+src/org/jruby/util/ConvertDouble.java,61,     * Converts a byte array containing a RubyString representation of a double
+src/org/jruby/util/ConvertDouble.java,62,"     * value to a double.  Equivalent to Double.parseDouble(String s), but accounts for"
+src/org/jruby/util/ConvertDouble.java,63,"     * embedded underscore characters, as permitted in Ruby strings (single underscores"
+src/org/jruby/util/ConvertDouble.java,64,"     * allowed between digits in strict mode, multiple in non-strict mode)."
+src/org/jruby/util/ConvertDouble.java,65,     *
+src/org/jruby/util/ConvertDouble.java,66,     * @param bytes the array containing the RubyString value to convert
+src/org/jruby/util/ConvertDouble.java,67,     * @param buflen the length of the array to be used
+src/org/jruby/util/ConvertDouble.java,68,"     * @param strict if true, strict rules (as required by Float(str)) are enforced;"
+src/org/jruby/util/ConvertDouble.java,69,"     *               otherwise, the laxer rules of str.to_f are employed."
+src/org/jruby/util/ConvertDouble.java,70,     * @return the converted double value
+src/org/jruby/util/ConvertDouble.java,71,     */
+src/org/jruby/util/ConvertDouble.java,72,"    private static final double byteArrayToDouble(byte[] bytes, int begin, int buflen, boolean strict, boolean is19) {"
+src/org/jruby/util/ConvertDouble.java,73,        // Simple cases  ( abs(exponent) <= 22 [up to 37 depending on significand length])
+src/org/jruby/util/ConvertDouble.java,74,"        // are converted directly, which is considerably faster than creating a Java"
+src/org/jruby/util/ConvertDouble.java,75,        // String and passing it to Double.parseDouble() (which in turn passes it to
+src/org/jruby/util/ConvertDouble.java,76,        // sun.misc.FloatingDecimal); the latter approach involves 5 object allocations
+src/org/jruby/util/ConvertDouble.java,77,"        // (3 arrays + String + FloatingDecimal) and 3 array copies, two of them one byte/char"
+src/org/jruby/util/ConvertDouble.java,78,        // at a time (here and in FloatingDecimal).
+src/org/jruby/util/ConvertDouble.java,79,"        // However, the latter approach is employed for more difficult cases (generally"
+src/org/jruby/util/ConvertDouble.java,80,"        // speaking, those that require rounding). (The code for the difficult cases is"
+src/org/jruby/util/ConvertDouble.java,81,        // quite involved; see sun.misc.FloatingDecimal.java if you're interested.)
+src/org/jruby/util/ConvertDouble.java,82,
+src/org/jruby/util/ConvertDouble.java,83,        // states
+src/org/jruby/util/ConvertDouble.java,84,        final int SCOMPLETE            =  0;
+src/org/jruby/util/ConvertDouble.java,85,        final int SBEGIN               =  1; // remove leading whitespace (includes _ for lax)
+src/org/jruby/util/ConvertDouble.java,86,"        final int SSIGN                =  2; // get sign, if any"
+src/org/jruby/util/ConvertDouble.java,87,
+src/org/jruby/util/ConvertDouble.java,88,        // optimistic pass - calculate value as digits are processed
+src/org/jruby/util/ConvertDouble.java,89,        final int SOPTDIGIT            =  3; // digits - lax rules
+src/org/jruby/util/ConvertDouble.java,90,        final int SOPTDECDIGIT         =  4; // decimal digits - lax rules
+src/org/jruby/util/ConvertDouble.java,91,        final int SOPTEXP              =  9; // exponent sign/digits - lax rules
+src/org/jruby/util/ConvertDouble.java,92,        final int SOPTDIGIT_STRICT     =  6; // digits - strict rules
+src/org/jruby/util/ConvertDouble.java,93,        final int SOPTDECDIGIT_STRICT  =  7; // decimal digits - strict rules
+src/org/jruby/util/ConvertDouble.java,94,        final int SOPTEXP_STRICT       =  8; // exponent sign/digits - strict rules
+src/org/jruby/util/ConvertDouble.java,95,        final int SOPTCALC             =  5; // complete calculation if possible
+src/org/jruby/util/ConvertDouble.java,96,
+src/org/jruby/util/ConvertDouble.java,97,        // fallback pass - gather chars into array and pass to Double.parseDouble()
+src/org/jruby/util/ConvertDouble.java,98,        final int SDIGIT               = 10; // digits - lax rules
+src/org/jruby/util/ConvertDouble.java,99,        final int SDECDIGIT            = 11; // decimal digits - lax rules
+src/org/jruby/util/ConvertDouble.java,100,        final int SEXP                 = 12; // exponent sign/digits - lax rules
+src/org/jruby/util/ConvertDouble.java,101,        final int SDIGIT_STRICT        = 13; // digits - strict rules
+src/org/jruby/util/ConvertDouble.java,102,        final int SDECDIGIT_STRICT     = 14; // decimal digits - strict rules
+src/org/jruby/util/ConvertDouble.java,103,        final int SEXP_STRICT          = 15; // exponent sign/digits - strict rules
+src/org/jruby/util/ConvertDouble.java,104,
+src/org/jruby/util/ConvertDouble.java,105,        final int SERR_NOT_STRICT      = 16;
+src/org/jruby/util/ConvertDouble.java,106,
+src/org/jruby/util/ConvertDouble.java,107,        // largest abs(exponent) we can (potentially) handle without
+src/org/jruby/util/ConvertDouble.java,108,        // calling Double.parseDouble() (aka sun.misc.FloatingDecimal)
+src/org/jruby/util/ConvertDouble.java,109,        final int MAX_EXP = MAX_DECIMAL_DIGITS + MAX_SMALL_10; // (37)
+src/org/jruby/util/ConvertDouble.java,110,
+src/org/jruby/util/ConvertDouble.java,111,        if (bytes == null) {
+src/org/jruby/util/ConvertDouble.java,112,"            throw new IllegalArgumentException(""null bytes"");"
+src/org/jruby/util/ConvertDouble.java,114,        if (buflen < 0 || buflen > bytes.length) {
+src/org/jruby/util/ConvertDouble.java,115,"            throw new IllegalArgumentException(""invalid buflen specified"");"
+src/org/jruby/util/ConvertDouble.java,117,"        // TODO: get rid of this (lax returns 0.0, strict will throw)"
+src/org/jruby/util/ConvertDouble.java,118,        if (buflen == 0) {
+src/org/jruby/util/ConvertDouble.java,119,            throw new NumberFormatException();
+src/org/jruby/util/ConvertDouble.java,121,        int i = begin;
+src/org/jruby/util/ConvertDouble.java,122,        buflen += begin;
+src/org/jruby/util/ConvertDouble.java,123,        byte ival = -1;
+src/org/jruby/util/ConvertDouble.java,124,        boolean negative = false;
+src/org/jruby/util/ConvertDouble.java,125,
+src/org/jruby/util/ConvertDouble.java,126,        // fields used for direct (optimistic) calculation
+src/org/jruby/util/ConvertDouble.java,127,"        int nDigits = 0;         // number of significant digits, updated as parsed"
+src/org/jruby/util/ConvertDouble.java,128,        int nTrailingZeroes = 0; // zeroes that may go to significand or exponent
+src/org/jruby/util/ConvertDouble.java,129,        int decPos = -1;         // offset of decimal pt from start (-1 -> no decimal)
+src/org/jruby/util/ConvertDouble.java,130,"        long significand = 0;    // significand, updated as parsed"
+src/org/jruby/util/ConvertDouble.java,131,"        int exponent = 0;        // exponent, updated as parsed"
+src/org/jruby/util/ConvertDouble.java,132,
+src/org/jruby/util/ConvertDouble.java,133,        // fields used for fallback (send to Double.parseDouble())
+src/org/jruby/util/ConvertDouble.java,134,        int startPos = 0;        // start of digits (or . if no leading digits)
+src/org/jruby/util/ConvertDouble.java,135,        char[] chars = null;
+src/org/jruby/util/ConvertDouble.java,136,        int offset = 0;
+src/org/jruby/util/ConvertDouble.java,137,        int lastValidOffset = 0;
+src/org/jruby/util/ConvertDouble.java,138,
+src/org/jruby/util/ConvertDouble.java,139,        int state = SBEGIN;
+src/org/jruby/util/ConvertDouble.java,140,        while (state != SCOMPLETE) {
+src/org/jruby/util/ConvertDouble.java,141,        states:
+src/org/jruby/util/ConvertDouble.java,142,            switch(state) {
+src/org/jruby/util/ConvertDouble.java,143,            case SBEGIN:
+src/org/jruby/util/ConvertDouble.java,144,                if (strict) {
+src/org/jruby/util/ConvertDouble.java,145,                    for (; i < buflen && isWhitespace(bytes[i]); i++) ;
+src/org/jruby/util/ConvertDouble.java,146,                } else {
+src/org/jruby/util/ConvertDouble.java,147,                    for (; i < buflen && (isWhitespace(ival = bytes[i]) || (!is19 && ival == '_')); i++) ;
+src/org/jruby/util/ConvertDouble.java,148,                }
+src/org/jruby/util/ConvertDouble.java,149,                if ( i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,150,                    state = strict ? SERR_NOT_STRICT : SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,151,                    break;
+src/org/jruby/util/ConvertDouble.java,152,                }
+src/org/jruby/util/ConvertDouble.java,153,                // drop through for sign
+src/org/jruby/util/ConvertDouble.java,154,            case SSIGN:
+src/org/jruby/util/ConvertDouble.java,155,                switch(bytes[i]) {
+src/org/jruby/util/ConvertDouble.java,156,                case '-':
+src/org/jruby/util/ConvertDouble.java,157,                    negative = true;
+src/org/jruby/util/ConvertDouble.java,158,                case '+':
+src/org/jruby/util/ConvertDouble.java,159,                    if (++i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,160,                        // TODO: turn off the negative? will return -0.0 in lax mode
+src/org/jruby/util/ConvertDouble.java,161,                        state = strict ? SERR_NOT_STRICT : SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,162,                        break states;
+src/org/jruby/util/ConvertDouble.java,163,                    }
+src/org/jruby/util/ConvertDouble.java,164,                } // switch
+src/org/jruby/util/ConvertDouble.java,165,                startPos = i; // will use this if we have to go back the slow way
+src/org/jruby/util/ConvertDouble.java,166,                if (strict) {
+src/org/jruby/util/ConvertDouble.java,167,                    state = SOPTDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,168,                    break;
+src/org/jruby/util/ConvertDouble.java,169,                }
+src/org/jruby/util/ConvertDouble.java,170,                // drop through for non-strict digits
+src/org/jruby/util/ConvertDouble.java,171,            case SOPTDIGIT:
+src/org/jruby/util/ConvertDouble.java,172,                // first char must be digit or decimal point
+src/org/jruby/util/ConvertDouble.java,173,                switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,174,                case '0':
+src/org/jruby/util/ConvertDouble.java,175,                    // ignore leading zeroes
+src/org/jruby/util/ConvertDouble.java,176,                    break; // switch
+src/org/jruby/util/ConvertDouble.java,177,                case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,178,                case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,179,                    significand = (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,180,                    nDigits = 1;
+src/org/jruby/util/ConvertDouble.java,181,                    break; // switch
+src/org/jruby/util/ConvertDouble.java,182,                case '.':
+src/org/jruby/util/ConvertDouble.java,183,                    state = SOPTDECDIGIT;
+src/org/jruby/util/ConvertDouble.java,184,                    break states;
+src/org/jruby/util/ConvertDouble.java,185,                default:
+src/org/jruby/util/ConvertDouble.java,186,"                    // no digits, go calc (will return +/- 0.0 for lax)"
+src/org/jruby/util/ConvertDouble.java,187,                    state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,188,                    break states;
+src/org/jruby/util/ConvertDouble.java,189,                } // switch
+src/org/jruby/util/ConvertDouble.java,190,                for ( ; i < buflen ;  ) {
+src/org/jruby/util/ConvertDouble.java,191,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,192,                    case '0':
+src/org/jruby/util/ConvertDouble.java,193,                        // ignore leading zeroes
+src/org/jruby/util/ConvertDouble.java,194,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,195,                            // just save a count of zeroes for now; if no digit
+src/org/jruby/util/ConvertDouble.java,196,"                            // ends up following them, they'll be applied to the"
+src/org/jruby/util/ConvertDouble.java,197,                            // exponent rather than the significand (and our max
+src/org/jruby/util/ConvertDouble.java,198,                            // length for optimistic calc).
+src/org/jruby/util/ConvertDouble.java,199,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,200,                        }
+src/org/jruby/util/ConvertDouble.java,201,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,202,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,203,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,204,"                         // ok, got a non-zero, have to own up to our horded zeroes"
+src/org/jruby/util/ConvertDouble.java,205,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,206,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,207,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,208,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,209,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,210,                        }
+src/org/jruby/util/ConvertDouble.java,211,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,212,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,213,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,214,                        } else {
+src/org/jruby/util/ConvertDouble.java,215,"                            // oh, well, it was worth a try. go let"
+src/org/jruby/util/ConvertDouble.java,216,                            // Double/FloatingDecimal handle it
+src/org/jruby/util/ConvertDouble.java,217,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,218,                            break states;
+src/org/jruby/util/ConvertDouble.java,219,                        }
+src/org/jruby/util/ConvertDouble.java,220,                    case '.':
+src/org/jruby/util/ConvertDouble.java,221,                        state = SOPTDECDIGIT;
+src/org/jruby/util/ConvertDouble.java,222,                        break states;
+src/org/jruby/util/ConvertDouble.java,223,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,224,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,225,                        state = SOPTEXP;
+src/org/jruby/util/ConvertDouble.java,226,                        break states;
+src/org/jruby/util/ConvertDouble.java,227,                    case '_':
+src/org/jruby/util/ConvertDouble.java,228,                        // ignore
+src/org/jruby/util/ConvertDouble.java,229,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,230,                    default:
+src/org/jruby/util/ConvertDouble.java,231,"                        // end of parseable data, go to calc"
+src/org/jruby/util/ConvertDouble.java,232,                        state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,233,                        break states;
+src/org/jruby/util/ConvertDouble.java,234,
+src/org/jruby/util/ConvertDouble.java,235,                    } // switch
+src/org/jruby/util/ConvertDouble.java,236,                } // for
+src/org/jruby/util/ConvertDouble.java,237,                state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,238,                break;
+src/org/jruby/util/ConvertDouble.java,239,
+src/org/jruby/util/ConvertDouble.java,240,            case SOPTDECDIGIT:
+src/org/jruby/util/ConvertDouble.java,241,                decPos = nDigits + nTrailingZeroes;
+src/org/jruby/util/ConvertDouble.java,242,                for ( ; i < buflen && bytes[i] == '_'; i++ ) ;
+src/org/jruby/util/ConvertDouble.java,243,                // first non_underscore char must be digit
+src/org/jruby/util/ConvertDouble.java,244,                if (i < buflen) {
+src/org/jruby/util/ConvertDouble.java,245,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,246,                    case '0':
+src/org/jruby/util/ConvertDouble.java,247,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,248,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,249,                        } else {
+src/org/jruby/util/ConvertDouble.java,250,                            exponent--;
+src/org/jruby/util/ConvertDouble.java,251,                        }
+src/org/jruby/util/ConvertDouble.java,252,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,253,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,254,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,255,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,256,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,257,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,258,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,259,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,260,                        }
+src/org/jruby/util/ConvertDouble.java,261,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,262,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,263,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,264,                        } else {
+src/org/jruby/util/ConvertDouble.java,265,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,266,                            break states;
+src/org/jruby/util/ConvertDouble.java,267,                        }
+src/org/jruby/util/ConvertDouble.java,268,                    default:
+src/org/jruby/util/ConvertDouble.java,269,"                        // no dec digits, end of parseable data, go to calc"
+src/org/jruby/util/ConvertDouble.java,270,                        state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,271,                        break states;
+src/org/jruby/util/ConvertDouble.java,272,
+src/org/jruby/util/ConvertDouble.java,273,                    } // switch
+src/org/jruby/util/ConvertDouble.java,274,                } // if
+src/org/jruby/util/ConvertDouble.java,275,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,276,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,277,                    case '0':
+src/org/jruby/util/ConvertDouble.java,278,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,279,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,280,                        } else {
+src/org/jruby/util/ConvertDouble.java,281,                            exponent--;
+src/org/jruby/util/ConvertDouble.java,282,                        }
+src/org/jruby/util/ConvertDouble.java,283,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,284,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,285,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,286,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,287,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,288,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,289,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,290,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,291,                        }
+src/org/jruby/util/ConvertDouble.java,292,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,293,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,294,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,295,                        } else {
+src/org/jruby/util/ConvertDouble.java,296,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,297,                            break states;
+src/org/jruby/util/ConvertDouble.java,298,                        }
+src/org/jruby/util/ConvertDouble.java,299,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,300,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,301,                        state = SOPTEXP;
+src/org/jruby/util/ConvertDouble.java,302,                        break states;
+src/org/jruby/util/ConvertDouble.java,303,                    case '_':
+src/org/jruby/util/ConvertDouble.java,304,                        // ignore
+src/org/jruby/util/ConvertDouble.java,305,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,306,                    default:
+src/org/jruby/util/ConvertDouble.java,307,"                        // end of parseable data, go to calc"
+src/org/jruby/util/ConvertDouble.java,308,                        state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,309,                        break states;
+src/org/jruby/util/ConvertDouble.java,310,                    } // switch
+src/org/jruby/util/ConvertDouble.java,311,                } // for
+src/org/jruby/util/ConvertDouble.java,312,"                // no exponent, so drop through for calculation"
+src/org/jruby/util/ConvertDouble.java,313,            case SOPTCALC:
+src/org/jruby/util/ConvertDouble.java,314,"                // calculation for simple (and typical) case,"
+src/org/jruby/util/ConvertDouble.java,315,                // adapted from sun.misc.FloatingDecimal
+src/org/jruby/util/ConvertDouble.java,316,                if (nDigits == 0) {
+src/org/jruby/util/ConvertDouble.java,317,                    if (i + 1 < buflen) {
+src/org/jruby/util/ConvertDouble.java,318,                        if ((ival == 'n' || ival == 'N') &&
+src/org/jruby/util/ConvertDouble.java,319,                                (bytes[i] == 'a' || bytes[i] == 'A') &&
+src/org/jruby/util/ConvertDouble.java,320,                                (bytes[i+1] == 'n' || bytes[i+1] == 'N')) {
+src/org/jruby/util/ConvertDouble.java,321,                            return Double.NaN;
+src/org/jruby/util/ConvertDouble.java,322,                        } else if ((ival == 'i' || ival == 'I') &&
+src/org/jruby/util/ConvertDouble.java,323,                                (bytes[i] == 'n' || bytes[i] == 'N') &&
+src/org/jruby/util/ConvertDouble.java,324,                                (bytes[i+1] == 'f' || bytes[i+1] == 'F')) {
+src/org/jruby/util/ConvertDouble.java,325,                            return negative ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
+src/org/jruby/util/ConvertDouble.java,326,                        }
+src/org/jruby/util/ConvertDouble.java,327,                    }
+src/org/jruby/util/ConvertDouble.java,328,                    return negative ? -0.0d : 0.0d;
+src/org/jruby/util/ConvertDouble.java,329,                }
+src/org/jruby/util/ConvertDouble.java,330,                if (decPos < 0) {
+src/org/jruby/util/ConvertDouble.java,331,                    exponent += nTrailingZeroes;
+src/org/jruby/util/ConvertDouble.java,332,                } else {
+src/org/jruby/util/ConvertDouble.java,333,                    exponent += decPos - nDigits;
+src/org/jruby/util/ConvertDouble.java,334,                }
+src/org/jruby/util/ConvertDouble.java,335,                double dValue = (double)significand;
+src/org/jruby/util/ConvertDouble.java,336,                if (exponent == 0 || dValue == 0.0) {
+src/org/jruby/util/ConvertDouble.java,337,                    return negative ? -dValue : dValue;
+src/org/jruby/util/ConvertDouble.java,338,                } else if ( exponent >= 0 ){
+src/org/jruby/util/ConvertDouble.java,339,                    if ( exponent <= MAX_SMALL_10 ){
+src/org/jruby/util/ConvertDouble.java,340,                        dValue *= SMALL_10_POWERS[exponent];
+src/org/jruby/util/ConvertDouble.java,341,                        return negative ? -dValue : dValue;
+src/org/jruby/util/ConvertDouble.java,342,                    }
+src/org/jruby/util/ConvertDouble.java,343,                    int slop = MAX_DECIMAL_DIGITS - nDigits;
+src/org/jruby/util/ConvertDouble.java,344,                    if ( exponent <= MAX_SMALL_10+slop ){
+src/org/jruby/util/ConvertDouble.java,345,                        dValue = (dValue * SMALL_10_POWERS[slop]) * SMALL_10_POWERS[exponent-slop];
+src/org/jruby/util/ConvertDouble.java,346,                        return negative ? -dValue : dValue;
+src/org/jruby/util/ConvertDouble.java,347,                    }
+src/org/jruby/util/ConvertDouble.java,348,                } else {
+src/org/jruby/util/ConvertDouble.java,349,"                    // TODO: it's not clear to me why, in FloatingDecimal, the"
+src/org/jruby/util/ConvertDouble.java,350,"                    // ""slop"" calculation performed above for positive exponents"
+src/org/jruby/util/ConvertDouble.java,351,                    // isn't used for negative exponents as well. Will find out...
+src/org/jruby/util/ConvertDouble.java,352,                    if ( exponent >= -MAX_SMALL_10 ){
+src/org/jruby/util/ConvertDouble.java,353,                        dValue = dValue / SMALL_10_POWERS[-exponent];
+src/org/jruby/util/ConvertDouble.java,354,                        return negative ? -dValue : dValue;
+src/org/jruby/util/ConvertDouble.java,355,                    }
+src/org/jruby/util/ConvertDouble.java,356,                }
+src/org/jruby/util/ConvertDouble.java,357,"                // difficult case, send to Double/FloatingDecimal"
+src/org/jruby/util/ConvertDouble.java,358,                state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,359,                break;
+src/org/jruby/util/ConvertDouble.java,360,
+src/org/jruby/util/ConvertDouble.java,361,            case SOPTEXP:
+src/org/jruby/util/ConvertDouble.java,362,            {
+src/org/jruby/util/ConvertDouble.java,363,                // lax (str.to_f) allows underscores between e/E and sign
+src/org/jruby/util/ConvertDouble.java,364,                for ( ; i < buflen && bytes[i] == '_' ; i++ ) ;
+src/org/jruby/util/ConvertDouble.java,365,                if (i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,366,                    state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,367,                    break;
+src/org/jruby/util/ConvertDouble.java,368,                }
+src/org/jruby/util/ConvertDouble.java,369,                int expSign = 1;
+src/org/jruby/util/ConvertDouble.java,370,                int expSpec = 0;
+src/org/jruby/util/ConvertDouble.java,371,                switch (bytes[i]) {
+src/org/jruby/util/ConvertDouble.java,372,                case '-':
+src/org/jruby/util/ConvertDouble.java,373,                    expSign = -1;
+src/org/jruby/util/ConvertDouble.java,374,                case '+':
+src/org/jruby/util/ConvertDouble.java,375,                    if (++i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,376,                        state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,377,                        break states;
+src/org/jruby/util/ConvertDouble.java,378,                    }
+src/org/jruby/util/ConvertDouble.java,379,                }
+src/org/jruby/util/ConvertDouble.java,380,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,381,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,382,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,383,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,384,                        if ((expSpec = expSpec * 10 + ((int)ival-(int)'0')) >= MAX_EXP) {
+src/org/jruby/util/ConvertDouble.java,385,                            // too big for us
+src/org/jruby/util/ConvertDouble.java,386,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,387,                            break states;
+src/org/jruby/util/ConvertDouble.java,388,                        }
+src/org/jruby/util/ConvertDouble.java,389,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,390,                    case '_':
+src/org/jruby/util/ConvertDouble.java,391,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,392,                    default:
+src/org/jruby/util/ConvertDouble.java,393,                        exponent += expSign * expSpec;
+src/org/jruby/util/ConvertDouble.java,394,                        state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,395,                        break states;
+src/org/jruby/util/ConvertDouble.java,396,                    }
+src/org/jruby/util/ConvertDouble.java,397,                }
+src/org/jruby/util/ConvertDouble.java,398,                exponent += expSign * expSpec;
+src/org/jruby/util/ConvertDouble.java,399,                state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,400,                break;
+src/org/jruby/util/ConvertDouble.java,401,            } // block
+src/org/jruby/util/ConvertDouble.java,402,
+src/org/jruby/util/ConvertDouble.java,403,            case SOPTDIGIT_STRICT:
+src/org/jruby/util/ConvertDouble.java,404,                // first char must be digit or decimal point
+src/org/jruby/util/ConvertDouble.java,405,                switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,406,                case '0':
+src/org/jruby/util/ConvertDouble.java,407,                    break; // switch
+src/org/jruby/util/ConvertDouble.java,408,                case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,409,                case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,410,                    significand = (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,411,                    nDigits = 1;
+src/org/jruby/util/ConvertDouble.java,412,                    break; // switch
+src/org/jruby/util/ConvertDouble.java,413,                case '.':
+src/org/jruby/util/ConvertDouble.java,414,                    state = SOPTDECDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,415,                    break states;
+src/org/jruby/util/ConvertDouble.java,416,                default:
+src/org/jruby/util/ConvertDouble.java,417,"                    // no digits, error"
+src/org/jruby/util/ConvertDouble.java,418,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,419,                    break states;
+src/org/jruby/util/ConvertDouble.java,421,                for ( ; i < buflen ;  ) {
+src/org/jruby/util/ConvertDouble.java,422,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,423,                    case '0':
+src/org/jruby/util/ConvertDouble.java,424,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,425,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,426,                        }
+src/org/jruby/util/ConvertDouble.java,427,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,428,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,429,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,430,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,431,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,432,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,433,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,434,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,435,                        }
+src/org/jruby/util/ConvertDouble.java,436,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,437,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,438,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,439,                        } else {
+src/org/jruby/util/ConvertDouble.java,440,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,441,                            break states;
+src/org/jruby/util/ConvertDouble.java,442,                        }
+src/org/jruby/util/ConvertDouble.java,443,                    case '.':
+src/org/jruby/util/ConvertDouble.java,444,                        state = SOPTDECDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,445,                        break states;
+src/org/jruby/util/ConvertDouble.java,446,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,447,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,448,                        state = SOPTEXP_STRICT;
+src/org/jruby/util/ConvertDouble.java,449,                        break states;
+src/org/jruby/util/ConvertDouble.java,450,                    case '_':
+src/org/jruby/util/ConvertDouble.java,451,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,452,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,453,                            break states;
+src/org/jruby/util/ConvertDouble.java,454,                        }
+src/org/jruby/util/ConvertDouble.java,455,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,456,                    default:
+src/org/jruby/util/ConvertDouble.java,457,                        // only whitespace allowed after value for strict
+src/org/jruby/util/ConvertDouble.java,458,                        for ( --i; i < buflen && isWhitespace(bytes[i]); i++ );
+src/org/jruby/util/ConvertDouble.java,459,                        state = i < buflen ? SERR_NOT_STRICT : SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,460,                        break states;
+src/org/jruby/util/ConvertDouble.java,461,                    } // switch
+src/org/jruby/util/ConvertDouble.java,462,                } // for
+src/org/jruby/util/ConvertDouble.java,463,"                // no more data, OK for strict to go calc"
+src/org/jruby/util/ConvertDouble.java,464,                state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,465,                break;
+src/org/jruby/util/ConvertDouble.java,466,
+src/org/jruby/util/ConvertDouble.java,467,            case SOPTDECDIGIT_STRICT:
+src/org/jruby/util/ConvertDouble.java,468,                decPos = nDigits + nTrailingZeroes;
+src/org/jruby/util/ConvertDouble.java,469,                // first char must be digit
+src/org/jruby/util/ConvertDouble.java,470,                if (i < buflen) {
+src/org/jruby/util/ConvertDouble.java,471,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,472,                    case '0':
+src/org/jruby/util/ConvertDouble.java,473,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,474,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,475,                        } else {
+src/org/jruby/util/ConvertDouble.java,476,                            exponent--;
+src/org/jruby/util/ConvertDouble.java,477,                        }
+src/org/jruby/util/ConvertDouble.java,478,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,479,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,480,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,481,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,482,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,483,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,484,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,485,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,486,                        }
+src/org/jruby/util/ConvertDouble.java,487,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,488,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,489,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,490,                        } else {
+src/org/jruby/util/ConvertDouble.java,491,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,492,                            break states;
+src/org/jruby/util/ConvertDouble.java,493,                        }
+src/org/jruby/util/ConvertDouble.java,494,                    default:
+src/org/jruby/util/ConvertDouble.java,495,"                        // no dec digits after '.', error for strict"
+src/org/jruby/util/ConvertDouble.java,496,                        state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,497,                        break states;
+src/org/jruby/util/ConvertDouble.java,498,
+src/org/jruby/util/ConvertDouble.java,499,                    } // switch
+src/org/jruby/util/ConvertDouble.java,501,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,502,                    break;
+src/org/jruby/util/ConvertDouble.java,504,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,505,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,506,                    case '0':
+src/org/jruby/util/ConvertDouble.java,507,                        if (nDigits > 0) {
+src/org/jruby/util/ConvertDouble.java,508,                            nTrailingZeroes++;
+src/org/jruby/util/ConvertDouble.java,509,                        } else {
+src/org/jruby/util/ConvertDouble.java,510,                            exponent--;
+src/org/jruby/util/ConvertDouble.java,511,                        }
+src/org/jruby/util/ConvertDouble.java,512,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,513,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,514,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,515,                        if (nTrailingZeroes > 0) {
+src/org/jruby/util/ConvertDouble.java,516,                            if ((nDigits += nTrailingZeroes) < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,517,                                significand *= LONG_10_POWERS[nTrailingZeroes];
+src/org/jruby/util/ConvertDouble.java,518,                                nTrailingZeroes = 0;
+src/org/jruby/util/ConvertDouble.java,519,                            } // else catch oversize below
+src/org/jruby/util/ConvertDouble.java,520,                        }
+src/org/jruby/util/ConvertDouble.java,521,                        if (nDigits++ < MAX_DECIMAL_DIGITS) {
+src/org/jruby/util/ConvertDouble.java,522,                            significand = significand*10L + (long)((int)ival-(int)'0');
+src/org/jruby/util/ConvertDouble.java,523,                            break; // switch
+src/org/jruby/util/ConvertDouble.java,524,                        } else {
+src/org/jruby/util/ConvertDouble.java,525,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,526,                            break states;
+src/org/jruby/util/ConvertDouble.java,527,                        }
+src/org/jruby/util/ConvertDouble.java,528,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,529,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,530,                        state = SOPTEXP_STRICT;
+src/org/jruby/util/ConvertDouble.java,531,                        break states;
+src/org/jruby/util/ConvertDouble.java,532,                    case '_':
+src/org/jruby/util/ConvertDouble.java,533,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,534,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,535,                            break states;
+src/org/jruby/util/ConvertDouble.java,536,                        }
+src/org/jruby/util/ConvertDouble.java,537,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,538,                    default:
+src/org/jruby/util/ConvertDouble.java,539,                        // only whitespace allowed after value for strict
+src/org/jruby/util/ConvertDouble.java,540,                        for ( --i; i < buflen && isWhitespace(bytes[i]); i++);
+src/org/jruby/util/ConvertDouble.java,541,                        state = i < buflen ? SERR_NOT_STRICT : SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,542,                        break states;
+src/org/jruby/util/ConvertDouble.java,543,                    } // switch
+src/org/jruby/util/ConvertDouble.java,544,                } // for
+src/org/jruby/util/ConvertDouble.java,545,"                // no more data, OK for strict to go calc"
+src/org/jruby/util/ConvertDouble.java,546,                state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,547,                break;
+src/org/jruby/util/ConvertDouble.java,549,            case SOPTEXP_STRICT:
+src/org/jruby/util/ConvertDouble.java,550,            {
+src/org/jruby/util/ConvertDouble.java,551,                int expSign = 1;
+src/org/jruby/util/ConvertDouble.java,552,                int expSpec = 0;
+src/org/jruby/util/ConvertDouble.java,553,
+src/org/jruby/util/ConvertDouble.java,554,                if ( i < buflen) {
+src/org/jruby/util/ConvertDouble.java,555,                    switch (bytes[i]) {
+src/org/jruby/util/ConvertDouble.java,556,                    case '-':
+src/org/jruby/util/ConvertDouble.java,557,                        expSign = -1;
+src/org/jruby/util/ConvertDouble.java,558,                    case '+':
+src/org/jruby/util/ConvertDouble.java,559,                        if (++i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,560,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,561,                            break states;
+src/org/jruby/util/ConvertDouble.java,562,                        }
+src/org/jruby/util/ConvertDouble.java,563,                    }
+src/org/jruby/util/ConvertDouble.java,564,                } else {
+src/org/jruby/util/ConvertDouble.java,565,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,566,                    break;
+src/org/jruby/util/ConvertDouble.java,567,                }
+src/org/jruby/util/ConvertDouble.java,568,                // must be at least one digit for strict
+src/org/jruby/util/ConvertDouble.java,569,                if ( i < buflen ) {
+src/org/jruby/util/ConvertDouble.java,570,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,571,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,572,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,573,                        expSpec = (int)ival-(int)'0';
+src/org/jruby/util/ConvertDouble.java,574,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,575,                    default:
+src/org/jruby/util/ConvertDouble.java,576,                        state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,577,                        break states;
+src/org/jruby/util/ConvertDouble.java,578,                    }
+src/org/jruby/util/ConvertDouble.java,579,                } else {
+src/org/jruby/util/ConvertDouble.java,580,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,581,                    break;
+src/org/jruby/util/ConvertDouble.java,582,                }
+src/org/jruby/util/ConvertDouble.java,583,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,584,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,585,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,586,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,587,                        if ((expSpec = expSpec * 10 + ((int)ival-(int)'0')) >= MAX_EXP) {
+src/org/jruby/util/ConvertDouble.java,588,                            // too big for us
+src/org/jruby/util/ConvertDouble.java,589,                            state = SDIGIT;
+src/org/jruby/util/ConvertDouble.java,590,                            break states;
+src/org/jruby/util/ConvertDouble.java,591,                        }
+src/org/jruby/util/ConvertDouble.java,592,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,593,                    case '_':
+src/org/jruby/util/ConvertDouble.java,594,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,595,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,596,                            break states;
+src/org/jruby/util/ConvertDouble.java,597,                        }
+src/org/jruby/util/ConvertDouble.java,598,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,599,                    default:
+src/org/jruby/util/ConvertDouble.java,600,                        exponent += expSign * expSpec;
+src/org/jruby/util/ConvertDouble.java,601,                        // only whitespace allowed after value for strict
+src/org/jruby/util/ConvertDouble.java,602,                        for ( --i; i < buflen && isWhitespace(bytes[i]);  i++);
+src/org/jruby/util/ConvertDouble.java,603,                        state = i < buflen ? SERR_NOT_STRICT : SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,604,                        break states;
+src/org/jruby/util/ConvertDouble.java,605,                    } // switch
+src/org/jruby/util/ConvertDouble.java,606,                } // for
+src/org/jruby/util/ConvertDouble.java,607,                exponent += expSign * expSpec;
+src/org/jruby/util/ConvertDouble.java,608,                state = SOPTCALC;
+src/org/jruby/util/ConvertDouble.java,609,                break;
+src/org/jruby/util/ConvertDouble.java,610,            } // block
+src/org/jruby/util/ConvertDouble.java,611,
+src/org/jruby/util/ConvertDouble.java,612,"            // fallback, copy non-whitespace chars to char buffer and send"
+src/org/jruby/util/ConvertDouble.java,613,            // to Double.parseDouble() (front for sun.misc.FloatingDecimal)
+src/org/jruby/util/ConvertDouble.java,614,            case SDIGIT:
+src/org/jruby/util/ConvertDouble.java,615,                i = startPos;
+src/org/jruby/util/ConvertDouble.java,616,                if (negative) {
+src/org/jruby/util/ConvertDouble.java,617,                    chars = new char[buflen - i + 1];
+src/org/jruby/util/ConvertDouble.java,618,                    chars[0] = '-';
+src/org/jruby/util/ConvertDouble.java,619,                    offset = 1;
+src/org/jruby/util/ConvertDouble.java,621,                    chars = new char[buflen - i];
+src/org/jruby/util/ConvertDouble.java,622,                }
+src/org/jruby/util/ConvertDouble.java,623,                if (strict) {
+src/org/jruby/util/ConvertDouble.java,624,                    state = SDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,625,                    break;
+src/org/jruby/util/ConvertDouble.java,627,                // first char must be digit or decimal point
+src/org/jruby/util/ConvertDouble.java,628,                if (i < buflen) {
+src/org/jruby/util/ConvertDouble.java,629,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,630,                    case '0':
+src/org/jruby/util/ConvertDouble.java,631,                        // ignore leading zeroes
+src/org/jruby/util/ConvertDouble.java,632,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,633,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,634,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,635,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,636,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,637,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,638,                    case '.':
+src/org/jruby/util/ConvertDouble.java,639,                        state = SDECDIGIT;
+src/org/jruby/util/ConvertDouble.java,640,                        break states;
+src/org/jruby/util/ConvertDouble.java,641,                    default:
+src/org/jruby/util/ConvertDouble.java,642,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,643,                        break states;
+src/org/jruby/util/ConvertDouble.java,644,                    } // switch
+src/org/jruby/util/ConvertDouble.java,645,                } // if
+src/org/jruby/util/ConvertDouble.java,646,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,647,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,648,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,649,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,650,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,651,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,652,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,653,                    case '.':
+src/org/jruby/util/ConvertDouble.java,654,                        state = SDECDIGIT;
+src/org/jruby/util/ConvertDouble.java,655,                        break states;
+src/org/jruby/util/ConvertDouble.java,656,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,657,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,658,                        state = SEXP;
+src/org/jruby/util/ConvertDouble.java,659,                        break states;
+src/org/jruby/util/ConvertDouble.java,660,                    case '_':
+src/org/jruby/util/ConvertDouble.java,661,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,662,                    default:
+src/org/jruby/util/ConvertDouble.java,663,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,664,                        break states;
+src/org/jruby/util/ConvertDouble.java,665,                    } // switch
+src/org/jruby/util/ConvertDouble.java,666,                } // for
+src/org/jruby/util/ConvertDouble.java,667,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,668,                break;
+src/org/jruby/util/ConvertDouble.java,670,            case SDECDIGIT:
+src/org/jruby/util/ConvertDouble.java,671,                chars[offset++] = '.';
+src/org/jruby/util/ConvertDouble.java,672,                for ( ; i < buflen && bytes[i] == '_'; i++) ;
+src/org/jruby/util/ConvertDouble.java,673,                if ( i < buflen) {
+src/org/jruby/util/ConvertDouble.java,674,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,675,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,676,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,677,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,678,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,679,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,680,                    default:
+src/org/jruby/util/ConvertDouble.java,681,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,682,                        break states;
+src/org/jruby/util/ConvertDouble.java,683,                    } // switch
+src/org/jruby/util/ConvertDouble.java,684,                } // if
+src/org/jruby/util/ConvertDouble.java,685,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,686,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,687,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,688,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,689,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,690,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,691,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,692,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,693,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,694,                        state = SEXP;
+src/org/jruby/util/ConvertDouble.java,695,                        break states;
+src/org/jruby/util/ConvertDouble.java,696,                    case '_':
+src/org/jruby/util/ConvertDouble.java,697,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,698,                    default:
+src/org/jruby/util/ConvertDouble.java,699,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,700,                        break states;
+src/org/jruby/util/ConvertDouble.java,701,                    } // switch
+src/org/jruby/util/ConvertDouble.java,702,                } // for
+src/org/jruby/util/ConvertDouble.java,703,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,704,                break;
+src/org/jruby/util/ConvertDouble.java,705,
+src/org/jruby/util/ConvertDouble.java,706,            case SEXP:
+src/org/jruby/util/ConvertDouble.java,707,                chars[offset++] = 'E';
+src/org/jruby/util/ConvertDouble.java,708,                for ( ; i < buflen && bytes[i] == '_'; i++) ;
+src/org/jruby/util/ConvertDouble.java,709,                if (i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,710,                    state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,711,                    break;
+src/org/jruby/util/ConvertDouble.java,712,                }
+src/org/jruby/util/ConvertDouble.java,713,                switch(bytes[i]) {
+src/org/jruby/util/ConvertDouble.java,714,                case '-':
+src/org/jruby/util/ConvertDouble.java,715,                case '+':
+src/org/jruby/util/ConvertDouble.java,716,                    chars[offset++] = (char)bytes[i];
+src/org/jruby/util/ConvertDouble.java,717,                    if (++i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,718,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,719,                        break states;
+src/org/jruby/util/ConvertDouble.java,720,                    }
+src/org/jruby/util/ConvertDouble.java,721,                }
+src/org/jruby/util/ConvertDouble.java,722,                for ( ; i < buflen; ) {
+src/org/jruby/util/ConvertDouble.java,723,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,724,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,725,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,726,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,727,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,728,                        break;
+src/org/jruby/util/ConvertDouble.java,729,                    case '_':
+src/org/jruby/util/ConvertDouble.java,731,                    default:
+src/org/jruby/util/ConvertDouble.java,732,                        state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,733,                        break states;
+src/org/jruby/util/ConvertDouble.java,736,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,737,                break;
+src/org/jruby/util/ConvertDouble.java,738,
+src/org/jruby/util/ConvertDouble.java,739,            case SDIGIT_STRICT:
+src/org/jruby/util/ConvertDouble.java,740,                // first char must be digit or decimal point
+src/org/jruby/util/ConvertDouble.java,741,                if (i < buflen) {
+src/org/jruby/util/ConvertDouble.java,742,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,743,                    case '0':
+src/org/jruby/util/ConvertDouble.java,744,                        // ignore leading zeroes
+src/org/jruby/util/ConvertDouble.java,745,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,746,                    case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,747,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,748,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,749,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,750,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,751,                    case '.':
+src/org/jruby/util/ConvertDouble.java,752,                        state = SDECDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,753,                        break states;
+src/org/jruby/util/ConvertDouble.java,754,                    default:
+src/org/jruby/util/ConvertDouble.java,755,                        state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,756,                        break states;
+src/org/jruby/util/ConvertDouble.java,757,                    } // switch
+src/org/jruby/util/ConvertDouble.java,758,                } else {
+src/org/jruby/util/ConvertDouble.java,759,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,760,                    break;
+src/org/jruby/util/ConvertDouble.java,761,                }
+src/org/jruby/util/ConvertDouble.java,762,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,763,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,764,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,765,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,766,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,767,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,768,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,769,                    case '.':
+src/org/jruby/util/ConvertDouble.java,770,                        state = SDECDIGIT_STRICT;
+src/org/jruby/util/ConvertDouble.java,771,                        break states;
+src/org/jruby/util/ConvertDouble.java,772,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,773,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,774,                        state = SEXP_STRICT;
+src/org/jruby/util/ConvertDouble.java,775,                        break states;
+src/org/jruby/util/ConvertDouble.java,776,                    case '_':
+src/org/jruby/util/ConvertDouble.java,777,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,778,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,779,                            break states;
+src/org/jruby/util/ConvertDouble.java,780,                        }
+src/org/jruby/util/ConvertDouble.java,781,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,782,                    default:
+src/org/jruby/util/ConvertDouble.java,783,                        // only whitespace allowed after value for strict
+src/org/jruby/util/ConvertDouble.java,784,                        for ( --i; i < buflen && isWhitespace(bytes[i]);  i++) ;
+src/org/jruby/util/ConvertDouble.java,785,                        state = i < buflen ? SERR_NOT_STRICT : SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,786,                        break states;
+src/org/jruby/util/ConvertDouble.java,787,                    } // switch
+src/org/jruby/util/ConvertDouble.java,788,                } // for
+src/org/jruby/util/ConvertDouble.java,789,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,790,                break;
+src/org/jruby/util/ConvertDouble.java,791,
+src/org/jruby/util/ConvertDouble.java,792,            case SDECDIGIT_STRICT:
+src/org/jruby/util/ConvertDouble.java,793,                chars[offset++] = '.';
+src/org/jruby/util/ConvertDouble.java,794,                if ( i < buflen) {
+src/org/jruby/util/ConvertDouble.java,795,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,796,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,797,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,798,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,799,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,800,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,801,                    default:
+src/org/jruby/util/ConvertDouble.java,802,                        state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,803,                        break states;
+src/org/jruby/util/ConvertDouble.java,804,                    } // switch
+src/org/jruby/util/ConvertDouble.java,806,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,807,                    break;
+src/org/jruby/util/ConvertDouble.java,809,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,810,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,811,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,812,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,813,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,814,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,815,                        break; // switch
+src/org/jruby/util/ConvertDouble.java,816,                    case 'e':
+src/org/jruby/util/ConvertDouble.java,817,                    case 'E':
+src/org/jruby/util/ConvertDouble.java,818,                        state = SEXP_STRICT;
+src/org/jruby/util/ConvertDouble.java,819,                        break states;
+src/org/jruby/util/ConvertDouble.java,820,                    case '_':
+src/org/jruby/util/ConvertDouble.java,821,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,822,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,823,                            break states;
+src/org/jruby/util/ConvertDouble.java,824,                        }
+src/org/jruby/util/ConvertDouble.java,825,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,826,                    default:
+src/org/jruby/util/ConvertDouble.java,827,                        for ( --i; i < buflen && isWhitespace(bytes[i]);  i++) ;
+src/org/jruby/util/ConvertDouble.java,828,                        state = i < buflen ? SERR_NOT_STRICT : SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,829,                        break states;
+src/org/jruby/util/ConvertDouble.java,830,                    } // switch
+src/org/jruby/util/ConvertDouble.java,831,                } // for
+src/org/jruby/util/ConvertDouble.java,832,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,833,                break;
+src/org/jruby/util/ConvertDouble.java,834,
+src/org/jruby/util/ConvertDouble.java,835,            case SEXP_STRICT:
+src/org/jruby/util/ConvertDouble.java,836,                chars[offset++] = 'E';
+src/org/jruby/util/ConvertDouble.java,837,                if ( i < buflen ) {
+src/org/jruby/util/ConvertDouble.java,838,                    switch (bytes[i]) {
+src/org/jruby/util/ConvertDouble.java,839,                    case '-':
+src/org/jruby/util/ConvertDouble.java,840,                    case '+':
+src/org/jruby/util/ConvertDouble.java,841,                        chars[offset++] = (char)bytes[i];
+src/org/jruby/util/ConvertDouble.java,842,                        if (++i >= buflen) {
+src/org/jruby/util/ConvertDouble.java,843,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,844,                            break states;
+src/org/jruby/util/ConvertDouble.java,845,                        }
+src/org/jruby/util/ConvertDouble.java,846,                    }
+src/org/jruby/util/ConvertDouble.java,848,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,849,                    break;
+src/org/jruby/util/ConvertDouble.java,851,                // must be at least one digit for strict
+src/org/jruby/util/ConvertDouble.java,852,                if ( i < buflen ) {
+src/org/jruby/util/ConvertDouble.java,853,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,854,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,855,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,856,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,857,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,858,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,859,                    default:
+src/org/jruby/util/ConvertDouble.java,860,                        state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,861,                        break states;
+src/org/jruby/util/ConvertDouble.java,862,                    }
+src/org/jruby/util/ConvertDouble.java,864,                    state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,865,                    break;
+src/org/jruby/util/ConvertDouble.java,866,                }
+src/org/jruby/util/ConvertDouble.java,867,                for ( ; i < buflen ; ) {
+src/org/jruby/util/ConvertDouble.java,868,                    switch(ival = bytes[i++]) {
+src/org/jruby/util/ConvertDouble.java,869,                    case '0': case '1': case '2': case '3': case '4':
+src/org/jruby/util/ConvertDouble.java,870,                    case '5': case '6': case '7': case '8': case '9':
+src/org/jruby/util/ConvertDouble.java,871,                        chars[offset++] = (char)ival;
+src/org/jruby/util/ConvertDouble.java,872,                        lastValidOffset = offset;
+src/org/jruby/util/ConvertDouble.java,873,                        break;
+src/org/jruby/util/ConvertDouble.java,874,                    case '_':
+src/org/jruby/util/ConvertDouble.java,875,                        if (i >= buflen || bytes[i] < '0' || bytes[i] > '9') {
+src/org/jruby/util/ConvertDouble.java,876,                            state = SERR_NOT_STRICT;
+src/org/jruby/util/ConvertDouble.java,877,                            break states;
+src/org/jruby/util/ConvertDouble.java,878,                        }
+src/org/jruby/util/ConvertDouble.java,879,                        break; //switch
+src/org/jruby/util/ConvertDouble.java,880,                    default:
+src/org/jruby/util/ConvertDouble.java,881,                        for ( --i; i < buflen && isWhitespace(bytes[i]);  i++) ;
+src/org/jruby/util/ConvertDouble.java,882,                        state = i < buflen ? SERR_NOT_STRICT : SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,883,                        break states;
+src/org/jruby/util/ConvertDouble.java,884,                    }
+src/org/jruby/util/ConvertDouble.java,886,                state = SCOMPLETE;
+src/org/jruby/util/ConvertDouble.java,887,                break;
+src/org/jruby/util/ConvertDouble.java,888,
+src/org/jruby/util/ConvertDouble.java,889,            case SERR_NOT_STRICT:
+src/org/jruby/util/ConvertDouble.java,890,"                throw new NumberFormatException(""does not meet strict criteria"");"
+src/org/jruby/util/ConvertDouble.java,891,
+src/org/jruby/util/ConvertDouble.java,892,            } // switch
+src/org/jruby/util/ConvertDouble.java,893,        } //while
+src/org/jruby/util/ConvertDouble.java,894,        if (chars == null || lastValidOffset == 0) {
+src/org/jruby/util/ConvertDouble.java,895,            return 0.0;
+src/org/jruby/util/ConvertDouble.java,896,        } else {
+src/org/jruby/util/ConvertDouble.java,897,"            return Double.parseDouble(new String(chars,0,lastValidOffset));"
+src/org/jruby/util/ConvertDouble.java,900,
+src/org/jruby/util/ConvertDouble.java,901,    private static final boolean isWhitespace(final byte b) {
+src/org/jruby/util/ConvertDouble.java,902,        return b == ' ' || (b <= 13 && b >= 9 && b != 11);
+src/org/jruby/util/ConvertDouble.java,903,    }
+src/org/jruby/util/ConvertDouble.java,904,
+src/org/jruby/util/ConvertDouble.java,905,    private static final long[] LONG_10_POWERS = {
+src/org/jruby/util/ConvertDouble.java,906,"      1L,"
+src/org/jruby/util/ConvertDouble.java,907,"      10L,"
+src/org/jruby/util/ConvertDouble.java,908,"      100L,"
+src/org/jruby/util/ConvertDouble.java,909,"      1000L,"
+src/org/jruby/util/ConvertDouble.java,910,"      10000L,"
+src/org/jruby/util/ConvertDouble.java,911,"      100000L,"
+src/org/jruby/util/ConvertDouble.java,912,"      1000000L,"
+src/org/jruby/util/ConvertDouble.java,913,"      10000000L,"
+src/org/jruby/util/ConvertDouble.java,914,"      100000000L,"
+src/org/jruby/util/ConvertDouble.java,915,"      1000000000L,"
+src/org/jruby/util/ConvertDouble.java,916,"      10000000000L,"
+src/org/jruby/util/ConvertDouble.java,917,"      100000000000L,"
+src/org/jruby/util/ConvertDouble.java,918,"      1000000000000L,"
+src/org/jruby/util/ConvertDouble.java,919,"      10000000000000L,"
+src/org/jruby/util/ConvertDouble.java,920,"      100000000000000L,"
+src/org/jruby/util/ConvertDouble.java,921,"      1000000000000000L,"
+src/org/jruby/util/ConvertDouble.java,922,"      10000000000000000L,"
+src/org/jruby/util/ConvertDouble.java,923,      100000000000000000L
+src/org/jruby/util/ConvertDouble.java,924,    };
+src/org/jruby/util/ConvertDouble.java,925,
+src/org/jruby/util/ConvertDouble.java,926,    /*
+src/org/jruby/util/ConvertDouble.java,927,     * All the positive powers of 10 that can be
+src/org/jruby/util/ConvertDouble.java,928,     * represented exactly in double/float.
+src/org/jruby/util/ConvertDouble.java,929,     * (From sun.misc.FloatingDecimal.java)
+src/org/jruby/util/ConvertDouble.java,930,     */
+src/org/jruby/util/ConvertDouble.java,931,    private static final double[] SMALL_10_POWERS = {
+src/org/jruby/util/ConvertDouble.java,932,"        1.0e0,"
+src/org/jruby/util/ConvertDouble.java,933,"        1.0e1, 1.0e2, 1.0e3, 1.0e4, 1.0e5,"
+src/org/jruby/util/ConvertDouble.java,934,"        1.0e6, 1.0e7, 1.0e8, 1.0e9, 1.0e10,"
+src/org/jruby/util/ConvertDouble.java,935,"        1.0e11, 1.0e12, 1.0e13, 1.0e14, 1.0e15,"
+src/org/jruby/util/ConvertDouble.java,936,"        1.0e16, 1.0e17, 1.0e18, 1.0e19, 1.0e20,"
+src/org/jruby/util/ConvertDouble.java,937,"        1.0e21, 1.0e22"
+src/org/jruby/util/ConvertDouble.java,938,    };
+src/org/jruby/util/ConvertDouble.java,939,    private static final int MAX_SMALL_10 = SMALL_10_POWERS.length - 1;
+src/org/jruby/util/ConvertDouble.java,940,    private static final int  MAX_DECIMAL_DIGITS = 15;
+src/org/jruby/util/ConvertDouble.java,941,
+src/org/jruby/RubyDir.java,96,

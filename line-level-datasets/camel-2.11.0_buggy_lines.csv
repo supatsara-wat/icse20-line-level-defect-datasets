@@ -1,0 +1,658 @@
+File,LineNumber,src
+camel-core/src/main/java/org/apache/camel/model/ProcessorDefinition.java,1009,        if (getOutputs().isEmpty()) {
+components/camel-test-blueprint/src/test/java/org/apache/camel/test/blueprint/DebugBlueprintTest.java,31,
+components/camel-test-blueprint/src/test/java/org/apache/camel/test/blueprint/DebugBlueprintTest.java,46,// END SNIPPET: example
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,429,"                    String[] parameters = StringQuoteHelper.splitSafeQuote(methodParameters, ',', false);"
+camel-core/src/main/java/org/apache/camel/util/StringHelper.java,84,"        if (s.startsWith(""'"") && s.endsWith(""'"")) {"
+camel-core/src/main/java/org/apache/camel/util/StringHelper.java,85,"            return s.substring(1, s.length() - 1);"
+camel-core/src/main/java/org/apache/camel/util/StringHelper.java,87,"        if (s.startsWith(""\"""") && s.endsWith(""\"""")) {"
+camel-core/src/main/java/org/apache/camel/util/StringHelper.java,88,"            return s.substring(1, s.length() - 1);"
+camel-core/src/main/java/org/apache/camel/processor/RedeliveryErrorHandler.java,329,"                boolean sync = deliverToFailureProcessor(target, exchange, data, callback);"
+camel-core/src/main/java/org/apache/camel/processor/RedeliveryErrorHandler.java,499,"            deliverToFailureProcessor(target, exchange, data, callback);"
+camel-core/src/main/java/org/apache/camel/processor/RedeliveryErrorHandler.java,764,"    protected boolean deliverToFailureProcessor(final Processor processor, final Exchange exchange,"
+camel-core/src/main/java/org/apache/camel/processor/RedeliveryErrorHandler.java,774,"        final boolean shouldHandle = shouldHandled(exchange, data);"
+camel-core/src/test/java/org/apache/camel/processor/BeanWithExceptionTest.java,92,"                errorHandler(deadLetterChannel(""mock:error""));"
+camel-core/src/test/java/org/apache/camel/processor/BeanWithExceptionTest.java,93,
+camel-core/src/test/java/org/apache/camel/processor/SplitterTest.java,249,"                errorHandler(deadLetterChannel(""mock:failed"").maximumRedeliveries(0));"
+camel-core/src/test/java/org/apache/camel/processor/SplitterTest.java,250,                // we don't want the DLC to handle the Exception
+camel-core/src/test/java/org/apache/camel/processor/SplitterTest.java,251,                onException(CamelException.class).handled(false);
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,50,        try {
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,51,"            template.sendBody(""direct:start"", ""<order><type>myType</type><user>Func</user></order>"");"
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,52,"            fail(""Should have thrown a MyFunctionalException"");"
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,53,        } catch (RuntimeCamelException e) {
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,54,"            assertIsInstanceOf(MyFunctionalException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/processor/onexception/OnExceptionComplexRouteTest.java,55,        }
+components/camel-ftp/src/test/java/org/apache/camel/component/file/remote/FromFtpDoNotDeleteFileIfProcessFailsTest.java,83,"                errorHandler(deadLetterChannel(""mock:error"").maximumRedeliveries(2).redeliveryDelay(0));"
+components/camel-ftp/src/test/java/org/apache/camel/component/file/remote/FromFtpDoNotDeleteFileIfProcessFailsTest.java,84,                onException(IllegalArgumentException.class).handled(false);     // DLC should not handle
+components/camel-ftp/src/test/java/org/apache/camel/component/file/remote/FromFtpThirdPoolOkTest.java,42,"        deleteDirectory(""target/thridpool"");"
+components/camel-ftp/src/test/java/org/apache/camel/component/file/remote/FromFtpThirdPoolOkTest.java,70,"                errorHandler(deadLetterChannel(""mock:error"").maximumRedeliveries(0).logStackTrace(false));"
+components/camel-ftp/src/test/java/org/apache/camel/component/file/remote/FromFtpThirdPoolOkTest.java,71,                onException(IllegalArgumentException.class).handled(false);     // DLC should not handle
+components/camel-mail/src/test/java/org/apache/camel/component/mail/MailDoNotDeleteIfProcessFailsTest.java,83,"                errorHandler(deadLetterChannel(""mock:error"").maximumRedeliveries(0).logStackTrace(false));"
+components/camel-mail/src/test/java/org/apache/camel/component/mail/MailDoNotDeleteIfProcessFailsTest.java,84,                onException(IllegalArgumentException.class).handled(false); // DLC should not handle
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1058,
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1063,"                throw new IllegalArgumentException(""PropertiesComponent with name properties must be defined"""
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1064,"                        + "" in CamelContext to support property placeholders."");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1588,"        Component existing = hasComponent(""properties"");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1589,        if (existing == null) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1590,            // no existing properties component so lookup and add as component if possible
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1591,"            propertiesComponent = getRegistry().lookupByNameAndType(""properties"", PropertiesComponent.class);"
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1592,            if (propertiesComponent != null) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1593,"                addComponent(""properties"", propertiesComponent);"
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1594,            }
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1595,        } else {
+camel-core/src/main/java/org/apache/camel/component/browse/BrowseEndpoint.java,72,"        return new LoadBalancerConsumer(this, processor, loadBalancer);"
+camel-core/src/main/java/org/apache/camel/component/dataset/DataSetEndpoint.java,74,"        return new DataSetConsumer(this, processor);"
+camel-core/src/main/java/org/apache/camel/component/direct/DirectEndpoint.java,56,"        return new DirectConsumer(this, processor);"
+camel-core/src/main/java/org/apache/camel/component/directvm/DirectVmEndpoint.java,45,"        return new DirectVmConsumer(this, new DirectVmProcessor(processor, this));"
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,104,"        return new SedaConsumer(this, processor);"
+camel-core/src/main/java/org/apache/camel/component/timer/TimerEndpoint.java,72,"        return new TimerConsumer(this, processor);"
+camel-core/src/main/java/org/apache/camel/impl/DefaultEndpoint.java,262,        if (consumerProperties != null) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultEndpoint.java,324,        this.consumerProperties = consumerProperties;
+camel-core/src/main/java/org/apache/camel/impl/DefaultPollingEndpoint.java,49,"        DefaultScheduledPollConsumer result = new DefaultScheduledPollConsumer(this, processor);"
+camel-core/src/main/java/org/apache/camel/impl/ProcessorEndpoint.java,78,"        return new ProcessorPollingConsumer(this, getProcessor());"
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,24,import org.apache.camel.component.seda.SedaConsumer;
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,29,    private static final AtomicBoolean called = new AtomicBoolean();
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,31,    public void testDeadLetterChannelAlwaysHandled() throws Exception {
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,32,        // need to set exception handler manually to work around an issue configuring from uri
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,33,"        SedaConsumer seda = (SedaConsumer) context.getRoute(""foo"").getConsumer();"
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,34,        seda.setExceptionHandler(new MyExceptionHandler());
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,45,"        assertFalse(""Should not have called"", called.get());"
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,55,"                from(""seda:foo?synchronous=true"").routeId(""foo"")"
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,72,            called.set(true);
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,77,            called.set(true);
+camel-core/src/test/java/org/apache/camel/processor/DeadLetterChannelAlwaysHandledTest.java,82,            called.set(true);
+components/camel-atom/src/main/java/org/apache/camel/component/atom/AtomEndpoint.java,57,"    protected FeedPollingConsumer createEntryPollingConsumer(FeedEndpoint feedEndpoint, Processor processor, boolean filter, Date lastUpdate, boolean throttleEntries) {"
+components/camel-atom/src/main/java/org/apache/camel/component/atom/AtomEndpoint.java,58,"        return new AtomEntryPollingConsumer(this, processor, filter, lastUpdate, throttleEntries);"
+components/camel-atom/src/main/java/org/apache/camel/component/atom/AtomEndpoint.java,62,"    protected FeedPollingConsumer createPollingConsumer(FeedEndpoint feedEndpoint, Processor processor) {"
+components/camel-atom/src/main/java/org/apache/camel/component/atom/AtomEndpoint.java,63,"        return new AtomPollingConsumer(this, processor);"
+components/camel-atom/src/main/java/org/apache/camel/component/feed/FeedEndpoint.java,74,"    protected abstract FeedPollingConsumer createPollingConsumer(FeedEndpoint feedEndpoint, Processor processor);"
+components/camel-atom/src/main/java/org/apache/camel/component/feed/FeedEndpoint.java,76,"    protected abstract FeedPollingConsumer createEntryPollingConsumer(FeedEndpoint feedEndpoint, Processor processor, boolean filter, Date lastUpdate, boolean throttleEntries);"
+components/camel-avro/src/main/java/org/apache/camel/component/avro/AvroHttpEndpoint.java,61,"        return new AvroHttpConsumer(this, processor);"
+components/camel-avro/src/main/java/org/apache/camel/component/avro/AvroNettyEndpoint.java,61,"        return new AvroNettyConsumer(this, processor);"
+components/camel-cache/src/main/java/org/apache/camel/component/cache/CacheEndpoint.java,58,"        return new CacheConsumer(this, processor, config);"
+components/camel-cmis/src/main/java/org/apache/camel/component/cmis/CMISEndpoint.java,52,"        return new CMISConsumer(this, processor, sessionFacade);"
+components/camel-couchdb/src/main/java/org/apache/camel/component/couchdb/CouchDbEndpoint.java,77,"        return new CouchDbConsumer(this, createClient(), processor);"
+components/camel-cxf/src/main/java/org/apache/camel/component/cxf/CxfEndpoint.java,206,"        return new CxfConsumer(this, processor);"
+components/camel-cxf/src/main/java/org/apache/camel/component/cxf/jaxrs/CxfRsEndpoint.java,132,"        return new CxfRsConsumer(this, processor);"
+components/camel-eventadmin/src/main/java/org/apache/camel/component/eventadmin/EventAdminEndpoint.java,58,"        return new EventAdminConsumer(this, processor);"
+components/camel-guava-eventbus/src/main/java/org/apache/camel/component/guava/eventbus/GuavaEventBusEndpoint.java,51,"        return new GuavaEventBusConsumer(this, processor, eventBus, eventClass, listenerInterface);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/instance/HazelcastInstanceEndpoint.java,33,"        return new HazelcastInstanceConsumer(hazelcastInstance, this, processor);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/list/HazelcastListEndpoint.java,38,"        return new HazelcastListConsumer(hazelcastInstance, this, processor, cacheName);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/map/HazelcastMapEndpoint.java,33,"        return new HazelcastMapConsumer(hazelcastInstance, this, processor, cacheName);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/multimap/HazelcastMultimapEndpoint.java,33,"        return new HazelcastMultimapConsumer(hazelcastInstance, this, processor, cacheName);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/queue/HazelcastQueueEndpoint.java,37,"        return new HazelcastQueueConsumer(hazelcastInstance, this, processor, cacheName);"
+components/camel-hazelcast/src/main/java/org/apache/camel/component/hazelcast/seda/HazelcastSedaEndpoint.java,52,"        return new HazelcastSedaConsumer(this, processor);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsEndpoint.java,40,    public Consumer createConsumer(Processor processor) {
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsEndpoint.java,42,"        return new HdfsConsumer(this, processor, config);"
+components/camel-http/src/main/java/org/apache/camel/component/http/HttpEndpoint.java,97,        return new HttpPollingConsumer(this);
+components/camel-http4/src/main/java/org/apache/camel/component/http4/HttpEndpoint.java,99,        return new HttpPollingConsumer(this);
+components/camel-irc/src/main/java/org/apache/camel/component/irc/IrcEndpoint.java,120,"        return new IrcConsumer(this, processor, component.getIRCConnection(configuration));"
+components/camel-javaspace/src/main/java/org/apache/camel/component/javaspace/JavaSpaceEndpoint.java,86,"        return new JavaSpaceConsumer(this, processor);"
+components/camel-jclouds/src/main/java/org/apache/camel/component/jclouds/JcloudsBlobStoreEndpoint.java,45,    public Consumer createConsumer(Processor processor) {
+components/camel-jclouds/src/main/java/org/apache/camel/component/jclouds/JcloudsBlobStoreEndpoint.java,46,"        return new JcloudsBlobStoreConsumer(this, processor, blobStore);"
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,73,    /**
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,74,     * Currently unsupported
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,75,     * @throws RuntimeCamelException
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,76,     */
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,78,"        return new JcrConsumer(this, processor);"
+components/camel-jcr/src/main/java/org/apache/camel/component/jcr/JcrEndpoint.java,86,        return false;
+components/camel-jetty/src/main/java/org/apache/camel/component/jetty/JettyHttpEndpoint.java,108,"        return new HttpConsumer(this, processor);"
+components/camel-jms/src/main/java/org/apache/camel/component/jms/JmsEndpoint.java,264,"        return new JmsPollingConsumer(this, template);"
+components/camel-jmx/src/main/java/org/apache/camel/component/jmx/JMXEndpoint.java,224,"            return new JMXMonitorConsumer(this, aProcessor);"
+components/camel-jmx/src/main/java/org/apache/camel/component/jmx/JMXEndpoint.java,227,"            return new JMXConsumer(this, aProcessor);"
+components/camel-jt400/src/main/java/org/apache/camel/component/jt400/Jt400DataQueueEndpoint.java,145,        return new Jt400DataQueueConsumer(this);
+components/camel-kestrel/src/main/java/org/apache/camel/component/kestrel/KestrelEndpoint.java,73,"        return new KestrelConsumer(this, processor, getMemcachedClient());"
+components/camel-krati/src/main/java/org/apache/camel/component/krati/KratiEndpoint.java,94,"        return new KratiConsumer(this, processor, dataStore);"
+components/camel-mina/src/main/java/org/apache/camel/component/mina/MinaEndpoint.java,88,"        return new MinaConsumer(this, processor);"
+components/camel-mina2/src/main/java/org/apache/camel/component/mina2/Mina2Endpoint.java,55,"        return new Mina2Consumer(this, processor);"
+components/camel-mongodb/src/main/java/org/apache/camel/component/mongodb/MongoDbEndpoint.java,109,        Consumer consumer = null;
+components/camel-mongodb/src/main/java/org/apache/camel/component/mongodb/MongoDbEndpoint.java,115,
+components/camel-mqtt/src/main/java/org/apache/camel/component/mqtt/MQTTEndpoint.java,56,"        return new MQTTConsumer(this, processor);"
+components/camel-netty/src/main/java/org/apache/camel/component/netty/NettyEndpoint.java,40,"        return new NettyConsumer(this, processor, configuration);"
+components/camel-paxlogging/src/main/java/org/apache/camel/component/paxlogging/PaxLoggingEndpoint.java,50,"        return new PaxLoggingConsumer(this, processor);"
+components/camel-quartz/src/main/java/org/apache/camel/component/quartz/QuartzEndpoint.java,142,"        return new QuartzConsumer(this, processor);"
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/RestletEndpoint.java,78,"        return new RestletConsumer(this, processor);"
+components/camel-rmi/src/main/java/org/apache/camel/component/rmi/RmiEndpoint.java,67,    public Consumer createConsumer(Processor processor) {
+components/camel-rmi/src/main/java/org/apache/camel/component/rmi/RmiEndpoint.java,72,"        return new RmiConsumer(this, processor);"
+components/camel-routebox/src/main/java/org/apache/camel/component/routebox/direct/RouteboxDirectEndpoint.java,50,"        return new RouteboxDirectConsumer(this, processor);"
+components/camel-routebox/src/main/java/org/apache/camel/component/routebox/seda/RouteboxSedaEndpoint.java,56,"        return new RouteboxSedaConsumer(this, processor);"
+components/camel-rss/src/main/java/org/apache/camel/component/rss/RssEndpoint.java,59,"            LOG.debug(""Could not create a new feed."", e);"
+components/camel-rss/src/main/java/org/apache/camel/component/rss/RssEndpoint.java,68,"                                                             boolean filter, Date lastUpdate, boolean throttleEntries) {"
+components/camel-rss/src/main/java/org/apache/camel/component/rss/RssEndpoint.java,69,"        return new RssEntryPollingConsumer(this, processor, filter, lastUpdate, throttleEntries);"
+components/camel-rss/src/main/java/org/apache/camel/component/rss/RssEndpoint.java,73,"    protected FeedPollingConsumer createPollingConsumer(FeedEndpoint feedEndpoint, Processor processor) {"
+components/camel-rss/src/main/java/org/apache/camel/component/rss/RssEndpoint.java,74,"        return new RssPollingConsumer(this, processor);"
+components/camel-servlet/src/main/java/org/apache/camel/component/servlet/ServletEndpoint.java,57,"        return new ServletConsumer(this, processor);"
+components/camel-sip/src/main/java/org/apache/camel/component/sip/SipEndpoint.java,35,"            return new SipPresenceAgent(this, processor, configuration);"
+components/camel-sip/src/main/java/org/apache/camel/component/sip/SipEndpoint.java,37,"            return new SipSubscriber(this, processor, configuration);"
+components/camel-sjms/src/main/java/org/apache/camel/component/sjms/SjmsEndpoint.java,136,"        return new SjmsConsumer(this, processor);"
+components/camel-smpp/src/main/java/org/apache/camel/component/smpp/SmppEndpoint.java,60,"        return new SmppConsumer(this, configuration, processor);"
+components/camel-snmp/src/main/java/org/apache/camel/component/snmp/SnmpEndpoint.java,65,"            return new SnmpTrapConsumer(this, processor);"
+components/camel-snmp/src/main/java/org/apache/camel/component/snmp/SnmpEndpoint.java,67,"            return new SnmpOIDPoller(this, processor);"
+components/camel-spring-integration/src/main/java/org/apache/camel/component/spring/integration/SpringIntegrationEndpoint.java,61,"        return new SpringIntegrationConsumer(this, processor);"
+components/camel-spring-redis/src/main/java/org/apache/camel/component/redis/RedisEndpoint.java,40,"        return new RedisConsumer(this, processor, configuration);"
+components/camel-spring/src/main/java/org/apache/camel/component/event/EventEndpoint.java,84,"        return new EventConsumer(this, processor);"
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamEndpoint.java,60,"        return new StreamConsumer(this, processor, getEndpointUri());"
+components/camel-twitter/src/main/java/org/apache/camel/component/twitter/TwitterEndpointDirect.java,43,"        return new TwitterConsumerDirect(this, processor, twitter4jConsumer);"
+components/camel-xmpp/src/main/java/org/apache/camel/component/xmpp/XmppEndpoint.java,100,"        return new XmppConsumer(this, processor);"
+components/camel-zookeeper/src/main/java/org/apache/camel/component/zookeeper/ZooKeeperEndpoint.java,48,"        return new ZooKeeperConsumer(this, processor);"
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/BindyFixedLengthFactory.java,24,import java.util.LinkedHashMap;
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/BindyFixedLengthFactory.java,37,
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/BindyFixedLengthFactory.java,53,"    private Map<Integer, DataField> dataFields = new LinkedHashMap<Integer, DataField>();"
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/BindyFixedLengthFactory.java,54,"    private Map<Integer, Field> annotatedFields = new LinkedHashMap<Integer, Field>();"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,61,        BindySimpleFixedLengthWithLinkTest.Order order = (BindySimpleFixedLengthWithLinkTest.Order) exchange.getIn().getBody();
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,62,"        assertEquals(""AAA"", order.fieldA);"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,63,"        assertEquals(""BBB"", order.subRec.fieldB);"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,64,"        assertEquals(""CCC"", order.fieldC);"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,79,                bindy.setClassType(BindySimpleFixedLengthWithLinkTest.Order.class);
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,84,"                        .unmarshal().bindy(BindyType.Fixed, BindySimpleFixedLengthWithLinkTest.Order.class)"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,92,    // *************
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,93,    // DATA FORMATS
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,94,    // *************
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,105,"        @DataField(pos = 3, length = 3)"
+components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/fixed/link/BindySimpleFixedLengthWithLinkTest.java,138,"        @DataField(pos = 2, length = 3)"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,536,"                        LOG.info(""Waiting as there are still "" + size + "" inflight and pending exchanges to complete, timeout in """
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,538,                        Thread.sleep(loopDelaySeconds * 1000);
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,96,        Configuration auth = Configuration.getConfiguration();
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,97,"        log.trace(""Existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,101,            if (auth != null) {
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,102,"                log.trace(""Restoring existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,103,                Configuration.setConfiguration(auth);
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsConsumer.java,104,            }
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,34,        Configuration auth = Configuration.getConfiguration();
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,35,"        LOG.trace(""Existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,39,            if (auth != null) {
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,40,"                LOG.trace(""Restoring existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,41,                Configuration.setConfiguration(auth);
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsInfoFactory.java,42,            }
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,97,        Configuration auth = Configuration.getConfiguration();
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,98,"        log.trace(""Existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,120,            if (auth != null) {
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,121,"                log.trace(""Restoring existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,122,                Configuration.setConfiguration(auth);
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,123,            }
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,175,        Configuration auth = Configuration.getConfiguration();
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,176,"        log.trace(""Existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,180,            if (auth != null) {
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,181,"                log.trace(""Restoring existing JAAS Configuration {}"", auth);"
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,182,                Configuration.setConfiguration(auth);
+components/camel-hdfs/src/main/java/org/apache/camel/component/hdfs/HdfsProducer.java,183,            }
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/DefaultRestletBinding.java,198,            out = exchange.getOut();
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,220,"                doWriteFaultResponse(exchange.getOut(), response, exchange);"
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,223,            // just copy the protocol relates header
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,224,"            copyProtocolHeaders(exchange.getIn(), exchange.getOut());"
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,225,            Message out = exchange.getOut();
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,226,            if (out != null) {
+components/camel-http/src/main/java/org/apache/camel/component/http/DefaultHttpBinding.java,227,"                doWriteResponse(out, response, exchange);"
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/AbstractNumberFormat.java,32,    private int multiplier;
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/AbstractNumberFormat.java,61,"            this.multiplier = (int)Math.pow(10D, precision);"
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/AbstractNumberFormat.java,80,    protected int getMultiplier() {
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/BigDecimalFormat.java,38,            result = result.divide(new BigDecimal(super.getMultiplier()));
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/BigDecimalFormat.java,40,        if (super.getPrecision() != -1) {
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/BigDecimalFormat.java,41,            result = result.setScale(super.getPrecision());
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/BigDecimalFormat.java,42,        }
+components/camel-bindy/src/main/java/org/apache/camel/dataformat/bindy/format/BigDecimalFormat.java,43,
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,80,            if (ch == '\'') {
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,96,"            } else if (ch == '""') {"
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,112,            } else if (ch == ' ') {
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,113,                if (!singleQuoted && !doubleQuoted && skipLeadingWhitespace) {
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,116,            } else if (ch == separator) {
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,118,                if (!singleQuoted && !doubleQuoted && sb.length() > 0) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,248,        if (size > 1) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,249,
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,250,            // validate multiple consumers has been enabled
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,251,            if (!endpoint.isMultipleConsumersSupported()) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,252,"                throw new IllegalStateException(""Multiple consumers for the same endpoint is not allowed: "" + endpoint);"
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,253,            }
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,255,            if (LOG.isDebugEnabled()) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaConsumer.java,256,"                LOG.debug(""Multicasting to {} consumers for Exchange: {}"", endpoint.getConsumers().size(), exchange);"
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,157,        if (size == 0 && multicastExecutor != null) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,158,            // stop the multicast executor as its not needed anymore when size is zero
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,159,            getCamelContext().getExecutorServiceManager().shutdownGraceful(multicastExecutor);
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,160,            multicastExecutor = null;
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,161,        }
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,162,        if (size > 1) {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,175,        } else {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,176,            // not needed
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,177,            consumerMulticastProcessor = null;
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,397,    protected void doShutdown() throws Exception {
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,410,
+camel-core/src/main/java/org/apache/camel/component/seda/SedaEndpoint.java,411,        super.doShutdown();
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,164,        if (timeout > 0) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,165,"            LOG.info(""Starting to graceful shutdown "" + routesOrdered.size() + "" routes (timeout "" + timeout + "" "" + timeUnit.toString().toLowerCase(Locale.ENGLISH) + "")"");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,166,        } else {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,167,"            LOG.info(""Starting to graceful shutdown "" + routesOrdered.size() + "" routes (no timeout)"");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,168,        }
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,171,"        Future<?> future = getExecutorService().submit(new ShutdownTask(context, routesOrdered, timeout, timeUnit, suspendOnly, abortAfterTimeout));"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,173,            if (timeout > 0) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,174,"                future.get(timeout, timeUnit);"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,175,            } else {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,176,                future.get();
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,177,            }
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,223,        if (timeout < 0) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,224,"            throw new IllegalArgumentException(""Timeout must not be lesser than 0."");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,432,"                            boolean suspendOnly, boolean abortAfterTimeout) {"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,521,            while (!done) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,539,                        if (timeout > 0) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,540,"                            LOG.info(""Waiting as there are still "" + size + "" inflight and pending exchanges to complete, timeout in """
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,541,"                                 + (TimeUnit.SECONDS.convert(timeout, timeUnit) - (loopCount++ * loopDelaySeconds)) + "" seconds."");"
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,542,                            Thread.sleep(loopDelaySeconds * 1000);
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,543,                        } else {
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,544,                            // we should not wait here
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,545,                            throw new InterruptedException();
+camel-core/src/main/java/org/apache/camel/impl/DefaultShutdownStrategy.java,546,                        }
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/RestletComponent.java,139,"            attachUriPatternToRestlet(endpoint.getUriPattern(), endpoint, consumer.getRestlet());"
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/RestletComponent.java,144,"                attachUriPatternToRestlet(uriPattern, endpoint, consumer.getRestlet());"
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/RestletComponent.java,269,"    private void attachUriPatternToRestlet(String uriPattern, RestletEndpoint endpoint, Restlet target) throws Exception {"
+components/camel-restlet/src/main/java/org/apache/camel/component/restlet/RestletComponent.java,300,"            component.getDefaultHost().attach(uriPattern, router);"
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,90,        int idx = expression.lastIndexOf('.');
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,91,        if (idx > 0) {
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,92,"            beanName = expression.substring(0, idx);"
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,93,            method = expression.substring(idx + 1);
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,94,"        } else if (expression.contains(""?method="")) {"
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,98,
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,77,            openStream(exchange);
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,78,"            writeToStream(outputStream, exchange);"
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,79,"            closeStream(exchange, false);"
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,115,"    private synchronized void writeToStream(OutputStream outputStream, Exchange exchange) throws IOException, CamelExchangeException {"
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,146,    private synchronized void openStream() throws Exception {
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,164,    private synchronized void openStream(final Exchange exchange) throws Exception {
+components/camel-stream/src/main/java/org/apache/camel/component/stream/StreamProducer.java,180,"    private synchronized void closeStream(Exchange exchange, boolean force) throws Exception {"
+components/camel-spring/src/main/java/org/apache/camel/spring/spi/BridgePropertyPlaceholderConfigurer.java,165,"        return helper.replacePlaceholders(text, properties);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,53,        // must invoke super
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,54,"        super.commit(operations, endpoint, exchange, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,55,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,56,        int retries = 3;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,57,        boolean deleted = false;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,58,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,59,        while (retries > 0 && !deleted) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,60,            retries--;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,61,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,62,            if (operations.deleteFile(file.getAbsoluteFilePath())) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,63,                // file is deleted
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,64,                deleted = true;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,65,                break;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,67,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,68,            // some OS can report false when deleting but the file is still deleted
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,69,            // use exists to check instead
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,70,            boolean exits = operations.existsFile(file.getAbsoluteFilePath());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,71,            if (!exits) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,72,                deleted = true;
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,73,            } else {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,74,"                log.trace(""File was not deleted at this attempt will try again in 1 sec.: {}"", file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,75,                // sleep a bit and try again
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,76,                Thread.sleep(1000);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,78,        }
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,79,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,80,        if (!deleted) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,81,"            throw new GenericFileOperationFailedException(""Cannot delete file: "" + file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,87,        // must invoke super
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,88,"        super.rollback(operations, endpoint, exchange, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,89,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,90,        // moved the failed file if specifying the moveFailed option
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,91,        if (failureRenamer != null) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,92,            // create a copy and bind the file to the exchange to be used by the renamer to evaluate the file name
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,93,            Exchange copy = exchange.copy();
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,94,            file.bindToExchange(copy);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,95,            // must preserve message id
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,96,            copy.getIn().setMessageId(exchange.getIn().getMessageId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,97,            copy.setExchangeId(exchange.getExchangeId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,98,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,99,"            GenericFile<T> newName = failureRenamer.renameFile(copy, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileDeleteProcessStrategy.java,100,"            renameFile(operations, file, newName);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,66,    }
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,68,"    public void commit(GenericFileOperations<T> operations, GenericFileEndpoint<T> endpoint, Exchange exchange, GenericFile<T> file) throws Exception {"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,75,    }
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,77,"    public void rollback(GenericFileOperations<T> operations, GenericFileEndpoint<T> endpoint, Exchange exchange, GenericFile<T> file) throws Exception {"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,81,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,82,        deleteLocalWorkFile(exchange);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,83,        operations.releaseRetreivedFileResources(exchange);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileProcessStrategySupport.java,118,    private void deleteLocalWorkFile(Exchange exchange) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,34,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,55,        // must invoke super
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,56,"        super.rollback(operations, endpoint, exchange, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,57,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,58,        if (failureRenamer != null) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,59,            // create a copy and bind the file to the exchange to be used by the renamer to evaluate the file name
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,60,            Exchange copy = exchange.copy();
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,61,            file.bindToExchange(copy);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,62,            // must preserve message id
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,63,            copy.getIn().setMessageId(exchange.getIn().getMessageId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,64,            copy.setExchangeId(exchange.getExchangeId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,65,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,66,"            GenericFile<T> newName = failureRenamer.renameFile(copy, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,67,"            renameFile(operations, file, newName);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,73,        // must invoke super
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,74,"        super.commit(operations, endpoint, exchange, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,75,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,76,        if (commitRenamer != null) {
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,77,            // create a copy and bind the file to the exchange to be used by the renamer to evaluate the file name
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,78,            Exchange copy = exchange.copy();
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,79,            file.bindToExchange(copy);
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,80,            // must preserve message id
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,81,            copy.getIn().setMessageId(exchange.getIn().getMessageId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,82,            copy.setExchangeId(exchange.getExchangeId());
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,83,
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,84,"            GenericFile<T> newName = commitRenamer.renameFile(copy, file);"
+camel-core/src/main/java/org/apache/camel/component/file/strategy/GenericFileRenameProcessStrategy.java,85,"            renameFile(operations, file, newName);"
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1361,    public synchronized ScheduledExecutorService getErrorHandlerExecutorService() {
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1362,        if (errorHandlerExecutorService == null) {
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1363,            // setup default thread pool for error handler
+camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java,1364,"            errorHandlerExecutorService = getExecutorServiceManager().newDefaultScheduledThreadPool(""ErrorHandlerRedeliveryThreadPool"", ""ErrorHandlerRedeliveryTask"");"
+components/camel-websocket/src/main/java/org/apache/camel/component/websocket/WebsocketComponent.java,352,"                context.setBaseResource(new JettyClassPathResource(getCamelContext().getClassResolver(), resources[1]));"
+components/camel-netty/src/main/java/org/apache/camel/component/netty/NettyProducer.java,402,        channelFuture.awaitUninterruptibly(configuration.getConnectTimeout());
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,538,                            try {
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,539,"                                // its a valid parameter value, so convert it to the expected type of the parameter"
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,540,"                                answer = exchange.getContext().getTypeConverter().mandatoryConvertTo(parameterType, exchange, parameterValue);"
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,541,                                if (LOG.isTraceEnabled()) {
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,542,"                                    LOG.trace(""Parameter #{} evaluated as: {} type: "", new Object[]{index, answer, ObjectHelper.type(answer)});"
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,544,                            } catch (NoTypeConversionAvailableException e) {
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,545,                                if (LOG.isDebugEnabled()) {
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,546,"                                    LOG.debug(""Cannot convert from type: {} to type: {} for parameter #{}"", new Object[]{ObjectHelper.type(parameterValue), parameterType, index});"
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,547,                                }
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,548,"                                throw ObjectHelper.wrapCamelExecutionException(exchange, e);"
+camel-core/src/main/java/org/apache/camel/component/bean/MethodInfo.java,573,"                        throw ObjectHelper.wrapCamelExecutionException(exchange, e);"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,51,"                    .to(""bean:myBean?method=doSomething()"")"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanNoTypeConvertionPossibleWhenHeaderTest.java,41,"            NoTypeConversionAvailableException ntae = assertIsInstanceOf(NoTypeConversionAvailableException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanOverloadedMethodFQNTest.java,69,"            NoTypeConversionAvailableException cause = assertIsInstanceOf(NoTypeConversionAvailableException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanOverloadedMethodFQNTest.java,128,"            NoTypeConversionAvailableException cause = assertIsInstanceOf(NoTypeConversionAvailableException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanParameterInvalidValueTest.java,40,"            TypeConversionException cause = assertIsInstanceOf(TypeConversionException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanParameterInvalidValueTest.java,56,"            TypeConversionException cause = assertIsInstanceOf(TypeConversionException.class, e.getCause());"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,25, *
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,29,    // TODO: CAMEL-6455
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,30,
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,39,"        getMockEndpoint(""mock:result"").expectedBodiesReceived(""Camel"");"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,40,"        getMockEndpoint(""mock:result"").expectedHeaderReceived(""foo"", ""bar"");"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,42,"        template.sendBody(""direct:start"", ""Camel"");"
+camel-core/src/test/java/org/apache/camel/component/bean/BeanMethodWithEmptyParameterAndNoMethodWithNoParameterIssueTest.java,53,"                    .to(""bean:myBean?method=doSomething(*)"")"
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,22,import javax.xml.transform.stream.StreamSource;
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,23,
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,24,import org.w3c.dom.ls.LSResourceResolver;
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,25,
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,46,        StreamSource source = new StreamSource(is);
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,49,        validator.setSchemaSource(source);
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,56,        // and make sure to close the input stream after the schema has been loaded
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,57,        IOHelper.close(is);
+camel-core/src/main/java/org/apache/camel/processor/validation/ValidatingProcessor.java,338,        return factory.newSchema(getSchemaSource());
+camel-core/src/test/java/org/apache/camel/component/validator/ValidatorRouteTest.java,27,/**
+camel-core/src/test/java/org/apache/camel/component/validator/ValidatorRouteTest.java,28, *
+camel-core/src/test/java/org/apache/camel/component/validator/ValidatorRouteTest.java,29, */
+camel-core/src/main/java/org/apache/camel/component/validator/ValidatorComponent.java,54,        //validator.setSchemaSource(source);
+components/camel-testng/src/main/java/org/apache/camel/testng/CamelSpringTestSupport.java,82,    @AfterMethod
+components/camel-testng/src/main/java/org/apache/camel/testng/CamelSpringTestSupport.java,94,    @AfterClass
+components/camel-testng/src/main/java/org/apache/camel/testng/CamelTestSupport.java,194,    @BeforeMethod
+components/camel-testng/src/main/java/org/apache/camel/testng/CamelTestSupport.java,312,    @AfterMethod
+components/camel-testng/src/main/java/org/apache/camel/testng/CamelTestSupport.java,331,    @AfterClass
+components/camel-testng/src/main/java/org/apache/camel/testng/ExchangeTestSupport.java,50,    @BeforeTest
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,76,                    private Object next;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,84,                        if (next == null) {
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,85,                            next = next();
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,87,                        return next != null;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,93,                            String key = parser.next();
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,94,                            if (key == null) {
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,95,                                done = true;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,96,                                return null;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,97,                            }
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,98,"                            // the key is expected to exist, if not report so end user can see this"
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,99,                            boolean contains = bodyMap != null ? bodyMap.containsKey(key) : false;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,100,                            contains |= headerMap != null ? headerMap.containsKey(key) : false;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,101,                            if (!contains) {
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,102,"                                throw new RuntimeExchangeException(""Cannot find key ["" + key + ""] in message body or headers to use when setting named parameter in query ["" + query + ""]"", exchange);"
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,103,                            }
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,104,                            // get from body before header
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,105,                            next = bodyMap != null ? bodyMap.get(key) : null;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,106,                            if (next == null) {
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,107,                                next = headerMap != null ? headerMap.get(key) : null;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,108,                            }
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,110,                        Object answer = next;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,111,                        next = null;
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,112,                        return answer;
+components/camel-aws/src/test/java/org/apache/camel/component/aws/s3/AmazonS3ClientMock.java,80,    List<S3Object> objects = new ArrayList<S3Object>();
+components/camel-aws/src/test/java/org/apache/camel/component/aws/s3/AmazonS3ClientMock.java,81,    List<PutObjectRequest> putObjectRequests = new ArrayList<PutObjectRequest>();
+components/camel-aws/src/test/java/org/apache/camel/component/aws/sqs/AmazonSQSClientMock.java,46,    List<ChangeMessageVisibilityRequest> changeMessageVisibilityRequests = new ArrayList<ChangeMessageVisibilityRequest>();
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileMessage.java,55,        return file != null ? file.getFileName() : null;
+camel-core/src/test/java/org/apache/camel/language/simple/SimpleParserExpressionTest.java,25,/**
+camel-core/src/test/java/org/apache/camel/language/simple/SimpleParserExpressionTest.java,26, *
+camel-core/src/test/java/org/apache/camel/language/simple/SimpleParserExpressionTest.java,27, */
+components/camel-mina/src/main/java/org/apache/camel/component/mina/MinaComponent.java,97,"        return createEndpoint(null, config);"
+components/camel-mina2/src/main/java/org/apache/camel/component/mina2/Mina2Component.java,71,"        return createEndpoint(null, config);"
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,206,                if (text.startsWith(token.getValue())) {
+camel-core/src/test/java/org/apache/camel/language/simple/SimpleParserExpressionTest.java,184,    // FIXME: see CAMEL-6414
+camel-core/src/test/java/org/apache/camel/language/simple/SimpleParserExpressionTest.java,185,    public void xxxTestSimpleParser() throws Exception {
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,233,"            // special check for unary as the previous must be a function end, and the next a whitespace"
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,234,            // to ensure unary operators is only applied on functions as intended
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,235,            int len = token.getValue().length();
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,236,            char previous = ' ';
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,237,            if (index > 0) {
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,238,                previous = expression.charAt(index - 1);
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,240,            String after = text.substring(len);
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,241,"            boolean whiteSpace = ObjectHelper.isEmpty(after) || after.startsWith("" "");"
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,242,            boolean functionEnd = previous == '}';
+camel-core/src/main/java/org/apache/camel/language/simple/SimpleTokenizer.java,243,            return functionEnd && whiteSpace;
+components/camel-ftp/src/main/java/org/apache/camel/component/file/remote/SftpOperations.java,304,                return new String[]{configuration.getPassword()};
+camel-core/src/main/java/org/apache/camel/util/StringQuoteHelper.java,153,                    continue;
+camel-core/src/main/java/org/apache/camel/api/management/mbean/ManagedTracerBacklogMBean.java,24,public interface ManagedTracerBacklogMBean {
+camel-core/src/main/java/org/apache/camel/management/mbean/ManagedBacklogTracer.java,24,import org.apache.camel.api.management.mbean.ManagedTracerBacklogMBean;
+camel-core/src/main/java/org/apache/camel/management/mbean/ManagedBacklogTracer.java,32,public class ManagedBacklogTracer implements ManagedTracerBacklogMBean {
+components/camel-ftp/src/main/java/org/apache/camel/component/file/remote/SftpOperations.java,497,            // use relative path
+components/camel-ftp/src/main/java/org/apache/camel/component/file/remote/SftpOperations.java,498,            String p = getCurrentDirectory().substring(path.length());
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,53,    private Channel channel;
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,101,    protected void startServerBootstrap() {
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,138,"        LOG.info(""ConnectionlessBootstrap binding to {}:{}"", configuration.getHost(), configuration.getPort());"
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,139,"        channel = connectionlessBootstrap.bind(new InetSocketAddress(configuration.getHost(), configuration.getPort()));"
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,140,        // to keep track of all channels in use
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,141,        allChannels.add(channel);
+components/camel-netty/src/main/java/org/apache/camel/component/netty/SingleUDPNettyServerBootstrapFactory.java,146,"        LOG.info(""ConnectionlessBootstrap unbinding from {}:{}"", configuration.getHost(), configuration.getPort());"
+camel-core/src/test/java/org/apache/camel/component/file/GenericFileMessageTest.java,33,"        assertEquals(""target/test.txt"", message.toString());"
+camel-core/src/main/java/org/apache/camel/util/FileUtil.java,278,        if (endsWithSlash) {
+components/camel-ftp/src/main/java/org/apache/camel/component/file/remote/FtpUtils.java,90,        if (endsWithSlash) {
+components/camel-jsch/src/main/java/org/apache/camel/component/jsch/ScpOperations.java,131,"                write(channel, file, exchange.getIn().getMandatoryBody(InputStream.class), cfg);"
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,128,            // is the body a String
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,129,            if (value instanceof String) {
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,130,                // if the body is a String then honor quotes etc.
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,131,"                String[] tokens = StringQuoteHelper.splitSafeQuote((String)value, separator, true);"
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,132,                List<String> list = Arrays.asList(tokens);
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,133,                return list.iterator();
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,135,                // just use a regular iterator
+components/camel-sql/src/main/java/org/apache/camel/component/sql/DefaultSqlPrepareStatementStrategy.java,136,"                return exchange.getContext().getTypeConverter().convertTo(Iterator.class, value);"
+camel-core/src/main/java/org/apache/camel/model/ProcessorDefinition.java,1298,        // are we already a choice?
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,33,import org.slf4j.Logger;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,34,import org.slf4j.LoggerFactory;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,35,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,36,import static org.apache.camel.processor.PipelineHelper.continueProcessing;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,46,    private static final Logger LOG = LoggerFactory.getLogger(ChoiceProcessor.class);
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,59,"    public boolean process(Exchange exchange, AsyncCallback callback) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,62,"        exchange.setProperty(Exchange.FILTER_MATCHED, false);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,63,"        while (continueRouting(processors, exchange)) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,67,            AsyncProcessor async = AsyncProcessorConverterHelper.convert(processor);
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,68,"            boolean sync = process(exchange, callback, processors, async);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,69,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,70,            // continue as long its being processed synchronously
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,71,            if (!sync) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,72,"                LOG.trace(""Processing exchangeId: {} is continued being processed asynchronously"", exchange.getExchangeId());"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,73,                // the remainder of the CBR will be completed async
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,74,"                // so we break out now, then the callback will be invoked which then continue routing from where we left here"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,75,                return false;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,78,"            LOG.trace(""Processing exchangeId: {} is continued being processed synchronously"", exchange.getExchangeId());"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,79,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,80,            // check for error if so we should break out
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,81,"            if (!continueProcessing(exchange, ""so breaking out of content based router"", LOG)) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,82,                break;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,84,        }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,85,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,86,"        LOG.trace(""Processing complete for exchangeId: {} >>> {}"", exchange.getExchangeId(), exchange);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,88,        callback.done(true);
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,89,        return true;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,90,    }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,91,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,92,"    protected boolean continueRouting(Iterator<Processor> it, Exchange exchange) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,93,        boolean answer = it.hasNext();
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,94,        if (answer) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,95,            Object matched = exchange.getProperty(Exchange.FILTER_MATCHED);
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,96,            if (matched != null) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,97,"                boolean hasMatched = exchange.getContext().getTypeConverter().convertTo(Boolean.class, matched);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,98,                if (hasMatched) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,99,"                    LOG.debug(""ExchangeId: {} has been matched: {}"", exchange.getExchangeId(), exchange);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,100,                    answer = false;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,101,                }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,102,            }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,104,"        LOG.trace(""ExchangeId: {} should continue matching: {}"", exchange.getExchangeId(), answer);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,105,        return answer;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,106,    }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,107,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,108,"    private boolean process(final Exchange exchange, final AsyncCallback callback,"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,109,"                            final Iterator<Processor> processors, final AsyncProcessor asyncProcessor) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,110,        // this does the actual processing so log at trace level
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,111,"        LOG.trace(""Processing exchangeId: {} >>> {}"", exchange.getExchangeId(), exchange);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,112,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,113,        // implement asynchronous routing logic in callback so we can have the callback being
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,114,        // triggered and then continue routing where we left
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,115,"        boolean sync = asyncProcessor.process(exchange, new AsyncCallback() {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,116,            public void done(boolean doneSync) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,117,                // we only have to handle async completion of the pipeline
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,118,                if (doneSync) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,119,                    return;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,120,                }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,122,                // continue processing the pipeline asynchronously
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,123,"                while (continueRouting(processors, exchange)) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,124,                    AsyncProcessor processor = AsyncProcessorConverterHelper.convert(processors.next());
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,125,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,126,                    // check for error if so we should break out
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,127,"                    if (!continueProcessing(exchange, ""so breaking out of pipeline"", LOG)) {"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,128,                        break;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,129,                    }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,130,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,131,"                    doneSync = process(exchange, callback, processors, processor);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,132,                    if (!doneSync) {
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,133,"                        LOG.trace(""Processing exchangeId: {} is continued being processed asynchronously"", exchange.getExchangeId());"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,134,                        return;
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,135,                    }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,136,                }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,137,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,138,"                LOG.trace(""Processing complete for exchangeId: {} >>> {}"", exchange.getExchangeId(), exchange);"
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,139,                callback.done(false);
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,140,            }
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,141,        });
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,142,
+camel-core/src/main/java/org/apache/camel/processor/ChoiceProcessor.java,143,        return sync;
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,724,        // lets add route builders added from references
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,727,                RouteBuilder builder = builderRef.createRouteBuilder(getContext());
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,728,                if (builder != null) {
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,729,                    builders.add(builder);
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,731,                    // support to get the route here
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,732,                    RoutesBuilder routes = builderRef.createRoutes(getContext());
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,733,                    if (routes != null) {
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,734,                        this.builders.add(routes);
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,735,                    } else {
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,736,                        // Throw the exception that we can't find any build here
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,737,"                        throw new CamelException(""Cannot find any routes with this RouteBuilder reference: "" + builderRef);"
+components/camel-core-xml/src/main/java/org/apache/camel/core/xml/AbstractCamelContextFactoryBean.java,738,                    }
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,98,
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,347,        ctx.setRuntimeClass(List.class);
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,386,        ctx.setRuntimeClass(List.class);
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,425,        ctx.setRuntimeClass(List.class);
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,836,"                LOG.warn(""Unable to add dependencies on to camel components OSGi services.  """
+components/camel-blueprint/src/main/java/org/apache/camel/blueprint/handler/CamelNamespaceHandler.java,837,"                    + ""The Apache Aries blueprint implementation used it too old and the blueprint bundle can not see the org.apache.camel.spi package."");"
+camel-core/src/main/java/org/apache/camel/converter/jaxp/DomConverter.java,62,"            String s = xml.toString(node, exchange);"
+camel-core/src/main/java/org/apache/camel/converter/jaxp/DomConverter.java,72,"                String s = xml.toString(node, exchange);"
+camel-core/src/main/java/org/apache/camel/language/bean/BeanLanguage.java,94,            int idx = expression.lastIndexOf('.');
+components/camel-quartz/src/main/java/org/apache/camel/component/quartz/QuartzComponent.java,230,        incrementJobCounter(getScheduler());
+components/camel-quartz/src/main/java/org/apache/camel/component/quartz/QuartzComponent.java,231,
+components/camel-quartz/src/main/java/org/apache/camel/component/quartz/QuartzComponent.java,276,        decrementJobCounter(getScheduler());
+components/camel-quartz/src/main/java/org/apache/camel/component/quartz/QuartzComponent.java,277,
+camel-core/src/main/java/org/apache/camel/impl/DefaultExecutorServiceManager.java,19,import java.util.ArrayList;
+camel-core/src/main/java/org/apache/camel/impl/DefaultExecutorServiceManager.java,20,import java.util.HashMap;
+camel-core/src/main/java/org/apache/camel/impl/DefaultExecutorServiceManager.java,63,    private final List<ExecutorService> executorServices = new ArrayList<ExecutorService>();
+camel-core/src/main/java/org/apache/camel/impl/DefaultExecutorServiceManager.java,67,"    private final Map<String, ThreadPoolProfile> threadPoolProfiles = new HashMap<String, ThreadPoolProfile>();"
+components/camel-zipfile/src/test/java/org/apache/camel/dataformat/zipfile/ZipSplitterRouteTest.java,19,
+components/camel-zipfile/src/test/java/org/apache/camel/dataformat/zipfile/ZipSplitterRouteTest.java,26,
+components/camel-zipfile/src/test/java/org/apache/camel/dataformat/zipfile/ZipSplitterRouteTest.java,42,"                        .log(""Start processing big file: ${header.CamelFileName}"").split(new ZipSplitter())"
+components/camel-zipfile/src/test/java/org/apache/camel/dataformat/zipfile/ZipSplitterRouteTest.java,43,"                        .streaming().convertBodyTo(String.class).to(""mock:processZipEntry"")"
+components/camel-zipfile/src/test/java/org/apache/camel/dataformat/zipfile/ZipSplitterRouteTest.java,44,"                        .end().log(""Done processing big file: ${header.CamelFileName}"");"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,120,        // must be last in batch to delete the done file name
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,121,        // delete done file if used (and not noop=true)
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,122,"        boolean complete = exchange.getProperty(Exchange.BATCH_COMPLETE, false, Boolean.class);"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,123,        if (endpoint.getDoneFileName() != null && !endpoint.isNoop()) {
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,124,            // done file must be in same path as the original input file
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,125,            String doneFileName = endpoint.createDoneFileName(absoluteFileName);
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,126,"            ObjectHelper.notEmpty(doneFileName, ""doneFileName"", endpoint);"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,127,            // we should delete the dynamic done file
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,128,"            if (endpoint.getDoneFileName().indexOf(""{file:name"") > 0 || complete) {"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,129,                try {
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,130,                    // delete done file
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,131,                    boolean deleted = operations.deleteFile(doneFileName);
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,132,"                    log.trace(""Done file: {} was deleted: {}"", doneFileName, deleted);"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,133,                    if (!deleted) {
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,134,"                        log.warn(""Done file: "" + doneFileName + "" could not be deleted"");"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,135,                    }
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,136,                } catch (Exception e) {
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,137,"                    handleException(""Error deleting done file: "" + doneFileName, exchange, e);"
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,138,                }
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,139,            }
+camel-core/src/main/java/org/apache/camel/component/file/GenericFileOnCompletion.java,140,        }
+camel-core/src/main/java/org/apache/camel/util/URISupport.java,467,        path = UnsafeUriCharactersEncoder.encode(path);
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,27,    private static BitSet unsafeCharacters;
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,32,        unsafeCharacters = new BitSet(256);
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,33,        unsafeCharacters.set(' ');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,34,"        unsafeCharacters.set('""');"
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,35,        unsafeCharacters.set('<');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,36,        unsafeCharacters.set('>');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,37,        unsafeCharacters.set('#');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,38,        unsafeCharacters.set('%');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,39,        unsafeCharacters.set('{');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,40,        unsafeCharacters.set('}');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,41,        unsafeCharacters.set('|');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,42,        unsafeCharacters.set('\\');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,43,        unsafeCharacters.set('^');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,44,        unsafeCharacters.set('~');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,45,        unsafeCharacters.set('[');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,46,        unsafeCharacters.set(']');
+camel-core/src/main/java/org/apache/camel/util/UnsafeUriCharactersEncoder.java,47,        unsafeCharacters.set('`');
+components/camel-ahc/src/main/java/org/apache/camel/component/ahc/AhcComponent.java,107,        addressUri = UnsafeUriCharactersEncoder.encode(addressUri);
+components/camel-ahc/src/main/java/org/apache/camel/component/ahc/helper/AhcHelper.java,163,        uri = UnsafeUriCharactersEncoder.encode(uri);
+components/camel-ahc/src/main/java/org/apache/camel/component/ahc/helper/AhcHelper.java,189,            queryString = UnsafeUriCharactersEncoder.encode(queryString);
+components/camel-cxf/src/main/java/org/apache/camel/component/cxf/CxfEndpoint.java,192,        super.setEndpointUri(UnsafeUriCharactersEncoder.encode(endpointUri));
+components/camel-cxf/src/main/java/org/apache/camel/component/cxf/CxfEndpoint.java,884,        super.setEndpointUri(UnsafeUriCharactersEncoder.encode(address));
+components/camel-gae/src/main/java/org/apache/camel/component/gae/http/GHttpBinding.java,167,"            return getEndpointUrl(UnsafeUriCharactersEncoder.encode(uri), query);"
+components/camel-http/src/main/java/org/apache/camel/component/http/HttpComponent.java,201,        String addressUri = uri;
+components/camel-http/src/main/java/org/apache/camel/component/http/HttpComponent.java,202,"        if (!uri.startsWith(""http:"") && !uri.startsWith(""https:"")) {"
+components/camel-http/src/main/java/org/apache/camel/component/http/HttpComponent.java,203,            addressUri = remaining;
+components/camel-http/src/main/java/org/apache/camel/component/http/helper/HttpHelper.java,215,        uri = UnsafeUriCharactersEncoder.encode(uri);
+components/camel-http/src/main/java/org/apache/camel/component/http/helper/HttpHelper.java,241,            queryString = UnsafeUriCharactersEncoder.encode(queryString);
+components/camel-http4/src/main/java/org/apache/camel/component/http4/HttpComponent.java,219,        addressUri = UnsafeUriCharactersEncoder.encode(addressUri);
+components/camel-http4/src/main/java/org/apache/camel/component/http4/helper/HttpHelper.java,199,        uri = UnsafeUriCharactersEncoder.encode(uri);
+components/camel-http4/src/main/java/org/apache/camel/component/http4/helper/HttpHelper.java,225,            queryString = UnsafeUriCharactersEncoder.encode(queryString);
+components/camel-jetty/src/main/java/org/apache/camel/component/jetty/JettyHttpComponent.java,169,        URI addressUri = new URI(UnsafeUriCharactersEncoder.encode(address));
+components/camel-netty-http/src/main/java/org/apache/camel/component/netty/http/NettyHttpComponent.java,95,        URI u = new URI(UnsafeUriCharactersEncoder.encode(remaining));
+components/camel-netty-http/src/main/java/org/apache/camel/component/netty/http/NettyHttpComponent.java,133,        String safe = UnsafeUriCharactersEncoder.encode(remaining);
+components/camel-netty-http/src/main/java/org/apache/camel/component/netty/http/NettyHttpHelper.java,197,        uri = UnsafeUriCharactersEncoder.encode(uri);
+components/camel-netty-http/src/main/java/org/apache/camel/component/netty/http/NettyHttpHelper.java,220,            queryString = UnsafeUriCharactersEncoder.encode(queryString);
+components/camel-netty-http/src/main/java/org/apache/camel/component/netty/http/handlers/HttpServerMultiplexChannelHandler.java,161,        return UnsafeUriCharactersEncoder.encode(path);
+components/camel-servlet/src/main/java/org/apache/camel/component/servlet/ServletComponent.java,62,"        URI httpUri = URISupport.createRemainingURI(new URI(UnsafeUriCharactersEncoder.encode(uri)), parameters);"
+camel-core/src/main/java/org/apache/camel/processor/Splitter.java,195,            if (value instanceof Closeable) {
+camel-core/src/main/java/org/apache/camel/processor/Splitter.java,196,"                IOHelper.close((Closeable) value, value.getClass().getName(), LOG);"
+camel-core/src/main/java/org/apache/camel/processor/Splitter.java,197,            } else if (value instanceof Scanner) {
+camel-core/src/main/java/org/apache/camel/processor/Splitter.java,198,                // special for Scanner as it does not implement Closeable
+camel-core/src/main/java/org/apache/camel/processor/Splitter.java,201,
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,68,        if (it instanceof Closeable) {
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,69,            IOHelper.close((Closeable) it);
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,70,        } else if (it instanceof Scanner) {
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,71,            // special for Scanner as it does not implement Closeable
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,72,            ((Scanner) it).close();
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,74,        // close the buffer as well
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,75,        bos.close();
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,76,        // we are now closed
+camel-core/src/main/java/org/apache/camel/util/GroupIterator.java,77,        closed = true;
+camel-core/src/test/java/org/apache/camel/processor/SplitterWithScannerIoExceptionTest.java,25,"        if (isJavaVersion(""1.7"") || isPlatform(""aix"") || isJavaVendor(""ibm"")) {"
+camel-core/src/main/java/org/apache/camel/util/URISupport.java,158,                if (i < uri.length() - 2) {
+camel-core/src/test/java/org/apache/camel/issues/EndpointWithRawUriParameterTest.java,95,"        getMockEndpoint(""mock:result"").expectedHeaderReceived(""password"", ""++%%w?rd"");"
+camel-core/src/test/java/org/apache/camel/issues/EndpointWithRawUriParameterTest.java,111,"                    .to(""mycomponent:foo?password=RAW(++%%w?rd)&username=scott"")"
+tests/camel-itest-osgi/src/test/java/org/apache/camel/itest/osgi/jclouds/BlobStoreBlueprintRouteTest.java,97,"                workingDirectory(""target/paxrunner/""),"
+tests/camel-itest-osgi/src/test/java/org/apache/camel/itest/osgi/jclouds/BlobStoreBlueprintRouteTest.java,98,                felix());
+tests/camel-itest-osgi/src/test/java/org/apache/camel/itest/osgi/jclouds/BlobStoreBlueprintRouteTest.java,99,
+tests/camel-itest-osgi/src/test/java/org/apache/camel/itest/osgi/jclouds/BlobStoreBlueprintRouteTest.java,100,        // TODO: equinox fails for some reason
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/BeanAdapter.java,77,"    public void inject(CamelExtension camelExtension, Object reference,"
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/BeanAdapter.java,78,                                String beanName) {
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/CamelExtension.java,249,
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/CamelExtension.java,251,                public void postConstruct(Object instance) {
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/CamelExtension.java,252,                    super.postConstruct(instance);
+components/camel-cdi/src/main/java/org/apache/camel/cdi/internal/CamelExtension.java,254,                    // now lets do the post instruct to inject our Camel injections

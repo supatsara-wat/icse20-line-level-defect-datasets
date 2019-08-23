@@ -1,0 +1,1307 @@
+File,LineNumber,src
+modules/analysis/smartcn/src/java/org/apache/lucene/analysis/cn/smart/hhmm/SegGraph.java,78,    short index = 0;
+lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java,57,"    return new File(LuceneTestCase.TEMP_DIR, desc + ""."" + new Random().nextLong());"
+lucene/src/test/org/apache/lucene/index/TestCompoundFile.java,60,"       File file = new File(TEMP_DIR, ""testIndex"");"
+lucene/src/test/org/apache/lucene/index/TestCompoundFile.java,61,       _TestUtil.rmDir(file);
+lucene/src/test/org/apache/lucene/index/TestCompoundFile.java,69,"       _TestUtil.rmDir(new File(TEMP_DIR, ""testIndex""));"
+lucene/src/test/org/apache/lucene/index/TestDoc.java,63,"        workDir = new File(TEMP_DIR,""TestDoc"");"
+lucene/src/test/org/apache/lucene/index/TestDoc.java,66,"        indexDir = new File(workDir, ""testIndex"");"
+lucene/src/test/org/apache/lucene/index/TestFieldsReader.java,289,"    File file = new File(TEMP_DIR, ""lazyDir"" + userName);"
+lucene/src/test/org/apache/lucene/index/TestFieldsReader.java,290,    _TestUtil.rmDir(file);
+lucene/src/test/org/apache/lucene/index/TestFieldsReader.java,476,"    File indexDir = new File(TEMP_DIR, ""testfieldswriterexceptions"");"
+lucene/src/test/org/apache/lucene/index/TestIndexReader.java,1142,"      File dirFile = new File(TEMP_DIR, ""deletetest"");"
+lucene/src/test/org/apache/lucene/index/TestIndexReaderReopen.java,1093,"    indexDir = new File(TEMP_DIR, ""IndexReaderReopen"");"
+lucene/src/test/org/apache/lucene/index/TestIndexWriter.java,2758,"    Directory dir = newFSDirectory(new File(TEMP_DIR, ""emptyFSDirNoLock""), NoLockFactory.getNoLockFactory());"
+lucene/src/test/org/apache/lucene/index/TestIndexWriterLockRelease.java,42,"            this.__test_dir = new File(TEMP_DIR, ""testIndexWriter"");"
+lucene/src/test/org/apache/lucene/index/TestIndexWriterOnJRECrash.java,44,"    tempDir = File.createTempFile(""jrecrash"", ""tmp"", TEMP_DIR);"
+lucene/src/test/org/apache/lucene/index/TestLongPostings.java,70,"    Directory dir = newFSDirectory(new File(LuceneTestCase.TEMP_DIR, ""longpostings"" + ""."" + random.nextLong()));"
+lucene/src/test/org/apache/lucene/store/TestBufferedIndexInput.java,243,"      File indexDir = new File(TEMP_DIR, ""testSetBufferSize"");"
+lucene/src/test/org/apache/lucene/store/TestDirectory.java,45,"    File path = new File(TEMP_DIR, ""testDirectInstantiation"");"
+lucene/src/test/org/apache/lucene/store/TestDirectory.java,137,"    checkDirectoryFilter(newFSDirectory(new File(TEMP_DIR,""test"")));"
+lucene/src/test/org/apache/lucene/store/TestDirectory.java,154,"    File path = new File(TEMP_DIR, ""testsubdir"");"
+lucene/src/test/org/apache/lucene/store/TestDirectory.java,167,"    File path = new File(TEMP_DIR, ""testnotdir"");"
+lucene/src/test/org/apache/lucene/store/TestMultiMMap.java,44,"      workDir = new File(TEMP_DIR, ""TestMultiMMap"");"
+lucene/src/test/org/apache/lucene/store/TestRAMDirectory.java,52,"    indexDir = new File(TEMP_DIR, ""RAMDirIndex"");"
+lucene/src/test/org/apache/lucene/store/TestWindowsMMap.java,62,"    new File(TEMP_DIR,""testLuceneMmap"").getAbsolutePath();"
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,150,    if (hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,151,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,152,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,153,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,154,      final State initState = currentState;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,228,        this.currentState = null;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,286,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,287,  /**
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,288,   * This class holds the state of an AttributeSource.
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,289,   * @see #captureState
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,290,   * @see #restoreState
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,291,   */
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,292,  public static final class State implements Cloneable {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,293,    AttributeImpl attribute;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,294,    State next;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,296,    @Override
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,297,    public Object clone() {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,298,      State clone = new State();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,299,      clone.attribute = (AttributeImpl) attribute.clone();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,300,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,301,      if (next != null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,302,        clone.next = (State) next.clone();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,303,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,304,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,305,      return clone;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,307,  }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,308,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,309,  private State currentState = null;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,310,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,311,  private void computeCurrentState() {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,312,    currentState = new State();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,313,    State c = currentState;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,320,    }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,328,    if (hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,329,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,330,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,331,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,332,      for (State state = currentState; state != null; state = state.next) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,333,        state.attribute.clear();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,334,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,343,    if (!hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,344,      return null;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,345,    }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,346,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,347,    if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,348,      computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,349,    }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,350,    return (State) this.currentState.clone();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,385,    if (hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,386,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,387,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,388,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,389,      for (State state = currentState; state != null; state = state.next) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,390,        code = code * 31 + state.attribute.hashCode();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,391,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,393,
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,416,        if (this.currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,417,          this.computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,418,        }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,419,        State thisState = this.currentState;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,420,        if (other.currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,421,          other.computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,422,        }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,423,        State otherState = other.currentState;
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,476,    if (hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,477,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,478,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,479,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,480,      for (State state = currentState; state != null; state = state.next) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,481,        state.attribute.reflectWith(reflector);
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,482,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,498,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,499,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,500,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,501,      for (State state = currentState; state != null; state = state.next) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,523,    if (hasAttributes()) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,524,      if (currentState == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,525,        computeCurrentState();
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,526,      }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,527,      for (State state = currentState; state != null; state = state.next) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,528,        final AttributeImpl targetImpl = target.attributeImpls.get(state.attribute.getClass());
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,529,        if (targetImpl == null) {
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,530,"          throw new IllegalArgumentException(""This AttributeSource contains AttributeImpl of type "" +"
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,531,"            state.attribute.getClass().getName() + "" that is not in the target"");"
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,532,        }
+lucene/src/java/org/apache/lucene/util/AttributeSource.java,533,        state.attribute.copyTo(targetImpl);
+lucene/contrib/queryparser/src/java/org/apache/lucene/queryParser/core/nodes/QueryNodeImpl.java,163,    return this.tags.containsKey(tagName);
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,183,
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,192,"        throw new IllegalArgumentException(""Required TermVector Offset information was not found"");"
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,208,"          Token token = new Token(terms[t].utf8ToString(), offsets[tp].getStartOffset(), offsets[tp]"
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,209,              .getEndOffset());
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,224,"          Token token = new Token(terms[t].utf8ToString(), offsets[tp].getStartOffset(),"
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,225,              offsets[tp].getEndOffset());
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,236,          if (t1.startOffset() == t2.startOffset())
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,237,            return t1.endOffset() - t2.endOffset();
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,238,          else
+lucene/contrib/highlighter/src/java/org/apache/lucene/search/highlight/TokenSources.java,239,            return t1.startOffset() - t2.startOffset();
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,89,"          new Token(new char[] { 't', 'h', 'e' }, 0, 3, 0, 3),"
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,90,"          new Token(new char[] { '{', 'f', 'o', 'x', '}' }, 0, 5, 0, 7),"
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,91,"          new Token(new char[] { 'f', 'o', 'x' }, 0, 3, 4, 7),"
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,92,"          new Token(new char[] { 'd', 'i', 'd' }, 0, 3, 8, 11),"
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,93,"          new Token(new char[] { 'n', 'o', 't' }, 0, 3, 12, 15),"
+lucene/contrib/highlighter/src/test/org/apache/lucene/search/highlight/TokenSourcesTest.java,94,"          new Token(new char[] { 'j', 'u', 'm', 'p' }, 0, 4, 16, 20) };"
+lucene/src/java/org/apache/lucene/store/Directory.java,227,    IndexOutput os = to.createOutput(dest);
+lucene/src/java/org/apache/lucene/store/Directory.java,228,    IndexInput is = openInput(src);
+lucene/contrib/xml-query-parser/src/java/org/apache/lucene/xmlparser/builders/UserInputQueryBuilder.java,77,"   q.setBoost(DOMUtils.getAttribute(e,""boost"",1.0f));"
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,848,
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,849,    writeLock = directory.makeLock(WRITE_LOCK_NAME);
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,850,
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,851,    if (!writeLock.obtain(conf.getWriteLockTimeout())) // obtain write lock
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,852,"      throw new LockObtainFailedException(""Index locked for write: "" + writeLock);"
+lucene/src/java/org/apache/lucene/index/IndexWriter.java,853,
+lucene/src/java/org/apache/lucene/store/FSDirectory.java,471,              parent.onIndexOutputClosed(this);
+lucene/src/java/org/apache/lucene/store/FSDirectory.java,475,          } else
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/BasicQueryFactory.java,48,  private synchronized void checkMax() throws TooManyBasicQueries {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/BasicQueryFactory.java,49,    if (queriesMade >= maxBasicQueries)
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,27,"  public ComposedQuery(List qs, boolean operatorInfix, String opName) {"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,33,  protected void recompose(List queries) {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,38,  private String opName;
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,41,  private List queries;
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,43,  public Iterator getSubQueriesIterator() {return queries.listIterator();}
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,47,  public SrndQuery getSubQuery(int qn) {return (SrndQuery) queries.get(qn);}
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,54,    Iterator sqi = getSubQueriesIterator();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,56,"      luceneSubQueries.add( ((SrndQuery) sqi.next()).makeLuceneQueryField(fn, qf));"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,80,    Iterator sqi = getSubQueriesIterator();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,95,    Iterator sqi = getSubQueriesIterator();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,112,    Iterator sqi = getSubQueriesIterator();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/ComposedQuery.java,114,      if (((SrndQuery) sqi.next()).isFieldsSubQueryAcceptable()) {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,19,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,64,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,71,    sncf.addSpanNearQuery(snq);
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,72,  }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,73,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,74,  @Override
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,75,"  public Query makeLuceneQueryFieldNoBoost(final String fieldName, final BasicQueryFactory qf) {"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,76,    return new Query () {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,77,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,78,      @Override
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,79,      public String toString(String fn) {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,80,"        return getClass().toString() + "" "" + fieldName + "" ("" + fn + ""?)"";"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,81,      }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,82,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,83,      @Override
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,84,      public Query rewrite(IndexReader reader) throws IOException {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,85,"        return getSpanNearQuery(reader, fieldName, getBoost(), qf);"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,86,      }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,87,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,88,    };
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,96,    SpanQuery[] spanNearClauses = new SpanQuery[getNrSubQueries()];
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,111,      spanNearClauses[qi] = sncf.makeSpanNearClause();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,112,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,115,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/DistanceQuery.java,116,"    SpanNearQuery r = new SpanNearQuery(spanNearClauses, getOpDistance() - 1, subQueriesOrdered());"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,20,import java.util.ArrayList;
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,21,import java.util.List;
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,25,import org.apache.lucene.search.BooleanClause;
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,41,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,74,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,77,"  public Query makeLuceneQueryFieldNoBoost(final String fieldName, final BasicQueryFactory qf) {"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,78,    return new Query() {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,79,      @Override
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,80,      public String toString(String fn) {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,81,"        return getClass().toString() + "" "" + fieldName + "" ("" + fn + ""?)"";"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,82,      }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,83,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,84,      @Override
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,85,      public Query rewrite(IndexReader reader) throws IOException {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,86,        final List<Query> luceneSubQueries = new ArrayList<Query>();
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,87,"        visitMatchingTerms( reader, fieldName,"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,88,            new MatchingTermVisitor() {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,89,              public void visitMatchingTerm(Term term) throws IOException {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,90,                luceneSubQueries.add(qf.newTermQuery(term));
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,91,              }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,92,            });
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,93,        return  (luceneSubQueries.size() == 0) ? SrndQuery.theEmptyLcnQuery
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,94,              : (luceneSubQueries.size() == 1) ? luceneSubQueries.get(0)
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,95,              : SrndBooleanQuery.makeBooleanQuery(
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,96,                  /* luceneSubQueries all have default weight */
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,97,"                  luceneSubQueries, BooleanClause.Occur.SHOULD); /* OR the subquery terms */"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,98,      }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,99,    };
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,100,  }
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SimpleTerm.java,101,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,67,public class SpanNearClauseFactory {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,103,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,104,  public void addSpanNearQuery(Query q) {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,107,    if (! (q instanceof SpanNearQuery))
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,108,"      throw new AssertionError(""Expected SpanNearQuery: "" + q.toString(getFieldName()));"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,109,    /* CHECKME: wrap in Hashable...? */
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,110,"    addSpanQueryWeighted((SpanNearQuery)q, q.getBoost());"
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,112,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SpanNearClauseFactory.java,113,  public SpanQuery makeSpanNearClause() {
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SrndQuery.java,69,
+modules/queryparser/src/java/org/apache/lucene/queryparser/surround/query/SrndQuery.java,70,/* An empty Lucene query */
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,21,import java.util.HashSet;
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,73,                tpsDiffer = !pp.repeats || (pp2 = termPositionsDiffer(pp))==null;
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,121,"     * <br>Later can consult with repeats[] in termPositionsDiffer(pp), making that check efficient."
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,150,        // one time initializatin for this scorer
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,154,            HashSet<PhrasePositions> m = null;
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,164,                            m = new HashSet<PhrasePositions>();
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,176,        // with repeats must advance some repeating pp's so they all start with differing tp's
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,181,                while ((pp2 = termPositionsDiffer(pp)) != null) {
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,182,"                  if (!pp2.nextPosition())  // out of pps that do not differ, advance the pp with higher offset"
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,183,                      return -1;           // ran out of a term -- done
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,208,    private PhrasePositions termPositionsDiffer(PhrasePositions pp) {
+lucene/src/java/org/apache/lucene/search/SloppyPhraseScorer.java,210,"        // pp's, so that if pp1a, pp1b, pp1c are repeats term1, and pp2a, pp2b are repeats"
+lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/core/builders/QueryTreeBuilder.java,153,          Class<?>[] classes = node.getClass().getInterfaces();
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,237,  /** Check whether two Spans in the same document are ordered.
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,238,   * @return true iff spans1 starts before spans2
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,239,"   *              or the spans start at the same position,"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,240,   *              and spans1 ends before spans2.
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,242,"  static final boolean docSpansOrdered(Spans spans1, Spans spans2) {"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,244,    int start1 = spans1.start();
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,245,    int start2 = spans2.start();
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,246,"    /* Do not call docSpansOrdered(int,int,int,int) to avoid invoking .end() : */"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,247,    return (start1 == start2) ? (spans1.end() < spans2.end()) : (start1 < start2);
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,250,"  /** Like {@link #docSpansOrdered(Spans,Spans)}, but use the spans"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,253,"  private static final boolean docSpansOrdered(int start1, int end1, int start2, int end2) {"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,254,    return (start1 == start2) ? (end1 < end2) : (start1 < start2);
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,263,"      while (! docSpansOrdered(subSpans[i-1], subSpans[i])) {"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansOrdered.java,315,"          if (! docSpansOrdered(ppStart, ppEnd, lastStart, lastEnd)) {"
+lucene/core/src/java/org/apache/lucene/search/spans/NearSpansUnordered.java,66,"        return NearSpansOrdered.docSpansOrdered(spans1, spans2);"
+lucene/core/src/java/org/apache/lucene/search/spans/SpanNearQuery.java,51,"   * them.  * When <code>inOrder</code> is true, the spans from each clause"
+lucene/core/src/java/org/apache/lucene/search/spans/SpanNearQuery.java,52,   * must be * ordered as in <code>clauses</code>.
+lucene/core/src/java/org/apache/lucene/search/spans/SpanNearQuery.java,56,   * */
+lucene/core/src/test/org/apache/lucene/search/spans/TestNearSpansOrdered.java,185,
+solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java,93,      float val = values.floatVal(localId);  // TODO: handle all types -- see: SOLR-2443
+solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java,94,
+solr/src/java/org/apache/solr/response/transform/ValueSourceAugmenter.java,95,"      doc.setField( name, val );"
+solr/src/java/org/apache/solr/schema/RandomSortField.java,160,      return new DocValues() {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,162,          @Override
+solr/src/java/org/apache/solr/schema/RandomSortField.java,163,          public float floatVal(int doc) {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,164,            return (float)hash(doc+seed);
+solr/src/java/org/apache/solr/schema/RandomSortField.java,165,          }
+solr/src/java/org/apache/solr/schema/RandomSortField.java,166,
+solr/src/java/org/apache/solr/schema/RandomSortField.java,171,
+solr/src/java/org/apache/solr/schema/RandomSortField.java,172,          @Override
+solr/src/java/org/apache/solr/schema/RandomSortField.java,173,          public long longVal(int doc) {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,174,            return (long)hash(doc+seed);
+solr/src/java/org/apache/solr/schema/RandomSortField.java,175,          }
+solr/src/java/org/apache/solr/schema/RandomSortField.java,176,
+solr/src/java/org/apache/solr/schema/RandomSortField.java,177,          @Override
+solr/src/java/org/apache/solr/schema/RandomSortField.java,178,          public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,179,            return (double)hash(doc+seed);
+solr/src/java/org/apache/solr/schema/RandomSortField.java,180,          }
+solr/src/java/org/apache/solr/schema/RandomSortField.java,181,
+solr/src/java/org/apache/solr/schema/RandomSortField.java,182,          @Override
+solr/src/java/org/apache/solr/schema/RandomSortField.java,183,          public String strVal(int doc) {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,184,            return Integer.toString(hash(doc+seed));
+solr/src/java/org/apache/solr/schema/RandomSortField.java,185,          }
+solr/src/java/org/apache/solr/schema/RandomSortField.java,186,
+solr/src/java/org/apache/solr/schema/RandomSortField.java,187,          @Override
+solr/src/java/org/apache/solr/schema/RandomSortField.java,188,          public String toString(int doc) {
+solr/src/java/org/apache/solr/schema/RandomSortField.java,189,            return description() + '=' + intVal(doc);
+solr/src/java/org/apache/solr/schema/RandomSortField.java,190,          }
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,48,      @Override
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,49,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,50,        return (float)intVal(doc);
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,51,      }
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,52,
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,53,      @Override
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,54,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,55,        int ord=termsIndex.getOrd(doc);
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,56,        return ord;
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,57,      }
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,58,
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,59,      @Override
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,60,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,61,        return (long)intVal(doc);
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,62,      }
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,63,
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,64,      @Override
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,65,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,66,        return (double)intVal(doc);
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,67,      }
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,68,
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,80,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,81,        int ord=termsIndex.getOrd(doc);
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,82,        if (ord == 0) {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,83,          return null;
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,84,        } else {
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,85,"          return termsIndex.lookup(ord, new BytesRef()).utf8ToString();"
+solr/src/java/org/apache/solr/schema/StrFieldSource.java,86,        }
+solr/src/java/org/apache/solr/search/QueryParsing.java,641,      return flt ? Double.parseDouble(v) : Long.parseLong(v);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,796,    return new DocValues() {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,817,      @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,818,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,819,        return Long.toString(constant);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,820,      }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,821,
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,904,      return new DocValues() {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,905,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,906,        public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,907,          return (float)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,908,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,909,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,910,        public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,911,          return (int)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,912,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,913,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,914,        public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,915,          return (long)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,916,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,922,        public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,923,          return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,924,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,925,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,969,      return new DocValues() {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,970,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,971,        public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,972,          return (float)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,973,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,974,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,975,        public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,976,          return (int)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,977,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,978,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,979,        public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,980,          return (long)doubleVal(doc);
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,981,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,982,        @Override
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,987,        public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,988,          return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,989,        }
+solr/src/java/org/apache/solr/search/ValueSourceParser.java,990,        @Override
+solr/src/java/org/apache/solr/search/function/ConstValueSource.java,44,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/ConstValueSource.java,62,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ConstValueSource.java,63,        return Float.toString(constant);
+solr/src/java/org/apache/solr/search/function/ConstValueSource.java,64,      }
+solr/src/java/org/apache/solr/search/function/ConstValueSource.java,65,      @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,24,import org.apache.solr.search.MutableValueInt;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,25,import org.apache.solr.search.MutableValue;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,31,class ConstIntDocValues extends DocValues {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,74,class ConstDoubleDocValues extends DocValues {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,117,abstract class FloatDocValues extends DocValues {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,118,  protected final ValueSource vs;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,119,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,120,  public FloatDocValues(ValueSource vs) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,121,    this.vs = vs;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,122,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,123,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,124,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,125,  public byte byteVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,126,    return (byte)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,127,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,128,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,129,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,130,  public short shortVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,131,    return (short)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,132,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,133,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,134,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,135,  public abstract float floatVal(int doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,136,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,137,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,138,  public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,139,    return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,140,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,141,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,142,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,143,  public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,144,    return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,145,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,146,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,147,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,148,  public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,149,    return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,150,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,151,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,152,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,153,  public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,154,    return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,155,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,156,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,157,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,158,  public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,159,    return vs.description() + '=' + strVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,160,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,161,}
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,162,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,163,abstract class IntDocValues extends DocValues {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,164,  protected final ValueSource vs;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,165,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,166,  public IntDocValues(ValueSource vs) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,167,    this.vs = vs;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,168,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,169,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,170,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,171,  public byte byteVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,172,    return (byte)intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,173,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,174,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,175,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,176,  public short shortVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,177,    return (short)intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,178,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,179,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,180,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,181,  public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,182,    return (float)intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,183,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,184,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,185,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,186,  public abstract int intVal(int doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,187,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,188,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,189,  public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,190,    return (long)intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,191,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,192,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,193,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,194,  public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,195,    return (double)intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,196,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,197,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,198,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,199,  public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,200,    return Integer.toString(intVal(doc));
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,201,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,202,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,203,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,204,  public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,205,    return vs.description() + '=' + strVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,206,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,207,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,208,  @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,209,  public ValueFiller getValueFiller() {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,210,    return new ValueFiller() {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,211,      private final MutableValueInt mval = new MutableValueInt();
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,212,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,213,      @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,214,      public MutableValue getValue() {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,215,        return mval;
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,216,      }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,217,
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,218,      @Override
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,219,      public void fillValue(int doc) {
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,220,        mval.value = intVal(doc);
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,221,      }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,222,    };
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,223,  }
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,224,}
+solr/src/java/org/apache/solr/search/function/DocFreqValueSource.java,225,
+solr/src/java/org/apache/solr/search/function/DoubleConstValueSource.java,43,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/DoubleFieldSource.java,54, final Bits valid = vals.valid;
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,51,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,57,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,58,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,59,      }
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,60,      @Override
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,61,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,62,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,63,      }
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,64,      @Override
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,65,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,66,        return floatVal(doc);
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,67,      }
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,68,      @Override
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,69,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,70,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,71,      }
+solr/src/java/org/apache/solr/search/function/DualFloatFunction.java,72,      @Override
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,68,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,75,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,76,        return (int)arr[doc + off];
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,77,      }
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,78,
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,79,      @Override
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,80,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,81,        return (long)arr[doc + off];
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,82,      }
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,83,
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,84,      @Override
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,85,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,86,        return (double)arr[doc + off];
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,87,      }
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,88,
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,89,      @Override
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,90,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,91,        return Float.toString(arr[doc + off]);
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,92,      }
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,93,
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,94,      @Override
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,95,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,96,        return description() + '=' + floatVal(doc);
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,53, final Bits valid = vals.valid;
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,55,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,62,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,63,        return (int)arr[doc];
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,67,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,68,        return (long)arr[doc];
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,69,      }
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,70,
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,71,      @Override
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,72,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,73,        return (double)arr[doc];
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,74,      }
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,75,
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,76,      @Override
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,77,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,78,        return Float.toString(arr[doc]);
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,79,      }
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,80,
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,81,      @Override
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,82,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/FloatFieldSource.java,83,        return description() + '=' + floatVal(doc);
+solr/src/java/org/apache/solr/search/function/IntFieldSource.java,54, final Bits valid = vals.valid;
+solr/src/java/org/apache/solr/search/function/IntFieldSource.java,56,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,57,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,73,
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,74,      @Override
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,75,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,76,        return (float)intVal(doc);
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,77,      }
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,78,
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,79,      @Override
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,80,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,81,        return (long)intVal(doc);
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,82,      }
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,83,
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,84,      @Override
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,85,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,86,        return (double)intVal(doc);
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,87,      }
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,88,
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,89,      @Override
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,90,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,91,"        return intVal(doc) + """";"
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,92,      }
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,93,
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,94,      @Override
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,95,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,96,        return description() + '=' + intVal(doc);
+solr/src/java/org/apache/solr/search/function/JoinDocFreqValueSource.java,97,      }
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,53,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,59,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,60,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,61,      }
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,62,      @Override
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,63,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,64,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,65,      }
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,66,      @Override
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,67,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,68,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,69,      }
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,70,      @Override
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,71,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,72,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,73,      }
+solr/src/java/org/apache/solr/search/function/LinearFloatFunction.java,74,      @Override
+solr/src/java/org/apache/solr/search/function/LiteralValueSource.java,26," * Pass a the field value through as a String, no matter the type"
+solr/src/java/org/apache/solr/search/function/LiteralValueSource.java,43,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,59, final Bits valid = vals.valid;
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,61,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,62,      @Override
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,63,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,64,        return (float) arr[doc];
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,65,      }
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,66,
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,67,      @Override
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,68,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,69,        return (int) arr[doc];
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,70,      }
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,71,
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,78,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,79,        return arr[doc];
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,83,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,84,        return Long.toString(arr[doc]);
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,85,      }
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,86,
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,87,      @Override
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,88,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,89,        return description() + '=' + longVal(doc);
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,145,
+solr/src/java/org/apache/solr/search/function/LongFieldSource.java,146,
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,65,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,70,      @Override
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,71,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,72,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,73,      }
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,74,      @Override
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,75,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,76,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,77,      }
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,78,      @Override
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,79,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,80,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,81,      }
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,82,      @Override
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,83,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,84,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,85,      }
+solr/src/java/org/apache/solr/search/function/MultiFloatFunction.java,86,      @Override
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,66,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,70,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,71,      @Override
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,72,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,73,        return (float)sindex.getOrd(doc+off);
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,74,      }
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,75,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,80,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,81,      @Override
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,82,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,83,        return (long)sindex.getOrd(doc+off);
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,84,      }
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,85,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,86,      @Override
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,87,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,88,        return (double)sindex.getOrd(doc+off);
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,89,      }
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,90,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,95,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,102,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,103,"        // the string value of the ordinal, not the string itself"
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,104,        return Integer.toString(sindex.getOrd(doc+off));
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,108,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,109,        return description() + '=' + intVal(doc);
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,110,      }
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,111,
+solr/src/java/org/apache/solr/search/function/OrdFieldSource.java,112,            @Override
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,52,"    return new QueryDocValues(readerContext, q, defVal, fcontext);"
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,75,class QueryDocValues extends DocValues {
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,76,  final Query q;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,77,//  final IndexReader reader;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,91,"  public QueryDocValues(AtomicReaderContext readerContext, Query q, float defVal, Map fcontext) throws IOException {"
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,92,    IndexReader reader = readerContext.reader;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,94,    this.q = q;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,95,    this.defVal = defVal;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,99,    // TODO: sort by function doesn't weight (SOLR-1297 is open because of this bug)... so weightSearcher will currently be null
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,120,        if (scorer==null) return defVal;
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,140,  }
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,141,
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,142,  @Override
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,143,  public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,144,    return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,145,  }
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,146,  @Override
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,147,  public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,148,    return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,151,  public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,152,    return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,155,  public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/QueryValueSource.java,156,    return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,57,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,64,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,65,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,66,      }
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,67,      @Override
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,68,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,69,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,70,      }
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,71,      @Override
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,72,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,73,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,74,      }
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,75,      @Override
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,76,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,77,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,78,      }
+solr/src/java/org/apache/solr/search/function/RangeMapFloatFunction.java,79,      @Override
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,63,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,69,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,70,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,71,      }
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,72,      @Override
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,73,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,74,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,75,      }
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,76,      @Override
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,77,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,78,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,79,      }
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,80,      @Override
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,81,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,82,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,83,      }
+solr/src/java/org/apache/solr/search/function/ReciprocalFloatFunction.java,84,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,69,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,70,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,71,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,72,        return (float)(end - sindex.getOrd(doc+off));
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,73,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,74,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,75,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,79,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,80,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,81,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,82,        return (long)(end - sindex.getOrd(doc+off));
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,83,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,84,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,85,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,86,      public int ordVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,87,        return (end - sindex.getOrd(doc+off));
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,88,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,89,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,90,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,91,      public int numOrd() {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,92,        return end;
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,93,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,94,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,95,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,96,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,97,        return (double)(end - sindex.getOrd(doc+off));
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,98,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,99,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,100,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,101,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,102,"        // the string value of the ordinal, not the string itself"
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,103,        return Integer.toString((end - sindex.getOrd(doc+off)));
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,104,      }
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,105,
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,106,      @Override
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,107,      public String toString(int doc) {
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,108,        return description() + '=' + strVal(doc);
+solr/src/java/org/apache/solr/search/function/ReverseOrdFieldSource.java,109,      }
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,111,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,117,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,118,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,119,      }
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,120,      @Override
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,121,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,122,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,123,      }
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,124,      @Override
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,125,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,126,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,127,      }
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,128,      @Override
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,129,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,130,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,131,      }
+solr/src/java/org/apache/solr/search/function/ScaleFloatFunction.java,132,      @Override
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,37,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,43,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,44,        return (int)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,45,      }
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,46,      @Override
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,47,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,48,        return (long)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,49,      }
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,50,      @Override
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,51,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,52,        return (double)floatVal(doc);
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,53,      }
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,54,      @Override
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,55,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,56,        return Float.toString(floatVal(doc));
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,57,      }
+solr/src/java/org/apache/solr/search/function/SimpleFloatFunction.java,58,      @Override
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,33,    protected final FieldCache.DocTermsIndex termsIndex;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,34,    protected final ValueSource vs;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,35,    protected final MutableValueStr val = new MutableValueStr();
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,36,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,37,"    public StringIndexDocValues(ValueSource vs, AtomicReaderContext context, String field) throws IOException {"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,38,      try {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,39,"        termsIndex = FieldCache.DEFAULT.getTermsIndex(context.reader, field);"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,40,      } catch (RuntimeException e) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,41,"        throw new StringIndexException(field, e);"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,42,      }
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,43,      this.vs = vs;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,46,    public FieldCache.DocTermsIndex getDocTermsIndex() {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,47,      return termsIndex;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,49,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,50,    protected abstract String toTerm(String readableValue);
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,51,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,52,    @Override
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,53,"    public ValueSourceScorer getRangeScorer(IndexReader reader, String lowerVal, String upperVal, boolean includeLower, boolean includeUpper) {"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,54,      // TODO: are lowerVal and upperVal in indexed form or not?
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,55,      lowerVal = lowerVal == null ? null : toTerm(lowerVal);
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,56,      upperVal = upperVal == null ? null : toTerm(upperVal);
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,57,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,58,      final BytesRef spare = new BytesRef();
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,59,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,60,      int lower = Integer.MIN_VALUE;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,61,      if (lowerVal != null) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,62,"        lower = termsIndex.binarySearchLookup(new BytesRef(lowerVal), spare);"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,63,        if (lower < 0) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,64,          lower = -lower-1;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,65,        } else if (!includeLower) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,66,          lower++;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,67,        }
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,69,
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,70,      int upper = Integer.MAX_VALUE;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,71,      if (upperVal != null) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,72,"        upper = termsIndex.binarySearchLookup(new BytesRef(upperVal), spare);"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,73,        if (upper < 0) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,74,          upper = -upper-2;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,75,        } else if (!includeUpper) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,76,          upper--;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,77,        }
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,80,      final int ll = lower;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,81,      final int uu = upper;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,83,"      return new ValueSourceScorer(reader, this) {"
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,84,        @Override
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,85,        public boolean matchesValue(int doc) {
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,86,          int ord = termsIndex.getOrd(doc);
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,87,          return ord >= ll && ord <= uu;
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,88,        }
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,89,      };
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,90,    }
+solr/src/java/org/apache/solr/search/function/StringIndexDocValues.java,120,"            ""DocValues for field: "" + fieldName, cause);"
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,61,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,62,      @Override
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,63,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,64,        return (float) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,65,      }
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,66,
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,67,      @Override
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,68,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,69,        return (int) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,70,      }
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,71,
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,72,      @Override
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,73,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,74,        return (long) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,75,      }
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,76,
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,81,
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,82,      @Override
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,83,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,84,        return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,85,      }
+solr/src/java/org/apache/solr/search/function/distance/GeohashHaversineFunction.java,86,
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,201,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,202,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,203,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,204,        return (float) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,205,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,206,
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,207,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,208,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,209,        return (int) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,210,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,211,
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,212,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,213,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,214,        return (long) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,215,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,216,
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,229,
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,230,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,231,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,232,        return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,233,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineConstFunction.java,234,
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,102,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,103,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,104,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,105,        return (float) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,106,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,107,
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,108,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,109,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,110,        return (int) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,111,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,112,
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,113,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,114,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,115,        return (long) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,116,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,117,
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,122,
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,123,      @Override
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,124,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,125,        return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,126,      }
+solr/src/java/org/apache/solr/search/function/distance/HaversineFunction.java,127,
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,54,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,61,      @Override
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,62,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,63,        return (int) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,64,      }
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,65,
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,66,      @Override
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,67,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,68,        return (long) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,69,      }
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,70,
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,71,      @Override
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,72,      public double doubleVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,73,        return (double) floatVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,74,      }
+solr/src/java/org/apache/solr/search/function/distance/StringDistanceFunction.java,75,
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,88,    return new DocValues() {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,89,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,90,      public byte byteVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,91,        return (byte) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,92,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,93,
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,94,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,95,      public short shortVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,96,        return (short) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,97,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,98,
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,99,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,100,      public float floatVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,101,        return (float) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,102,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,103,
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,104,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,105,      public int intVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,106,        return (int) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,107,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,108,
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,109,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,110,      public long longVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,111,        return (long) doubleVal(doc);
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,112,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,119,      @Override
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,120,      public String strVal(int doc) {
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,121,        return Double.toString(doubleVal(doc));
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,122,      }
+solr/src/java/org/apache/solr/search/function/distance/VectorDistanceFunction.java,123,
+solr/src/test/org/apache/solr/search/QueryParsingTest.java,102,"    assertEquals(flds[0].getField(), ""pow(float(weight),const(2.0))"");"
+solr/src/test/org/apache/solr/search/QueryParsingTest.java,105,"    sort = QueryParsing.parseSort(""sum(product(r_f1,sum(d_f1,t_f1,1)),a_f1) asc"", req);"
+solr/src/test/org/apache/solr/search/QueryParsingTest.java,110,"    sort = QueryParsing.parseSort(""pow(weight,                 2)         desc"", req);"
+solr/src/test/org/apache/solr/search/QueryParsingTest.java,118,"    sort = QueryParsing.parseSort(""pow(weight, 2) desc, weight    desc,   bday    asc"", req);"
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,29,import org.apache.commons.httpclient.Header;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,30,import org.apache.commons.httpclient.HttpClient;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,31,import org.apache.commons.httpclient.HttpConnectionManager;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,32,import org.apache.commons.httpclient.HttpException;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,33,import org.apache.commons.httpclient.HttpMethod;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,34,import org.apache.commons.httpclient.HttpMethodBase;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,35,import org.apache.commons.httpclient.HttpStatus;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,36,import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,37,import org.apache.commons.httpclient.NoHttpResponseException;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,208,
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,209,    _httpClient = (client == null) ? new HttpClient(new MultiThreadedHttpConnectionManager()) : client;
+solr/src/solrj/org/apache/solr/client/solrj/impl/CommonsHttpSolrServer.java,213,
+solr/src/test/org/apache/solr/client/solrj/embedded/TestSolrProperties.java,199,
+solr/src/java/org/apache/solr/schema/IndexSchema.java,800,      // No need to be core-aware as Analyzers are not in the core-aware list
+solr/src/java/org/apache/solr/schema/IndexSchema.java,801,      final Class<? extends Analyzer> clazz = loader.findClass(analyzerName).asSubclass(Analyzer.class);
+solr/src/java/org/apache/solr/schema/IndexSchema.java,804,          // first try to use a ctor with version parameter (needed for many new Analyzers that have no default one anymore)
+solr/src/java/org/apache/solr/schema/IndexSchema.java,810,"            throw new SolrException( SolrException.ErrorCode.SERVER_ERROR,"
+solr/src/java/org/apache/solr/schema/IndexSchema.java,811,"              ""Configuration Error: Analyzer '"" + clazz.getName() +"
+solr/src/java/org/apache/solr/schema/IndexSchema.java,812,"              ""' needs a 'luceneMatchVersion' parameter"");"
+solr/src/java/org/apache/solr/schema/IndexSchema.java,821,"              ""Cannot load analyzer: ""+analyzerName );"
+solr/src/java/org/apache/solr/search/SolrQueryParser.java,70,"    super(parser.getReq().getCore().getSolrConfig().getLuceneVersion(""luceneMatchVersion"", Version.LUCENE_30), defaultField, analyzer);"
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,19,import org.apache.lucene.index.IndexReader;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,23,import org.apache.lucene.index.TermsEnum;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,24,import org.apache.lucene.index.MultiFields;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,27,import org.apache.lucene.util.BytesRef;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,29,import org.apache.solr.schema.SchemaField;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,33,
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,34,import java.io.*;
+solr/src/java/org/apache/solr/search/function/FileFloatSource.java,35,import java.util.*;
+solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java,194,  public void testExternalField() {
+solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java,213,"    assertU(adoc(""id"", ""10000"")); // will get same reader if no index change"
+solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java,214,    assertU(commit());
+solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java,250,"      assertU(adoc(""id"", ""10001"")); // will get same reader if no index change"
+solr/src/test/org/apache/solr/search/function/TestFunctionQuery.java,251,      assertU(commit());
+solr/src/common/org/apache/solr/common/params/SpellingParams.java,98,"  public static final String SPELLCHECK_MAX_COLLATION_TRIES = SPELLCHECK_PREFIX + ""maxCollationTries"";"
+solr/src/common/org/apache/solr/common/params/SpellingParams.java,108,
+solr/src/java/org/apache/solr/handler/component/SpellCheckComponent.java,179,"  List<SpellCheckCollation> collations = collator.collate(spellingResult, q, rb, maxCollations, maxCollationTries);"
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,20,import java.util.Collections;
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,41, private List<RankedSpellPossibility> rankedPossibilityList = new ArrayList<RankedSpellPossibility>();
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,42, private Iterator<RankedSpellPossibility> rankedPossibilityIterator;
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,59," public PossibilityIterator(Map<Token, LinkedHashMap<String, Integer>> suggestions) {"
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,87,
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,88,  while (internalHasNext()) {
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,89,   rankedPossibilityList.add(internalNext());
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,91,  Collections.sort(rankedPossibilityList);
+solr/src/java/org/apache/solr/spelling/PossibilityIterator.java,92,  rankedPossibilityIterator = rankedPossibilityList.iterator();
+solr/src/java/org/apache/solr/spelling/RankedSpellPossibility.java,26,  return new Integer(rank).compareTo(rcl.rank);
+solr/src/java/org/apache/solr/spelling/SpellCheckCollator.java,39,"                                           int maxCollations, int maxTries) {"
+solr/src/java/org/apache/solr/spelling/SpellCheckCollator.java,65,    PossibilityIterator possibilityIter = new PossibilityIterator(result.getSuggestions());
+solr/src/test/org/apache/solr/client/solrj/response/TestSpellCheckResponse.java,146,"    query.set(SpellingParams.SPELLCHECK_MAX_COLLATION_TRIES, 5);"
+solr/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,63,"  params.add(SpellCheckComponent.SPELLCHECK_MAX_COLLATION_TRIES, ""5"");"
+solr/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,64,"  params.add(SpellCheckComponent.SPELLCHECK_MAX_COLLATIONS, ""2"");"
+solr/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,80,  assertTrue(collations.size() == 1);
+solr/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,81,"  assertTrue(collations.get(0).equals(""lowerfilt:(+faith +hope +love)""));"
+solr/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,183,"  params.add(SpellCheckComponent.SPELLCHECK_MAX_COLLATION_TRIES, ""5"");"
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,79,  PossibilityIterator iter = new PossibilityIterator(suggestions);
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,83,   iter.next();
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,89,  iter = new PossibilityIterator(suggestions);
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,98,  iter = new PossibilityIterator(suggestions);
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,104,"  assertTrue((""One map of 8 should return 8 iterations but instead returned "" + count), count == 8);"
+solr/src/test/org/apache/solr/spelling/SpellPossibilityIteratorTest.java,107,  iter = new PossibilityIterator(suggestions);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,62,  /** Field to use as the source of terms */
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,63,"  public static final String FIELD = ""field"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,65,"  public static final String STRING_DISTANCE = ""distanceMeasure"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,67,
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,68,"  public static final String ACCURACY = ""accuracy"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,70,
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,80,"  public static final String COMPARATOR_CLASS = ""comparatorClass"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,81,"  public static final String SCORE_COMP = ""score"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,82,"  public static final String FREQ_COMP = ""freq"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,83,
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,84,"  public static final String THRESHOLD = ""thresholdTokenFrequency"";"
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,85,  public static final float DEFAULT_THRESHOLD = 0.0f;
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,86,
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,120,    String accuracy = (String) config.get(ACCURACY);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,122,      minAccuracy = Float.parseFloat(accuracy);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,125,    String edits = (String) config.get(MAXEDITS);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,127,      maxEdits = Integer.parseInt(edits);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,130,    String prefix = (String) config.get(MINPREFIX);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,132,      minPrefix = Integer.parseInt(prefix);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,135,    String inspections = (String) config.get(MAXINSPECTIONS);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,137,      maxInspections = Integer.parseInt(inspections);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,139,    float minThreshold = DEFAULT_THRESHOLD;
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,140,    String threshold = (String) config.get(THRESHOLD);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,142,      minThreshold = Float.parseFloat(threshold);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,145,    String queryLength = (String) config.get(MINQUERYLENGTH);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,147,      minQueryLength = Integer.parseInt(queryLength);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,150,    String queryFreq = (String) config.get(MAXQUERYFREQUENCY);
+solr/src/java/org/apache/solr/spelling/DirectSolrSpellChecker.java,152,      maxQueryFrequency = Float.parseFloat(queryFreq);
+solr/src/test/org/apache/solr/spelling/DirectSolrSpellCheckerTest.java,58,"    spellchecker.add(DirectSolrSpellChecker.MINQUERYLENGTH, ""2""); // we will try ""fob"""
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,661,    try {
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,662,      SolrPing ping = new SolrPing();
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,663,"      ping.getParams().set( ""qt"", ""unknown handler! ignore_exception"" );"
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,664,      ping.process( server );
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,665,"      fail( ""sent unknown query type!"" );"
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,666,    }
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,667,    catch( Exception ex ) {
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,668,      // expected
+solr/src/test/org/apache/solr/client/solrj/SolrExampleTests.java,669,    }
+solr/src/java/org/apache/solr/request/SimpleFacets.java,1320,      return new Double(value.floatValue() + Double.valueOf(gap).floatValue());
+solr/src/java/org/apache/solr/request/SimpleFacets.java,1346,      return new Long(value.intValue() + Long.valueOf(gap).intValue());
+solr/src/test/org/apache/solr/request/SimpleFacetsTest.java,895,  private void helpTestFractionalNumberRangeFacets(final String fieldName) {
+solr/src/java/org/apache/solr/core/PluginInfo.java,107,"  private static final HashSet<String> NL_TAGS = new HashSet<String>(Arrays.asList(""lst"",""str"",""int"",""bool"",""arr"",""float"",""double""));"
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,56,"  public JmxMonitoredMap(final String coreName,"
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,58,    jmxRootName = (null != jmxConfig.rootName ?
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,132,        SolrDynamicMBean mbean = new SolrDynamicMBean(infoBean);
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,167,      if (server.isRegistered(name)) {
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,169,      } else {
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,170,"        LOG.info(""Failed to unregister mbean: "" + key"
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,171,"                + "" because it was not registered"");"
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,198,    public SolrDynamicMBean(SolrInfoMBean managedResource) {
+solr/core/src/java/org/apache/solr/core/JmxMonitoredMap.java,243,      if (staticStats.contains(attribute) && attribute != null
+solr/core/src/java/org/apache/solr/core/SolrCore.java,544,"      infoRegistry = new JmxMonitoredMap<String, SolrInfoMBean>(name, config.jmxConfig);"
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,27,import java.util.List;
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,28,import java.util.Set;
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,29,import java.util.Hashtable;
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,119,"    if (coreName.equals("""")) {"
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,120,      String defaultCoreName = h.getCore().getCoreDescriptor().getCoreContainer().getDefaultCoreName();
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,121,"      if (!defaultCoreName.equals("""")) {"
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,122,        coreName = defaultCoreName;
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,123,      }
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,124,    }
+solr/core/src/test/org/apache/solr/core/TestJmxMonitoredMap.java,75,"        monitoredMap = new JmxMonitoredMap<String, SolrInfoMBean>(null, config);"
+solr/test-framework/src/java/org/apache/solr/util/TestHarness.java,191,"      SolrCore core = new SolrCore(""collection1"", dataDirectory, solrConfig, indexSchema, dcore);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DocBuilder.java,710,    }
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,20,import java.io.File;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,21,import java.io.IOException;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,22,import java.io.InputStream;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,23,import java.net.URISyntaxException;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,24,import java.util.Date;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,25,import java.util.HashSet;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,26,import java.util.Locale;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,27,import java.util.Set;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,28,
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,95,
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,96,"    // by default, use wt=raw"
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,97,    ModifiableSolrParams params = new ModifiableSolrParams( invariants );
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,98,    if( params.get( CommonParams.WT ) == null ) {
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,99,"      params.set( CommonParams.WT, ""raw"" );"
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,100,    }
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,101,    this.invariants = params;
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,102,
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,192,
+solr/core/src/java/org/apache/solr/handler/admin/ShowFileRequestHandler.java,193,"      rsp.add( RawResponseWriter.CONTENT, content );"
+solr/solrj/src/java/org/apache/solr/client/solrj/request/QueryRequest.java,20,import java.util.Collection;
+solr/solrj/src/java/org/apache/solr/client/solrj/request/QueryRequest.java,21,
+solr/solrj/src/java/org/apache/solr/client/solrj/request/QueryRequest.java,24,import org.apache.solr.client.solrj.SolrRequest;
+solr/solrj/src/java/org/apache/solr/client/solrj/request/QueryRequest.java,61,    String qt = query.get( CommonParams.QT );
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,115,"    log.info(""Servers in testJmxUpdate: "" + servers);"
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,116,    log.info(h.getCore().getInfoRegistry().toString());
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,124,    int oldNumberOfObjects = oldBeans.size();
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,126,
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,127,"    // chill for a moment, so our beans can get ready"
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,128,    Thread.sleep(1000);
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,129,
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,131,    int newNumberOfObjects = newBeans.size();
+solr/core/src/test/org/apache/solr/core/TestJmxIntegration.java,133,"    assertEquals(""Number of registered MBeans is not the same after Solr core reload"", oldNumberOfObjects, newNumberOfObjects);"
+lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java,284,"  /** Returns random string, all codepoints within the same unicode block. */"
+lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java,289,"  /** Returns random string, all codepoints within the same unicode block. */"
+lucene/src/test-framework/org/apache/lucene/util/_TestUtil.java,291,    final int end = r.nextInt(maxLength);
+solr/core/src/java/org/apache/solr/search/QueryParsing.java,250,        ParseException qParserException = null;
+solr/core/src/java/org/apache/solr/search/QueryParsing.java,252,        if (field == null || sp.ch() != ' ') {
+solr/core/src/java/org/apache/solr/search/QueryParsing.java,300,          } catch (ParseException e) {
+solr/core/src/test/org/apache/solr/search/TestSort.java,30,import org.apache.solr.util.AbstractSolrTestCase;
+solr/core/src/test/org/apache/solr/search/TestSort.java,35,public class TestSort extends AbstractSolrTestCase {
+solr/core/src/test/org/apache/solr/search/TestSort.java,36,  @Override
+solr/core/src/test/org/apache/solr/search/TestSort.java,37,  public String getSchemaFile() { return null; }
+solr/core/src/test/org/apache/solr/search/TestSort.java,38,  @Override
+solr/core/src/test/org/apache/solr/search/TestSort.java,39,  public String getSolrConfigFile() { return null; }
+solr/core/src/test/org/apache/solr/search/TestSort.java,41,  Random r = random;
+solr/core/src/test/org/apache/solr/search/function/TestFunctionQuery.java,437,"    assertU(adoc(""id"", ""1"", ""const_s"", ""xx"", ""x_i"", ""100"", ""1_s"", ""a""));"
+solr/core/src/test/org/apache/solr/search/function/TestFunctionQuery.java,438,"    assertU(adoc(""id"", ""2"", ""const_s"", ""xx"", ""x_i"", ""300"", ""1_s"", ""c""));"
+solr/core/src/test/org/apache/solr/search/function/TestFunctionQuery.java,439,"    assertU(adoc(""id"", ""3"", ""const_s"", ""xx"", ""x_i"", ""200"", ""1_s"", ""b""));"
+solr/core/src/java/org/apache/solr/servlet/SolrRequestParsers.java,355,        // Only add it if it actually has something...
+solr/core/src/java/org/apache/solr/servlet/SolrRequestParsers.java,356,        else if( item.getSize() > 0 ) {
+solr/core/src/java/org/apache/solr/spelling/SpellingQueryConverter.java,118,            token.setStartOffset(matcher.start());
+solr/core/src/java/org/apache/solr/spelling/SpellingQueryConverter.java,119,            token.setEndOffset(matcher.end());
+solr/core/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java,117,"    assertJQ(req(""json.nl"",""map"", ""qt"",rh, SpellCheckComponent.COMPONENT_NAME, ""true"", ""q"",""pixma-a-b-c-d-e-f-g"", SpellCheckComponent.SPELLCHECK_COLLATE, ""true"")"
+solr/core/src/test/org/apache/solr/spelling/SpellCheckCollatorTest.java,51,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/ContextImpl.java,158,"    else entitySession.put(name, val);"
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,581,        if( alternateFieldLen <= 0 ){
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,582,"          docSummaries.add(fieldName, altTexts);"
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,583,        }
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,584,        else{
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,585,          List<String> altList = new ArrayList<String>();
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,586,          int len = 0;
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,587,          for( String altText: altTexts ){
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,589,"                new String(altText.substring( 0, alternateFieldLen - len )) : altText );"
+solr/core/src/java/org/apache/solr/highlight/DefaultSolrHighlighter.java,593,"          docSummaries.add(fieldName, altList);"
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,157,      final int newStart = CompoundWordTokenFilterBase.this.offsetAtt.startOffset() + offset;
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,159,"      // TODO: This ignores the original endOffset, if a CharFilter/Tokenizer/Filter removed"
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,160,"      // chars from the term, offsets may not match correctly (other filters producing tokens"
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,161,      // may also have this problem):
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,162,      this.startOffset = newStart;
+modules/analysis/common/src/java/org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.java,163,      this.endOffset = newStart + length;
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,133,    } else if (val instanceof Integer) {
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,134,"      writeInt(name, val.toString());"
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,137,    } else if (val instanceof Long) {
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,138,"      writeLong(name, val.toString());"
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,141,    } else if (val instanceof Float) {
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,142,      // we pass the float instead of using toString() because
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,143,      // it may need special formatting. same for double.
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,144,"      writeFloat(name, ((Float)val).floatValue());"
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,145,    } else if (val instanceof Double) {
+solr/core/src/java/org/apache/solr/response/TextResponseWriter.java,146,"      writeDouble(name, ((Double)val).doubleValue());"
+solr/core/src/test/org/apache/solr/request/JSONWriterTest.java,44,  public void testNaNInf() throws IOException {
+solr/core/src/test/org/apache/solr/request/JSONWriterTest.java,81,"    assertEquals(""{\""nl\"":[[\""data1\"",\""he\\u2028llo\\u2029!\""],[null,42]]}"", buf.toString());"
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,137,          sigFields = new ArrayList<String>(docFields.size());
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,138,          sigFields.addAll(docFields);
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,139,          Collections.sort(sigFields);
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,145,        for (String field : sigFields) {
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,150,            if (o instanceof String) {
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,151,              sig.add((String)o);
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,152,            } else if (o instanceof Collection) {
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,154,                if (oo instanceof String) {
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,155,                  sig.add((String)oo);
+solr/core/src/java/org/apache/solr/update/processor/SignatureUpdateProcessorFactory.java,156,                }
+solr/core/src/java/org/apache/solr/search/ExtendedDismaxQParserPlugin.java,460,        null == clauses || clauses.size() <= shingleSize )
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/ContextImpl.java,155,"        dataImporter.getCoreScopeSession().put(name, val);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/ContextImpl.java,174,       return dataImporter == null ? null : dataImporter.getCoreScopeSession().get(name);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,74,"  private Map<String, Properties> dataSources = new HashMap<String, Properties>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,75,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,80,"  private Map<String , Object> coreScopeSession = new HashMap<String, Object>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,81,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,105,"      NamedList defaults = (NamedList) initArgs.get(""defaults"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,106,      if (defaults != null) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,107,"        String configLoc = (String) defaults.get(""config"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,108,        if (configLoc != null && configLoc.length() != 0) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,109,          processConfiguration(defaults);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,110,          final InputSource is = new InputSource(core.getResourceLoader().openResource(configLoc));
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,111,          is.setSystemId(SystemIdResolver.createSystemIdFromResourceName(configLoc));
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,112,"          importer = new DataImporter(is, core,"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,113,"                  dataSources, coreScopeSession, myName);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,114,        }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,115,      }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,118,"      throw new SolrException(SolrException.ErrorCode.SERVER_ERROR,"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,119,"              DataImporter.MSG.INVALID_CONFIG, e);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,141,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,143,    if (DataImporter.SHOW_CONF_CMD.equals(command)) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,144,      // Modify incoming request params to add wt=raw
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,145,      ModifiableSolrParams rawParams = new ModifiableSolrParams(req.getParams());
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,146,"      rawParams.set(CommonParams.WT, ""raw"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,147,      req.setParams(rawParams);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,148,"      String dataConfigFile = defaults.get(""config"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,149,      ContentStreamBase content = new ContentStreamBase.StringStream(SolrWriter
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,150,              .getResourceAsString(req.getCore().getResourceLoader().openResource(
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,151,              dataConfigFile)));
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,152,"      rsp.add(RawResponseWriter.CONTENT, content);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,159,    if (command != null)
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,161,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,162,    if (requestParams.isDebug() && (importer == null || !importer.isBusy())) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,163,      // Reload the data-config.xml
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,164,      importer = null;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,165,      if (requestParams.getDataConfig() != null) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,166,        try {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,167,"          processConfiguration((NamedList) initArgs.get(""defaults""));"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,168,"          importer = new DataImporter(new InputSource(new StringReader(requestParams.getDataConfig())), req.getCore()"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,169,"                  , dataSources, coreScopeSession, myName);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,170,        } catch (RuntimeException e) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,171,"          rsp.add(""exception"", DebugLogger.getStacktraceString(e));"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,172,          importer = null;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,173,          return;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,174,        }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,175,      } else {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,176,        inform(req.getCore());
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,177,      }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,178,      message = DataImporter.MSG.CONFIG_RELOADED;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,180,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,195,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,222,      } else if (DataImporter.RELOAD_CONF_CMD.equals(command)) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,223,        importer = null;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,224,        inform(req.getCore());
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,225,        message = DataImporter.MSG.CONFIG_RELOADED;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,251,"  @SuppressWarnings(""unchecked"")"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,252,  private void processConfiguration(NamedList defaults) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,253,    if (defaults == null) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,254,"      LOG.info(""No configuration specified in solrconfig.xml for DataImportHandler"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,255,      return;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,256,    }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,257,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,258,"    LOG.info(""Processing configuration from solrconfig.xml: "" + defaults);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,259,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,260,"    dataSources = new HashMap<String, Properties>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,261,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,262,    int position = 0;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,263,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,264,    while (position < defaults.size()) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,265,      if (defaults.getName(position) == null)
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,266,        break;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,267,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,268,      String name = defaults.getName(position);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,269,"      if (name.equals(""datasource"")) {"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,270,        NamedList dsConfig = (NamedList) defaults.getVal(position);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,271,        Properties props = new Properties();
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,272,        for (int i = 0; i < dsConfig.size(); i++)
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,273,"          props.put(dsConfig.getName(i), dsConfig.getVal(i));"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,274,"        LOG.info(""Adding properties to datasource: "" + props);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,275,"        dataSources.put((String) dsConfig.get(""name""), props);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,276,      }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,277,      position++;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,278,    }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,279,  }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImportHandler.java,280,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,70,"  private Map<String, Properties> dataSourceProps = new HashMap<String, Properties>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,77,"  private final Map<String , Object> coreScopeSession;"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,86,"    coreScopeSession = new HashMap<String, Object>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,91,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,102,"  DataImporter(InputSource dataConfig, SolrCore core, Map<String, Properties> ds, Map<String, Object> session, String handlerName) {"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,103,    this.handlerName = handlerName;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,104,    if (dataConfig == null) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,105,"      throw new DataImportHandlerException(SEVERE, ""Configuration not found"");"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,106,    }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,107,    this.core = core;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,108,    this.schema = core.getSchema();
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,109,    loadSchemaFieldMap();
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,110,    createPropertyWriter();
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,111,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,112,    dataSourceProps = ds;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,113,    if (session == null)
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,114,"      session = new HashMap<String, Object>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,115,    coreScopeSession = session;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,116,    loadDataConfig(dataConfig);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,117,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,118,    for (Entity e : config.getEntities()) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,119,      if (e.getAllAttributes().containsKey(SqlEntityProcessor.DELTA_QUERY)) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,120,        isDeltaImportSupported = true;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,121,        break;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,191,"              ""Exception occurred while initializing context"", e);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,199,"    Map<String, Properties> dataSources = new HashMap<String, Properties>();"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,235,        Properties p = new Properties();
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,238,"          p.setProperty(entry.getKey(), entry.getValue());"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,240,"        dataSources.put(p.getProperty(""name""), p);"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,244,      for (Properties properties : dataSources.values()) {
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,273,    Properties p = dataSourceProps.get(name);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,277,      p = dataSourceProps.get(null);// for default data source
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,283,    String type = p.getProperty(TYPE);
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,479,"  Map<String, Object> getCoreScopeSession() {"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,480,    return coreScopeSession;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,481,  }
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/DataImporter.java,482,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/RequestInfo.java,101,
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/config/DIHConfiguration.java,7,import java.util.Properties;
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/config/DIHConfiguration.java,52,"  private final Map<String, Properties> dataSources;"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/config/DIHConfiguration.java,53,"  public DIHConfiguration(Element element, DataImporter di, List<Map<String, String>> functions, Script script, Map<String, Properties> dataSources) {"
+solr/contrib/dataimporthandler/src/java/org/apache/solr/handler/dataimport/config/DIHConfiguration.java,93,"  public Map<String,Properties> getDataSources() {"
+solr/contrib/dataimporthandler/src/test/org/apache/solr/handler/dataimport/TestDIHEndToEnd.java,34,"    LocalSolrQueryRequest request = lrf.makeRequest(""command"", ""full-import"","
+solr/contrib/extraction/src/java/org/apache/solr/handler/extraction/ExtractingDocumentLoader.java,253,}
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,130,    // test capture
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,131,"     loadLocal(""extraction/simple.html"","
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,132,"      ""literal.id"",""simple4"","
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,133,"      ""uprefix"", ""t_"","
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,134,"      ""capture"",""p"",     // capture only what is in the title element"
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,135,"      ""commit"", ""true"""
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,136,    );
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,137,"    assertQ(req(""+id:simple4 +t_content:Solr""), ""//*[@numFound='1']"");"
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,138,"    assertQ(req(""+id:simple4 +t_p:\""here is some text\""""), ""//*[@numFound='1']"");"
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,139,
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,479,"            ExtractingParams.XPATH_EXPRESSION, ""/xhtml:html/xhtml:body/xhtml:a/descendant:node()"","
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,485,    val = val.trim();
+solr/contrib/extraction/src/test/org/apache/solr/handler/extraction/ExtractingRequestHandlerTest.java,486,"    assertTrue(val + "" is not equal to "" + ""linkNews"", val.equals(""linkNews"") == true);//there are two <a> tags, and they get collapesd"
+solr/contrib/extraction/src/java/org/apache/solr/handler/extraction/SolrContentHandler.java,283,        bldrStack.getLast().append(attributes.getValue(i)).append(' ');
+solr/core/src/java/org/apache/solr/spelling/SpellingQueryConverter.java,93,"  final static String PATTERN = ""(?:(?!("" + NMTOKEN + "":|\\d+)))[\\p{L}_\\-0-9]+"";"
+solr/core/src/test/org/apache/solr/handler/component/SpellCheckComponentTest.java,69,"    assertU((adoc(""id"", ""9"", ""lowerfilt"", ""pixmaa"")));"
+solr/core/src/test/org/apache/solr/spelling/SpellingQueryConverterTest.java,48,

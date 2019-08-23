@@ -1,0 +1,239 @@
+File,LineNumber,src
+src/org/jruby/internal/runtime/GlobalVariables.java,132,
+src/org/jruby/runtime/load/LoadService.java,547,"                runtime.getGlobalVariables().set(""$!"", runtime.getNil());"
+src/org/jruby/javasupport/JavaClass.java,250,            haveLocalMethod |= javaClass == method.getDeclaringClass();
+src/org/jruby/javasupport/JavaClass.java,1864,        // instance methods only; static methods are local to the class and always bound
+src/org/jruby/javasupport/JavaClass.java,1865,        for (Method m: javaClass.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1866,            int modifiers = m.getModifiers();
+src/org/jruby/javasupport/JavaClass.java,1867,            if (Modifier.isPublic(modifiers) || Modifier.isProtected(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1868,                if (Modifier.isStatic(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1869,                    // static methods are always bound
+src/org/jruby/javasupport/JavaClass.java,1870,                    list2.add(m);
+src/org/jruby/javasupport/JavaClass.java,1871,                } else {
+src/org/jruby/javasupport/JavaClass.java,1872,                    List<Method> methods = nameMethods.get(m.getName());
+src/org/jruby/javasupport/JavaClass.java,1873,                    if (methods == null) {
+src/org/jruby/javasupport/JavaClass.java,1874,"                        nameMethods.put(m.getName(), methods = new ArrayList<Method>());"
+src/org/jruby/javasupport/JavaClass.java,1876,                    methods.add(m);
+src/org/jruby/javasupport/JavaMethod.java,174,        if (methodIsPublic &&
+src/org/jruby/javasupport/JavaMethod.java,175,            !Modifier.isPublic(method.getDeclaringClass().getModifiers())) {
+src/org/jruby/javasupport/JavaMethod.java,176,            accessibleObject().setAccessible(true);
+src/org/jruby/javasupport/JavaMethod.java,177,        }
+test/org/jruby/test/TestJavaReentrantExceptions.java,48,}
+test/org/jruby/test/TestJavaReentrantExceptions.java,49,
+test/org/jruby/test/TestJavaReentrantExceptions.java,50,class ExceptionThrower {
+test/org/jruby/test/TestJavaReentrantExceptions.java,51,    public static final ExpectedException expectedException = new ExpectedException();
+test/org/jruby/test/TestJavaReentrantExceptions.java,52,
+test/org/jruby/test/TestJavaReentrantExceptions.java,53,    public void throwException() throws ExpectedException {
+test/org/jruby/test/TestJavaReentrantExceptions.java,54,        throw expectedException;
+test/org/jruby/test/TestJavaReentrantExceptions.java,55,    }
+src/org/jruby/RubyDigest.java,373,"        @JRubyMethod(name = ""digest"", required = 1, optional = 1, frame = true, meta = true)"
+src/org/jruby/javasupport/JavaClass.java,1861,        ArrayList<Method> list2 = new ArrayList<Method>();
+src/org/jruby/javasupport/JavaClass.java,1864,
+src/org/jruby/javasupport/JavaClass.java,1868,        if (Modifier.isPublic(javaClass.getModifiers())) {
+src/org/jruby/javasupport/JavaClass.java,1874,                        list2.add(m);
+src/org/jruby/javasupport/JavaClass.java,1886,        // add all directly-implemented interface methods
+src/org/jruby/javasupport/JavaClass.java,1889,
+src/org/jruby/javasupport/JavaClass.java,1899,"        // we all all superclasses, but avoid adding superclass methods with same name+signature as subclass methods"
+src/org/jruby/javasupport/JavaClass.java,1920,        for (Class c = javaClass; c != null; c = c.getSuperclass()) {
+src/org/jruby/javasupport/JavaClass.java,1921,            // skip non-public classes
+src/org/jruby/javasupport/JavaClass.java,1922,            if (!Modifier.isPublic(c.getModifiers())) continue;
+src/org/jruby/javasupport/JavaClass.java,1923,
+src/org/jruby/javasupport/JavaClass.java,1929,                        list2.add(m);
+src/org/jruby/javasupport/JavaClass.java,1939,                    list2.add(m);
+src/org/jruby/javasupport/JavaClass.java,1945,        return list2.toArray(new Method[list2.size()]);
+src/org/jruby/javasupport/JavaMethod.java,173,        // interface.  Let these public methods execute via setAccessible(true).
+src/org/jruby/javasupport/JavaMethod.java,174,        assert Modifier.isPublic(method.getDeclaringClass().getModifiers()) :
+src/org/jruby/javasupport/JavaMethod.java,175,"            ""we should not be trying to bind methods declared on non-public classes"";"
+src/org/jruby/lexer/yacc/ByteArrayLexerSource.java,49,            if (c != '\n') {
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,162,    @Override
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,163,    public Object getVariable(int index) {
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,164,"        return getRuntime().getJavaSupport().getJavaObjectVariable(this, index);"
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,165,    }
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,166,
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,167,    @Override
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,168,"    public void setVariable(int index, Object value) {"
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,169,"        getRuntime().getJavaSupport().setJavaObjectVariable(this, index, value);"
+src/org/jruby/java/proxies/ConcreteJavaProxy.java,170,    }
+src/org/jruby/util/io/ChannelStream.java,1142,    public synchronized void finalize() {
+src/org/jruby/RubyTime.java,605,        int offset = dt.getZone().getOffsetFromLocal(dt.getMillis());
+src/org/jruby/RubyBasicObject.java,934,        Ruby runtime = getRuntime();
+src/org/jruby/RubyBasicObject.java,935,        Long id;
+src/org/jruby/RubyBasicObject.java,937,        // The logic here is to use the special objectId accessor slot from the
+src/org/jruby/RubyBasicObject.java,938,"        // parent as a lazy store for an object ID. IDs are generated atomically,"
+src/org/jruby/RubyBasicObject.java,939,"        // in serial, and guaranteed unique for up to 2^63 objects. The special"
+src/org/jruby/RubyBasicObject.java,940,"        // objectId slot is managed separately from the ""normal"" vars so it"
+src/org/jruby/RubyBasicObject.java,941,"        // does not marshal, clone/dup, or refuse to be initially set when the"
+src/org/jruby/RubyBasicObject.java,945,            id = (Long)objectIdAccessor.get(this);
+src/org/jruby/RubyBasicObject.java,947,                if (runtime.isObjectSpaceEnabled()) {
+src/org/jruby/RubyBasicObject.java,948,                    id = runtime.getObjectSpace().idOf(this);
+src/org/jruby/RubyBasicObject.java,949,                } else {
+src/org/jruby/RubyBasicObject.java,950,                    id = ObjectSpace.calculateObjectID(this);
+src/org/jruby/RubyBasicObject.java,951,                }
+src/org/jruby/RubyBasicObject.java,952,                // we use a direct path here to avoid frozen checks
+src/org/jruby/RubyBasicObject.java,953,"                setObjectId(objectIdAccessor.getIndex(), id);"
+src/org/jruby/RubyBasicObject.java,956,        return runtime.newFixnum(id);
+src/org/jruby/RubyBasicObject.java,1097,            finalizer = new Finalizer((RubyFixnum)id());
+src/org/jruby/runtime/ObjectSpace.java,63,    public long idOf(IRubyObject rubyObject) {
+src/org/jruby/runtime/ObjectSpace.java,73,    public static long calculateObjectID(Object object) {
+src/org/jruby/runtime/ObjectSpace.java,74,"        // Fixnums get all the odd IDs, so we use identityHashCode * 2"
+src/org/jruby/runtime/ObjectSpace.java,75,        return maxId.getAndIncrement() * 2;
+src/org/jruby/runtime/ObjectSpace.java,76,    }
+src/org/jruby/runtime/ObjectSpace.java,77,
+src/org/jruby/runtime/ObjectSpace.java,78,    private Long createId(IRubyObject object) {
+src/org/jruby/runtime/ObjectSpace.java,79,        cleanIdentities();
+src/org/jruby/runtime/ObjectSpace.java,80,        long id = calculateObjectID(object);
+src/org/jruby/runtime/ObjectSpace.java,81,"        identities.put(id, new IdReference(object, id, deadIdentityReferences));"
+src/org/jruby/runtime/ObjectSpace.java,82,"        identitiesByObject.put(object, id);"
+src/org/jruby/javasupport/JavaClass.java,105,        } catch (AccessControlException ace) {
+src/org/jruby/javasupport/JavaClass.java,1876,
+src/org/jruby/javasupport/JavaClass.java,1877,    private static Method[] getMethods(Class<?> javaClass) {
+src/org/jruby/javasupport/JavaClass.java,1878,"        HashMap<String, List<Method>> nameMethods = new HashMap<String, List<Method>>();"
+src/org/jruby/javasupport/JavaClass.java,1879,        ArrayList<Method> finalList = new ArrayList<Method>();
+src/org/jruby/javasupport/JavaClass.java,1880,
+src/org/jruby/javasupport/JavaClass.java,1881,        // we only bind methods declared onnon-public classes if we're able to
+src/org/jruby/javasupport/JavaClass.java,1882,        // set those methods accessible (JRUBY-4799)
+src/org/jruby/javasupport/JavaClass.java,1883,        boolean useImmediateClass = CAN_SET_ACCESSIBLE || Modifier.isPublic(javaClass.getModifiers());
+src/org/jruby/javasupport/JavaClass.java,1884,
+src/org/jruby/javasupport/JavaClass.java,1885,"        // aggregate all candidate method names from child, with their method objects"
+src/org/jruby/javasupport/JavaClass.java,1886,        // Instance methods only; static methods are local to the class and always bound.
+src/org/jruby/javasupport/JavaClass.java,1887,"        // Don't do this class's methods if it isn't public, since only superclass"
+src/org/jruby/javasupport/JavaClass.java,1888,        // methods will be available.
+src/org/jruby/javasupport/JavaClass.java,1889,        if (useImmediateClass) {
+src/org/jruby/javasupport/JavaClass.java,1890,            // class is public or we can set its methods accessible
+src/org/jruby/javasupport/JavaClass.java,1891,            for (Method m: javaClass.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1892,                int modifiers = m.getModifiers();
+src/org/jruby/javasupport/JavaClass.java,1893,                if (Modifier.isPublic(modifiers) || Modifier.isProtected(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1894,                    if (Modifier.isStatic(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1895,                        // static methods are always bound
+src/org/jruby/javasupport/JavaClass.java,1896,                        finalList.add(m);
+src/org/jruby/javasupport/JavaClass.java,1897,                    } else {
+src/org/jruby/javasupport/JavaClass.java,1898,                        List<Method> methods = nameMethods.get(m.getName());
+src/org/jruby/javasupport/JavaClass.java,1899,                        if (methods == null) {
+src/org/jruby/javasupport/JavaClass.java,1900,"                            nameMethods.put(m.getName(), methods = new ArrayList<Method>());"
+src/org/jruby/javasupport/JavaClass.java,1901,                        }
+src/org/jruby/javasupport/JavaClass.java,1902,                        methods.add(m);
+src/org/jruby/javasupport/JavaClass.java,1903,                    }
+src/org/jruby/javasupport/JavaClass.java,1904,                }
+src/org/jruby/javasupport/JavaClass.java,1905,            }
+src/org/jruby/javasupport/JavaClass.java,1906,        }
+src/org/jruby/javasupport/JavaClass.java,1908,        // add immediately-implemented interface methods in case they're not
+src/org/jruby/javasupport/JavaClass.java,1909,        // provided by superclasses or left abstract
+src/org/jruby/javasupport/JavaClass.java,1910,        for (Class c : javaClass.getInterfaces()) {
+src/org/jruby/javasupport/JavaClass.java,1911,            if (!Modifier.isPublic(c.getModifiers())) continue;
+src/org/jruby/javasupport/JavaClass.java,1913,            for (Method m: c.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1914,                List<Method> methods = nameMethods.get(m.getName());
+src/org/jruby/javasupport/JavaClass.java,1915,                if (methods == null) {
+src/org/jruby/javasupport/JavaClass.java,1916,"                    nameMethods.put(m.getName(), methods = new ArrayList<Method>());"
+src/org/jruby/javasupport/JavaClass.java,1917,                }
+src/org/jruby/javasupport/JavaClass.java,1918,                methods.add(m);
+src/org/jruby/javasupport/JavaClass.java,1920,        }
+src/org/jruby/javasupport/JavaClass.java,1921,
+src/org/jruby/javasupport/JavaClass.java,1922,"        // we scan all superclasses, but avoid adding superclass methods with"
+src/org/jruby/javasupport/JavaClass.java,1923,        // same name+signature as subclass methods
+src/org/jruby/javasupport/JavaClass.java,1924,        // see JRUBY-3130
+src/org/jruby/javasupport/JavaClass.java,1925,        for (Class c = javaClass.getSuperclass(); c != null; c = c.getSuperclass()) {
+src/org/jruby/javasupport/JavaClass.java,1926,            try {
+src/org/jruby/javasupport/JavaClass.java,1927,                Methods: for (Method m : c.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1928,                    List<Method> childMethods = nameMethods.get(m.getName());
+src/org/jruby/javasupport/JavaClass.java,1929,                    if (childMethods == null) continue;
+src/org/jruby/javasupport/JavaClass.java,1930,
+src/org/jruby/javasupport/JavaClass.java,1931,                    for (Method m2 : childMethods) {
+src/org/jruby/javasupport/JavaClass.java,1932,"                        if (methodsAreEquivalent(m2, m)) {"
+src/org/jruby/javasupport/JavaClass.java,1934,                            if (childMethods.isEmpty()) nameMethods.remove(m.getName());
+src/org/jruby/javasupport/JavaClass.java,1935,                            continue Methods;
+src/org/jruby/javasupport/JavaClass.java,1939,            } catch (SecurityException e) {
+src/org/jruby/javasupport/JavaClass.java,1942,
+src/org/jruby/javasupport/JavaClass.java,1943,        // now only bind the ones that remain
+src/org/jruby/javasupport/JavaClass.java,1945,"        // first the immediate class, if we used it above"
+src/org/jruby/javasupport/JavaClass.java,1946,        if (useImmediateClass) {
+src/org/jruby/javasupport/JavaClass.java,1947,            try {
+src/org/jruby/javasupport/JavaClass.java,1948,                for (Method m : javaClass.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1949,                    int modifiers = m.getModifiers();
+src/org/jruby/javasupport/JavaClass.java,1950,                    if (Modifier.isPublic(modifiers) || Modifier.isProtected(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1951,                        if (!nameMethods.containsKey(m.getName())) continue;
+src/org/jruby/javasupport/JavaClass.java,1952,                        finalList.add(m);
+src/org/jruby/javasupport/JavaClass.java,1953,                    }
+src/org/jruby/javasupport/JavaClass.java,1955,            } catch (SecurityException e) {
+src/org/jruby/javasupport/JavaClass.java,1957,        }
+src/org/jruby/javasupport/JavaClass.java,1959,        // then superclasses
+src/org/jruby/javasupport/JavaClass.java,1960,        for (Class c = javaClass.getSuperclass(); c != null; c = c.getSuperclass()) {
+src/org/jruby/javasupport/JavaClass.java,1961,            try {
+src/org/jruby/javasupport/JavaClass.java,1962,                for (Method m : c.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1963,                    int modifiers = m.getModifiers();
+src/org/jruby/javasupport/JavaClass.java,1964,                    if (Modifier.isPublic(modifiers) || Modifier.isProtected(modifiers)) {
+src/org/jruby/javasupport/JavaClass.java,1965,                        if (!nameMethods.containsKey(m.getName())) continue;
+src/org/jruby/javasupport/JavaClass.java,1966,                        finalList.add(m);
+src/org/jruby/javasupport/JavaClass.java,1967,                    }
+src/org/jruby/javasupport/JavaClass.java,1969,            } catch (SecurityException e) {
+src/org/jruby/javasupport/JavaClass.java,1973,        // then immediately implemented interfaces
+src/org/jruby/javasupport/JavaClass.java,1974,        for (Class c : javaClass.getInterfaces()) {
+src/org/jruby/javasupport/JavaClass.java,1975,            try {
+src/org/jruby/javasupport/JavaClass.java,1976,                for (Method m : c.getDeclaredMethods()) {
+src/org/jruby/javasupport/JavaClass.java,1977,                    if (!nameMethods.containsKey(m.getName())) continue;
+src/org/jruby/javasupport/JavaClass.java,1978,                    finalList.add(m);
+src/org/jruby/javasupport/JavaClass.java,1979,                }
+src/org/jruby/javasupport/JavaClass.java,1980,            } catch (SecurityException e) {
+src/org/jruby/javasupport/JavaClass.java,1981,            }
+src/org/jruby/RubyEnumerable.java,861,"            this.block.call(context, new IRubyObject[] { runtime.newArray(checkArgs(runtime, iargs), runtime.newFixnum(index++)) });"
+src/org/jruby/ext/socket/RubyTCPSocket.java,87,        return RubyNumeric.fix2int(arg instanceof RubyString ?
+src/org/jruby/ext/socket/RubyTCPSocket.java,88,"                RubyNumeric.str2inum(runtime, (RubyString) arg, 0, true) : arg);"
+src/org/jruby/util/ConvertBytes.java,610,"        return new RubyBignum(runtime, z);"
+src/org/jruby/util/ShellLauncher.java,34,import java.io.BufferedInputStream;
+src/org/jruby/util/ShellLauncher.java,43,import static java.lang.System.*;
+src/org/jruby/util/ShellLauncher.java,50,import java.util.regex.Pattern;
+src/org/jruby/util/ShellLauncher.java,333,        String path = System.getenv(PATH_ENV);
+src/org/jruby/RubyRegexp.java,1773,"        RubyString str = m.str.makeShared(runtime, start, end - start);"
+src/org/jruby/RubyRegexp.java,1793,"        return m.str.makeShared(runtime, 0,  m.begin).infectBy(m);"
+src/org/jruby/RubyRegexp.java,1804,"        return m.str.makeShared(runtime, m.end, m.str.getByteList().getRealSize() - m.end).infectBy(m);"
+src/org/jruby/RubySymbol.java,89,        int length = symbolBytes.getBegin() + symbolBytes.getRealSize();
+src/org/jruby/RubySymbol.java,90,        for (int i = symbolBytes.getBegin(); i < length; i++) {
+src/org/jruby/RubySymbol.java,91,            if (symbolBytes.getUnsafeBytes()[i] == 0) {
+src/org/jruby/RubySymbol.java,92,"                throw runtime.newSyntaxError(""symbol cannot contain '\\0'"");"
+src/org/jruby/parser/Ruby19Parser.java,1835,                     if (((Node)yyVals[-1+yyTop]) == null) {
+src/org/jruby/parser/Ruby19Parser.java,1836,"                       support.yyerror(""empty symbol literal"");"
+src/org/jruby/parser/Ruby19Parser.java,1837,                     }
+src/org/jruby/parser/Ruby19Parser.java,1844,
+src/org/jruby/parser/Ruby19Parser.java,1845,                     if (((Node)yyVals[-1+yyTop]) instanceof DStrNode) {
+src/org/jruby/NativeException.java,36,import org.jruby.javasupport.JavaObject;
+src/org/jruby/NativeException.java,40,import org.jruby.util.SafePropertyAccessor;
+src/org/jruby/NativeException.java,50,"        super(runtime, rubyClass, cause.getClass().getName() + "": "" + cause.getMessage());"
+src/org/jruby/RubyString.java,2634,"            throw context.getRuntime().newArgumentError(""wrong number of arguments (1 for 2)"");"
+src/org/jruby/RubyObjectSpace.java,137,"                            block.yield(context, arg1);"
+src/org/jruby/java/codegen/RealClassGenerator.java,454,        synchronized (ruby.getJRubyClassLoader()) {
+src/org/jruby/java/codegen/RealClassGenerator.java,455,"            // try to load the specified name; only if that fails, try to define the class"
+src/org/jruby/java/codegen/RealClassGenerator.java,456,            try {
+src/org/jruby/java/codegen/RealClassGenerator.java,457,                newClass = ruby.getJRubyClassLoader().loadClass(name);
+src/org/jruby/java/codegen/RealClassGenerator.java,458,            } catch (ClassNotFoundException cnfe) {
+src/org/jruby/java/codegen/RealClassGenerator.java,459,"                newClass = ruby.getJRubyClassLoader().defineClass(name, cw.toByteArray());"
+src/org/jruby/java/codegen/RealClassGenerator.java,460,            }
+src/org/jruby/java/codegen/RealClassGenerator.java,455,        OneShotClassLoader loader = new OneShotClassLoader(ruby.getJRubyClassLoader());
+src/org/jruby/util/ShellLauncher.java,334,        String path = env.get(PATH_ENV).toString();
+src/org/jruby/util/ShellLauncher.java,336,        if (path == null) {
+src/org/jruby/RubyBasicObject.java,835,        if (original instanceof RubyModule) ((RubyModule) clone).syncConstants((RubyModule) original);
+src/org/jruby/RubyTime.java,97,
+src/org/jruby/RubyTime.java,98,    public static DateTimeZone getLocalTimeZone(Ruby runtime) {
+src/org/jruby/RubyTime.java,158,"        // For JRUBY-2759, when MET choose CET timezone to work around Joda"
+src/org/jruby/RubyTime.java,159,"        if (""MET"".equalsIgnoreCase(zone)) {"
+src/org/jruby/RubyTime.java,160,"            zone = ""CET"";"
+src/org/jruby/RubyTime.java,161,        }
+src/org/jruby/RubyTime.java,162,
+src/org/jruby/RubyTime.java,163,        DateTimeZone dtz = DateTimeZone.forTimeZone(TimeZone.getTimeZone(zone));
+src/org/jruby/RubyGlobal.java,76,"            super(runtime, valueMap, defaultValue);"
+src/org/jruby/RubyGlobal.java,103,"        public StringOnlyRubyHash(Ruby runtime, Map valueMap, IRubyObject defaultValue) {"
+src/org/jruby/RubyGlobal.java,153,"            return super.op_aset(context, normalizeEnvString(RuntimeHelpers.invoke(context, key, ""to_str"")),"
+src/org/jruby/RubyGlobal.java,154,"                    value.isNil() ? getRuntime().getNil() : normalizeEnvString(RuntimeHelpers.invoke(context, value, ""to_str"")));"
+src/org/jruby/RubyIO.java,3981,"                f1.transferTo(f2.position(), size, f2);"
+src/org/jruby/ext/ffi/AbstractInvoker.java,31,import java.util.Collections;
+src/org/jruby/ext/ffi/AbstractInvoker.java,32,import java.util.Map;
+src/org/jruby/ext/ffi/AbstractInvoker.java,33,import java.util.WeakHashMap;
+src/org/jruby/ext/ffi/AbstractInvoker.java,51,
+src/org/jruby/ext/ffi/AbstractInvoker.java,52,    /**
+src/org/jruby/ext/ffi/AbstractInvoker.java,53,     * Reference map to keep libraries open for as long as there is a method mapped
+src/org/jruby/ext/ffi/AbstractInvoker.java,54,     * to that library.
+src/org/jruby/ext/ffi/AbstractInvoker.java,55,     */
+src/org/jruby/ext/ffi/AbstractInvoker.java,56,"    private static final Map<DynamicMethod, AbstractInvoker> refmap"
+src/org/jruby/ext/ffi/AbstractInvoker.java,57,"            = Collections.synchronizedMap(new WeakHashMap<DynamicMethod, AbstractInvoker>());"
+src/org/jruby/ext/ffi/AbstractInvoker.java,97,"        refmap.put(m, this);"
+src/org/jruby/java/proxies/ArrayJavaProxy.java,54,    public IRubyObject length() {
+src/org/jruby/java/proxies/ArrayJavaProxy.java,55,        return getJavaArray().length();
+src/org/jruby/java/proxies/ArrayJavaProxy.java,60,        return RubyFixnum.zero(context.runtime).eql_p(getJavaArray().length());
